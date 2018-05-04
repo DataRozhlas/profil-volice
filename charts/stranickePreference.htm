@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Highcharts Example</title>
+
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+
+<div id="container" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
+
+
+
+		<script type="text/javascript">
+
+var colors = ['#ECA038', '#A38456', '#EA614A', '#008836', '#20649B', '#6B96CA', '#A87A93', '#D19C95'];
+
+var segmenty = [
+  ["Mladý a těkavý"],
+  ["Obranář"],
+  ["Skutečný křesťan"],
+  ["Městský liberál"],
+  ["Materialista"],
+  ["Levicový (ne)volič"],
+  ["Politicky pasivní"]
+]
+
+var stranickePreference = [
+  ["ČSSD",8.7,18.7,20.2,3.7,31.6,17.0,0.0],
+  ["ANO",6.0,22.5,19.5,4.5,42.4,5.1,0.0],
+  ["KSČM",3.9,42.7,14.8,0.0,16.7,21.9,0.0],
+  ["TOP 09",9.8,5.1,15.7,29.6,29.4,8.5,1.9],
+  ["ODS",5.7,9.1,17.5,30.2,35.2,0.5,1.8],
+  ["KDU-ČSL",2.7,2.4,58.4,22.6,9.8,4.1,0.0],
+  ["Piráti",21.6,10.4,9.2,37.3,10.3,5.4,5.7],
+  ["SPD",6.6,49.1,13.9,1.9,21.9,6.5,0.0]
+];
+
+var stranickePreferenceNames = stranickePreference.map(function(d) {
+        return d[0];
+    });
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Politické preference skupin voličů'
+    },
+    xAxis: {
+        categories: stranickePreferenceNames
+    },
+    yAxis: {
+        min: 0,
+        max: 100,
+        title: {
+            text: 'podíl voličů strany'
+        },
+        labels: {
+            format: '{value} %'
+        }
+    },
+    tooltip: {
+        pointFormat: '<span style="color:{series.color}">{series.name}</span>: {point.y}' + ' %' + '<br/>',
+        shared: true
+    },
+    exporting: {
+        enabled: false
+    },
+    credits: {
+        href : '',
+        text : 'Zdroj: Median'
+    },
+    plotOptions: {
+        column: {
+            stacking: 'stacked'
+        }
+    },
+    series: [{
+        name: segmenty[0],
+        data: stranickePreference.map(function(d) {
+            return d[1];
+        }),
+        color: colors[0]
+    }, {
+        name: segmenty[1],
+        data: stranickePreference.map(function(d) {
+            return d[2];
+        }),
+        color: colors[1]
+    }, {
+        name: segmenty[2],
+        data: stranickePreference.map(function(d) {
+            return d[3];
+        }),
+        color: colors[2]
+    }, {
+        name: segmenty[3],
+        data: stranickePreference.map(function(d) {
+            return d[4];
+        }),
+        color: colors[3]
+    }, {
+        name: segmenty[4],
+        data: stranickePreference.map(function(d) {
+            return d[5];
+        }),
+        color: colors[4]
+    }, {
+        name: segmenty[5],
+        data: stranickePreference.map(function(d) {
+            return d[6];
+        }),
+        color: colors[5]
+    }, {
+        name: segmenty[6],
+        data: stranickePreference.map(function(d) {
+            return d[7];
+        }),
+        color: colors[6]
+    }]
+});
+
+		</script>
+	</body>
+</html>
+
