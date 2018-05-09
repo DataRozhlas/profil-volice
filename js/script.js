@@ -1,30 +1,47 @@
-// testové otázky
-
 var cisloOtazky = 1;
 
 var otazky = [
   ["Považujete sám/sama sebe za věřícího člověka?", "ano", "ne", "nevím"],
   ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
   ["Považujete sám/sama sebe za věřícího člověka 2?", "ano", "ne", "nevím"],
-  ["Jste spokojení se svou životní úrovní 2?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"]
+  ["Jste spokojení se svou životní úrovní 2?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
+  ["Považujete sám/sama sebe za věřícího člověka?", "ano", "ne", "nevím"],
+  ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
+  ["Považujete sám/sama sebe za věřícího člověka 2?", "ano", "ne", "nevím"],
+  ["Jste spokojení se svou životní úrovní 2?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
+  ["Považujete sám/sama sebe za věřícího člověka?", "ano", "ne", "nevím"],
+  ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
+  ["Považujete sám/sama sebe za věřícího člověka 2?", "ano", "ne", "nevím"],
+  ["Jste spokojení se svou životní úrovní 2?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
+  ["Považujete sám/sama sebe za věřícího člověka?", "ano", "ne", "nevím"],
+  ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
+  ["Považujete sám/sama sebe za věřícího člověka 2?", "ano", "ne", "nevím"],
+  ["Jste spokojení se svou životní úrovní 2?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
+  ["Považujete sám/sama sebe za věřícího člověka?", "ano", "ne", "nevím"],
+  ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
+  ["Považujete sám/sama sebe za věřícího člověka 2?", "ano", "ne", "nevím"],
+  ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"]
 ];
 
 var odpovedi = [];
 
-
-
-$('.test-button').click(function(event){
-  event.preventDefault();
-  odpovedi[cisloOtazky-1] = $(this).text();
-  cisloOtazky++;
-  novaOtazka();
-});
+var segmenty = [
+  ["Mladý a těkavý", 0],
+  ["Obranář", 0],
+  ["Skutečný křesťan", 0],
+  ["Městský liberál", 0],
+  ["Materialista", 0],
+  ["Levicový (ne)volič", 0],
+  ["Politicky pasivní", 0]
+];
 
 
 
 function novaOtazka() {
 
   var otazka = otazky[cisloOtazky-1];
+
+  var progres = (cisloOtazky-1) / 20 * 100 + '%';
 
   var barvy = [];
   if (otazka.length-1 == 3) {
@@ -33,11 +50,10 @@ function novaOtazka() {
     barvy = ['#18807A', '#4FBA8A', '#FFCE6D', '#FF7858', '#F84045', '#444']
   }
 
-  var text = '<div class="otazka">'
-
+  var text = '<div class="otazka">';
   text += '<p>Otázka ' + cisloOtazky + '</p>';
+  text += '<div class="progresbar"></div>';
   text += '<h3>' + otazka[0] + '</h3>';
-  text += '</div>';
   text += '<div class="buttons">';
 
   for (var i = 1; i < otazka.length; i++) {
@@ -48,11 +64,14 @@ function novaOtazka() {
 
   document.getElementsByClassName("test")[0].innerHTML = text;
 
+  $('.progresbar').css('width', progres);
+
   $('.test-button').click(function(event){
     event.preventDefault();
     odpovedi[cisloOtazky-1] = $(this).text();
     cisloOtazky++;
     novaOtazka();
+    zmenVelikosti();
   });
 
   return true;
@@ -61,17 +80,50 @@ function novaOtazka() {
 
 
 
-// popis segmentů
+function zmenVelikosti() {
 
-var segmenty = [
-  ["Mladý a těkavý"],
-  ["Obranář"],
-  ["Skutečný křesťan"],
-  ["Městský liberál"],
-  ["Materialista"],
-  ["Levicový (ne)volič"],
-  ["Politicky pasivní"]
-];
+  // Levicový (ne)volič
+  var img = document.querySelectorAll(".skupina .fotka img")[0];
+  segmenty[0][1] = 10;
+  img.style.width = segmenty[0][1] + '%';
+
+  // Materialista
+  var img = document.querySelectorAll(".skupina .fotka img")[1];
+  segmenty[1][1] = 10;
+  img.style.width = segmenty[1][1] + '%';
+
+  // Městský liberál
+  var img = document.querySelectorAll(".skupina .fotka img")[2];
+  segmenty[2][1] = 10;
+  img.style.width = segmenty[2][1] + '%';
+
+  // Mladý a těkavý
+  var img = document.querySelectorAll(".skupina .fotka img")[3];
+  segmenty[3][1] = 10;
+  img.style.width = segmenty[3][1] + '%';
+
+  // Obranář
+  var img = document.querySelectorAll(".skupina .fotka img")[4];
+  segmenty[4][1] = 10;
+  img.style.width = segmenty[4][1] + '%';
+
+  // Politicky pasivní
+  var img = document.querySelectorAll(".skupina .fotka img")[5];
+  segmenty[5][1] = 25;
+  img.style.width = segmenty[5][1] + '%';
+
+  // Skutečný křesťan
+  var img = document.querySelectorAll(".skupina .fotka img")[6];
+  segmenty[6][1] = 20;
+  img.style.width = segmenty[6][1] + '%';
+
+  return true;
+
+}
+
+
+
+novaOtazka();
 
 
 

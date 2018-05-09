@@ -31,6 +31,13 @@ hr {
 	background-color: #eee;
 }
 
+.test .progresbar {
+	height: 1px;
+	width: 0%;
+	background-color: #000;
+	border-radius: 5px;
+}
+
 .test p {
 	margin-top: 10px;
 	margin-bottom: 0px;
@@ -55,4 +62,25 @@ hr {
 	font-size: 20px;
 	line-height: 1.5;
 	color: #fff;
+}
+
+.skupina {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+.skupina div {
+	display: inline;
+}
+
+.fotka {
+	display: block;
+}
+
+.fotka img {
+    width: 13%;
+   -moz-transition: height 1s, width 1s;
+    -webkit-transition: height 1s, width 1s;
+    transition:  height 1s, width 1s;
 }

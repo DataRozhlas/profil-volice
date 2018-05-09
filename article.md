@@ -11,19 +11,24 @@ options: [] #wide, noheader (, nopic)
 <div class="test-big">
 
 <h2>Otestujte, jaký typ voliče jste</h2>
-<div class="test">
-
-<div class="otazka">
-<p>Otázka 1</p>
-<h3>Považujete sám/sama sebe za věřícího člověka?</h3>
-</div>
-
-<div class="buttons">
-<button class="test-button" type="button" style="background-color:#18807A">ano</button>
-<button class="test-button" type="button" style="background-color:#F84045">ne</button>
-<button class="test-button" type="button" style="background-color:#555">nevím</button>
-</div>
+<div class="test"></div>
 
 </div>
 
+<div class="skupina">
+<div class="fotka"><img src="./images/nevolic.jpg"/></div>
+<div class="fotka"><img src="./images/materialista.jpg"></div>
+<div class="fotka"><img src="./images/liberal.jpg"/></div>
+<div class="fotka"><img src="./images/tekavy.jpg"/></div>
+<div class="fotka"><img src="./images/obranar.jpg"/></div>
+<div class="fotka"><img src="./images/pasivni.jpg"/></div>
+<div class="fotka"><img src="./images/krestan.jpg"></div>
+
 </div>
+
+XXX
+
+XXX
+
+XXX
+
