@@ -1,3 +1,66 @@
+// testové otázky
+
+var cisloOtazky = 1;
+
+var otazky = [
+  ["Považujete sám/sama sebe za věřícího člověka?", "ano", "ne", "nevím"],
+  ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
+  ["Považujete sám/sama sebe za věřícího člověka 2?", "ano", "ne", "nevím"],
+  ["Jste spokojení se svou životní úrovní 2?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"]
+];
+
+var odpovedi = [];
+
+
+
+$('.test-button').click(function(event){
+  event.preventDefault();
+  odpovedi[cisloOtazky-1] = $(this).text();
+  cisloOtazky++;
+  novaOtazka();
+});
+
+
+
+function novaOtazka() {
+
+  var otazka = otazky[cisloOtazky-1];
+
+  var barvy = [];
+  if (otazka.length-1 == 3) {
+    barvy = ['#18807A', '#F84045', '#444']
+  } else if (otazka.length-1 == 6) {
+    barvy = ['#18807A', '#4FBA8A', '#FFCE6D', '#FF7858', '#F84045', '#444']
+  }
+
+  var text = '<div class="otazka">'
+
+  text += '<p>Otázka ' + cisloOtazky + '</p>';
+  text += '<h3>' + otazka[0] + '</h3>';
+  text += '</div>';
+  text += '<div class="buttons">';
+
+  for (var i = 1; i < otazka.length; i++) {
+    text += '<button class="test-button" type="button" style="background-color:' + barvy[i-1] + '">' + otazka[i] + '</button>';
+  }
+
+  text += '</div>';
+
+  document.getElementsByClassName("test")[0].innerHTML = text;
+
+  $('.test-button').click(function(event){
+    event.preventDefault();
+    odpovedi[cisloOtazky-1] = $(this).text();
+    cisloOtazky++;
+    novaOtazka();
+  });
+
+  return true;
+
+}
+
+
+
 // popis segmentů
 
 var segmenty = [
@@ -8,7 +71,7 @@ var segmenty = [
   ["Materialista"],
   ["Levicový (ne)volič"],
   ["Politicky pasivní"]
-]
+];
 
 
 

@@ -11,3 +11,48 @@ li {
 hr {
     max-width: none !important;
 }
+
+.test-big {
+	padding: 20px;
+	border-radius: 15px;
+	background-color: #ccc;
+	color: #000;
+	text-align: center;
+}
+
+.test-big h2 {
+	margin-bottom: 20px;
+}
+
+.test .otazka {
+	padding: 5px;
+	margin: 0px;
+	border-radius: 10px;
+	background-color: #eee;
+}
+
+.test p {
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+.test h3 {
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+
+.test .buttons {
+	padding-top: 20px;
+	display: flex-start;
+}
+
+.test-button {
+	width: 50%;
+	padding: 5px 10px;
+	margin: 0px 5px 5px 0px;
+	border-radius: 5px;
+	border-width: 0px;
+	font-size: 20px;
+	line-height: 1.5;
+	color: #fff;
+}
