@@ -84,3 +84,23 @@ hr {
     -webkit-transition: height 1s, width 1s;
     transition:  height 1s, width 1s;
 }
+
+#chart {
+    max-width: 100%;
+    margin: 1em auto;
+}
+
+.small {
+    max-width: 450px;
+    min-width: 300px;
+    height: 300px;
+    margin: 1em auto;
+    float: left;
+}
+
+.small-legend {
+    max-width: 500px;
+    min-width: 350px;
+    height: 200px;
+    float: left;
+}

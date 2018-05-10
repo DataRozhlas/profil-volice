@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Highcharts Example</title>
+
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+
+<div id="container" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
+
+
+
+		<script type="text/javascript">
+
+var colors = ['#EA614A', '#20649B', '#008836', '#6B96CA', '#A38456', '#A87A93', '#D19C95']
+
+var segmenty = [
+  ["Levicový (ne)volič", 0],
+  ["Materialista", 0],
+  ["Městský liberál", 0],
+  ["Mladý těkavý", 0],
+  ["Obranář", 0],
+  ["Politicky pasivní", 0],
+  ["Skutečný křesťan", 0]
+];
+
+var volebniUcast = [
+  ["určitě ano",14.6,56.1,70.8,15.6,65.1,1.6,58.4],
+  ["spíše ano",19.9,33,20.4,21.4,24.1,0.6,22.3],
+  ["spíše ne",17.3,10.4,5.3,18.8,4.6,1.8,9.3],
+  ["určitě ne",47.6,0.3,3.3,43.7,4.7,95.7,8.7],
+  ["neuvedeno",0.6,0.2,0.1,0.5,1.5,0.3,1.2]
+]
+
+var odpovedi5 = volebniUcast.map(function(d) {
+        return d[0];
+    });
+
+// tohle se bude měnit podle výsledků testu
+
+var indexSkupiny = 2;
+
+var indexOstatnichSkupin = [0, 1, 2, 3, 4, 5, 6];
+indexOstatnichSkupin.splice(indexOstatnichSkupin.indexOf(indexSkupiny), 1);
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Jak poctivě chodíte k volbám?'
+    },
+    xAxis: {
+        categories: odpovedi5
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: '% odpovědí'
+        },
+        labels: {
+            format: '{value} %'
+        }
+    },
+    tooltip: {
+        pointFormat: '<span style="color:{series.color}">{series.name}</span>: {point.y}' + ' %' + '<br/>',
+        crosshairs: true
+    },
+    exporting: {
+        enabled: false
+    },
+    credits: {
+        href : '',
+        text : 'Zdroj: Median'
+    },
+    plotOptions: {
+
+    },
+    series: [{
+        name: segmenty[indexSkupiny][0],
+        data: volebniUcast.map(function(d) {
+            return d[indexSkupiny + 1];
+        }),
+        color: colors[indexSkupiny]
+    }, {
+        name: segmenty[indexOstatnichSkupin[0]][0],
+        data: volebniUcast.map(function(d) {
+            return d[indexOstatnichSkupin[0] + 1];
+        }),
+        color: colors[indexOstatnichSkupin[0]],
+        visible: false
+    }, {
+        name: segmenty[indexOstatnichSkupin[1]][0],
+        data: volebniUcast.map(function(d) {
+            return d[indexOstatnichSkupin[1] + 1];
+        }),
+        color: colors[indexOstatnichSkupin[1]],
+        visible: false
+    }, {
+        name: segmenty[indexOstatnichSkupin[2]][0],
+        data: volebniUcast.map(function(d) {
+            return d[indexOstatnichSkupin[2] + 1];
+        }),
+        color: colors[indexOstatnichSkupin[2]],
+        visible: false
+    }, {
+        name: segmenty[indexOstatnichSkupin[3]][0],
+        data: volebniUcast.map(function(d) {
+            return d[indexOstatnichSkupin[3] + 1];
+        }),
+        color: colors[indexOstatnichSkupin[3]],
+        visible: false
+    }, {
+        name: segmenty[indexOstatnichSkupin[4]][0],
+        data: volebniUcast.map(function(d) {
+            return d[indexOstatnichSkupin[4] + 1];
+        }),
+        color: colors[indexOstatnichSkupin[4]],
+        visible: false
+    }, {
+        name: segmenty[indexOstatnichSkupin[5]][0],
+        data: volebniUcast.map(function(d) {
+            return d[indexOstatnichSkupin[5] + 1];
+        }),
+        color: colors[indexOstatnichSkupin[5]],
+        visible: false
+    }]
+});
+
+		</script>
+	</body>
+</html>
+

@@ -4,7 +4,7 @@ published: "15. května 2018"
 coverimg: https://interaktivni.rozhlas.cz/brexit/media/cover.jpg
 coverimg_note: "Foto <a href='#'>ČTK</a>"
 styles: []
-libraries: [jquery] #d3, d3v5, d3csv, highcharts, datatables
+libraries: [jquery, highcharts] #d3, d3v5, d3csv, datatables
 options: [] #wide, noheader (, nopic)
 ---
 
@@ -16,6 +16,7 @@ options: [] #wide, noheader (, nopic)
 </div>
 
 <div class="skupina">
+
 <div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/nevolic.jpg"/></div>
 <div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/materialista.jpg"></div>
 <div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/liberal.jpg"/></div>
@@ -26,9 +27,25 @@ options: [] #wide, noheader (, nopic)
 
 </div>
 
-XXX
+## Politické postoje
 
-XXX
+<div id="koho-voli" style="max-width: 100%"></div>
 
-XXX
+<div id="volebni-ucast" style="max-width: 100%"></div>
 
+## Demografie
+
+<div style="max-width: 100%; overflow: hidden; display: block;">
+    <div class="chart small-legend" id="demo-pohlavi"></div>
+</div>
+
+<div style="max-width: 100%; overflow: hidden; display: block;">
+    <div class="chart small" id="demo-vek"></div>
+    <div class="chart small" id="demo-vzdelani"></div>
+</div>
+<div style="max-width: 100%; overflow: hidden; display: block;">
+    <div class="chart small" id="demo-prijem"></div>
+    <div class="chart small" id="demo-pozice"></div>
+</div>
+
+## Ostatní otázky

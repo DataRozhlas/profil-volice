@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Highcharts Example</title>
+
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+
+<div id="container" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
+
+
+
+		<script type="text/javascript">
+
+var colors = ['#EA614A', '#20649B', '#008836', '#6B96CA', '#A38456', '#A87A93', '#D19C95']
+
+var segmenty = [
+  ["Levicový (ne)volič", 0],
+  ["Materialista", 0],
+  ["Městský liberál", 0],
+  ["Mladý těkavý", 0],
+  ["Obranář", 0],
+  ["Politicky pasivní", 0],
+  ["Skutečný křesťan", 0]
+];
+
+var indexStrany = [
+  ["ANO",37,218.7,48.8,49.7,153,0.1,121.6],
+  ["ČSSD",122.7,163.1,40.4,72.5,127.2,0,126.2],
+  ["KDU-ČSL",29.3,50.4,244.7,22.4,16.6,0,364.4],
+  ["KSČM",157.4,86.2,0,32.4,291.1,0,92.4],
+  ["ODS",3.5,181.3,327,47.5,62.1,12.5,109],
+  ["Piráti",39,53.2,403.7,180.4,71,38.3,57.6],
+  ["SPD",46.7,113.2,21,54.7,334.6,0,86.9],
+  ["TOP 09",61.3,151.5,320,82,34.6,12.9,98]
+]
+
+var strany = indexStrany.map(function(d) {
+        return d[0];
+    });
+
+// tohle se bude měnit podle výsledků testu
+
+var indexSkupiny = 2;
+
+var indexOstatnichSkupin = [0, 1, 2, 3, 4, 5, 6];
+indexOstatnichSkupin.splice(indexOstatnichSkupin.indexOf(indexSkupiny), 1);
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Koho volí vaše skupina?'
+    },
+    xAxis: {
+        categories: strany
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Index (průměrný volič = 100)'
+        },
+        labels: {
+            format: '{value}'
+        }
+    },
+    tooltip: {
+        formatter: function() {
+            if (this.y == 0) {
+                return 'Pravděpodobnost volby ' + this.x + ' <b>se blíží nule</b>';
+            } else if (this.y >= 100) {
+                return 'Pravděpodobnost volby ' + this.x + ' je <b>' + Math.round(this.y/10, 2)/10 + '× vyšší ▲</b> než u průměrného voliče';
+            } else if (this.y < 100) {
+                return 'Pravděpodobnost volby ' + this.x + ' je <b>' + Math.round(1/this.y*1000, 2)/10 + '× nižší ▼</b> než u průměrného voliče';
+            }
+        },
+        crosshairs: true
+    },
+    exporting: {
+        enabled: false
+    },
+    exporting: {
+        enabled: false
+    },
+    credits: {
+        href : '',
+        text : 'Zdroj: Median'
+    },
+    plotOptions: {
+
+    },
+    series: [{
+        name: segmenty[indexSkupiny][0],
+        data: indexStrany.map(function(d) {
+            return d[indexSkupiny + 1];
+        }),
+        color: colors[indexSkupiny]
+    }, {
+        name: segmenty[indexOstatnichSkupin[0]][0],
+        data: indexStrany.map(function(d) {
+            return d[indexOstatnichSkupin[0] + 1];
+        }),
+        color: colors[indexOstatnichSkupin[0]],
+        visible: false
+    }, {
+        name: segmenty[indexOstatnichSkupin[1]][0],
+        data: indexStrany.map(function(d) {
+            return d[indexOstatnichSkupin[1] + 1];
+        }),
+        color: colors[indexOstatnichSkupin[1]],
+        visible: false
+    }, {
+        name: segmenty[indexOstatnichSkupin[2]][0],
+        data: indexStrany.map(function(d) {
+            return d[indexOstatnichSkupin[2] + 1];
+        }),
+        color: colors[indexOstatnichSkupin[2]],
+        visible: false
+    }, {
+        name: segmenty[indexOstatnichSkupin[3]][0],
+        data: indexStrany.map(function(d) {
+            return d[indexOstatnichSkupin[3] + 1];
+        }),
+        color: colors[indexOstatnichSkupin[3]],
+        visible: false
+    }, {
+        name: segmenty[indexOstatnichSkupin[4]][0],
+        data: indexStrany.map(function(d) {
+            return d[indexOstatnichSkupin[4] + 1];
+        }),
+        color: colors[indexOstatnichSkupin[4]],
+        visible: false
+    }, {
+        name: segmenty[indexOstatnichSkupin[5]][0],
+        data: indexStrany.map(function(d) {
+            return d[indexOstatnichSkupin[5] + 1];
+        }),
+        color: colors[indexOstatnichSkupin[5]],
+        visible: false
+    }]
+});
+
+		</script>
+	</body>
+</html>
+
