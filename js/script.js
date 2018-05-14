@@ -11,25 +11,25 @@ var cisloOtazky = 1;
 
 var otazky = [
   ["Zúčastnil(a) byste se voleb do Poslanecké sněmovny kdyby se konaly nyní?", "bar4", "Určitě ano", "Spíše ano", "Spíše ne", "Určitě ne"],
-  ["Považujete sám(a) sebe za věřícího člověka?", "jin2", "Ano", "Ne"],
-  ["Kolik je vám let?", "_jin7", "12-19 let", "20-29 let", "30-39 let", "40-49 let", "50-59 let", "60-69 let", "70-79 let"],
+  ["Považujete sám(a) sebe za věřícího člověka?", "bar2", "Ano", "Ne"],
+  ["Kolik je vám let?", "bar7", "12-19 let", "20-29 let", "30-39 let", "40-49 let", "50-59 let", "60-69 let", "70-79 let"],
   ["Jaký je váš čistý měsíční příjem?", "bar7", "bez příjmu", "do 4 000 Kč", "do 10 000 Kč", "do 15 000 Kč", "do 20 000 Kč", "do 30 000 Kč", "nad 30 000 Kč"],
   ["Jak jste spokojen(a) s politickou situací v ČR?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
   ["Jak jste spokojen(a) se společností, kde žijete?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
-  ["V životě bych chtěl(a) především dosáhnout vysokého společenského postavení.", "jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
-  ["Jaké je vaše nejvyšší dosažené vzdělání?", "jin7", "Bez vzdělání", "Základní", "Vyučen/Střední bez maturity", "Střední s maturitou nebo vyučen s maturitou", "VOŠ", "Bakalářské", "Magisterské a vyšší"],
-  ["Užívat drogy je špatné.", "_jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["V životě bych chtěl(a) především dosáhnout vysokého společenského postavení.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Jaké je vaše nejvyšší dosažené vzdělání?", "bar7", "Bez vzdělání", "Základní", "Vyučen/Střední bez maturity", "Střední s maturitou nebo vyučen s maturitou", "VOŠ", "Bakalářské", "Magisterské a vyšší"],
+  ["Užívat drogy je špatné.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Jste spokojení se svou životní úrovní?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
-  ["Členství ČR v Evropské unii mně osobně přináší nové možnosti a příležitosti.", "_bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
-  ["Zajímám se o mezinárodní události.", "jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
-  ["S vývojem, který proběhl v ČR od listopadu 1989, jsem spokojen(a).", "_bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
-  ["Současná politika se řídí morálními zásadami.", "jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
-  ["EU by měla uprchlíky okamžitě vracet do státu, ze kterého přišli", "jin4", "Určitě ano", "Spíše ano", "Spíše ne", "Určitě ne"],
-  ["Téměř každý den sleduji vývoj na naší politické scéně.", "jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
-  ["Úpadek naší společnosti může být zastaven pouze prosazením tvrdších zákonů.", "_jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
-  ["Křesťanské zásady mají trvalou platnost.", "jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
-  ["Stát by měl zabezpečit přijatelnou životní úroveň pro každého.", "jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
-  ["Trh by měl být omezovaný zásahem státu.", "_jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Členství ČR v Evropské unii mně osobně přináší nové možnosti a příležitosti.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Zajímám se o mezinárodní události.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["S vývojem, který proběhl v ČR od listopadu 1989, jsem spokojen(a).", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Současná politika se řídí morálními zásadami.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["EU by měla uprchlíky okamžitě vracet do státu, ze kterého přišli", "bar4", "Určitě ano", "Spíše ano", "Spíše ne", "Určitě ne"],
+  ["Téměř každý den sleduji vývoj na naší politické scéně.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Úpadek naší společnosti může být zastaven pouze prosazením tvrdších zákonů.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Křesťanské zásady mají trvalou platnost.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Stát by měl zabezpečit přijatelnou životní úroveň pro každého.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Trh by měl být omezovaný zásahem státu.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
 ];
 
 var odpovedi = [];
@@ -253,28 +253,21 @@ function novaOtazka() {
   var progres = (cisloOtazky-1) / 20 * 100 + '%';
 
   var barvy = [];
-  if (otazka[1] == 'bar4') {
-    barvy = ['#1a9641','#a6d96a','#fdae61','#d7191c'];
+  if (otazka[1] == 'bar2') {
+    barvy = ['#dfc27d','#80cdc1'];
+    barvy.reverse();
+  } else if (otazka[1] == 'bar4') {
+    barvy = ['#a6611a','#dfc27d','#80cdc1','#018571'];
+    barvy.reverse();
   } else if (otazka[1] == 'bar5') {
-    barvy = ['#d7191c','#fdae61','#ffffbf','#a6d96a','#1a9641'];
+    barvy = ['#a6611a','#dfc27d','#cccccc','#80cdc1','#018571'];
+    barvy.reverse();
   } else if (otazka[1] == 'bar7') {
-    barvy = ['#d73027','#fc8d59','#fee08b','#ffff80','#d9ef8b','#91cf60','#1a9850'];
+    barvy = ['#8c510a','#d8b365','#f6e8c3','#cccccc','#c7eae5','#5ab4ac','#01665e'];
+    barvy.reverse();
   } else if (otazka[1] == 'bar9') {
-    barvy = ['#d73027','#f46d43','#fdae61','#fee08b','#ffff80','#d9ef8b','#a6d96a','#66bd63','#1a9850'];
-  } else if (otazka[1] == 'jin2') {
-    barvy = ['#5ab4ac', '#d8b365']
-  } else if (otazka[1] == 'jin4') {
-    barvy = ['#a6611a','#dfc27d','#80cdc1','#018571']
-  } else if (otazka[1] == 'jin5') {
-    barvy = ['#018571','#80cdc1',' #cccccc','#dfc27d','#a6611a']
-  } else if (otazka[1] == 'jin7') {
-    barvy = ['#8c510a','#d8b365','#f6e8c3','#cccccc','#c7eae5','#5ab4ac','#01665e']
-  } else if (otazka[1] == '_jin7') {
-    barvy = ['#005a32','#238443','#41ab5d','#78c679','#addd8e','#d9f0a3','#ffff66']
-  } else if (otazka[1] == '_jin5') {
-    barvy = ['#a6611a','#dfc27d',' #cccccc','#80cdc1','#018571']
-  } else if (otazka[1] == '_bar5') {
-    barvy = ['#1a9641','#a6d96a','#ffff80','#fdae61','#d7191c'];
+    barvy = ['#8c510a','#bf812d','#dfc27d','#f6e8c3','#cccccc','#c7eae5','#80cdc1','#35978f','#01665e'];
+    barvy.reverse();
   }
 
   var text = '<div class="otazka">';
