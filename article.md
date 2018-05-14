@@ -4,7 +4,7 @@ published: "15. května 2018"
 coverimg: https://interaktivni.rozhlas.cz/brexit/media/cover.jpg
 coverimg_note: "Foto <a href='#'>ČTK</a>"
 styles: []
-libraries: [jquery, highcharts] #d3, d3v5, d3csv, datatables
+libraries: [jquery, highcharts, './opencpu.js'] #d3, d3v5, d3csv, datatables
 options: [] #wide, noheader (, nopic)
 ---
 
@@ -43,6 +43,7 @@ options: [] #wide, noheader (, nopic)
     <div class="chart small" id="demo-vek"></div>
     <div class="chart small" id="demo-vzdelani"></div>
 </div>
+
 <div style="max-width: 100%; overflow: hidden; display: block;">
     <div class="chart small" id="demo-prijem"></div>
     <div class="chart small" id="demo-pozice"></div>

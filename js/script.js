@@ -10,26 +10,26 @@ var colors = ['#EA614A', '#20649B', '#008836', '#6B96CA', '#A38456', '#A87A93', 
 var cisloOtazky = 1;
 
 var otazky = [
-  ["Považujete sám/sama sebe za věřícího člověka?", "ano", "ne", "nevím"],
-  ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
-  ["Považujete sám/sama sebe za věřícího člověka 2?", "ano", "ne", "nevím"],
-  ["Jste spokojení se svou životní úrovní 2?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
-  ["Považujete sám/sama sebe za věřícího člověka?", "ano", "ne", "nevím"],
-  ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
-  ["Považujete sám/sama sebe za věřícího člověka 2?", "ano", "ne", "nevím"],
-  ["Jste spokojení se svou životní úrovní 2?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
-  ["Považujete sám/sama sebe za věřícího člověka?", "ano", "ne", "nevím"],
-  ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
-  ["Považujete sám/sama sebe za věřícího člověka 2?", "ano", "ne", "nevím"],
-  ["Jste spokojení se svou životní úrovní 2?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
-  ["Považujete sám/sama sebe za věřícího člověka?", "ano", "ne", "nevím"],
-  ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
-  ["Považujete sám/sama sebe za věřícího člověka 2?", "ano", "ne", "nevím"],
-  ["Jste spokojení se svou životní úrovní 2?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
-  ["Považujete sám/sama sebe za věřícího člověka?", "ano", "ne", "nevím"],
-  ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"],
-  ["Považujete sám/sama sebe za věřícího člověka 2?", "ano", "ne", "nevím"],
-  ["Jste spokojení se svou životní úrovní?", "určitě ano", "spíše ano", "ani ano ani ne", "spíše ne", "určitě ne", "nevím"]
+  ["Zúčastnil(a) byste se voleb do Poslanecké sněmovny kdyby se konaly nyní?", "bar4", "Určitě ano", "Spíše ano", "Spíše ne", "Určitě ne"],
+  ["Považujete sám(a) sebe za věřícího člověka?", "jin2", "Ano", "Ne"],
+  ["Kolik je vám let?", "_jin7", "12-19 let", "20-29 let", "30-39 let", "40-49 let", "50-59 let", "60-69 let", "70-79 let"],
+  ["Jaký je váš čistý měsíční příjem?", "bar7", "bez příjmu", "do 4 000 Kč", "do 10 000 Kč", "do 15 000 Kč", "do 20 000 Kč", "do 30 000 Kč", "nad 30 000 Kč"],
+  ["Jak jste spokojen(a) s politickou situací v ČR?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
+  ["Jak jste spokojen(a) se společností, kde žijete?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
+  ["V životě bych chtěl(a) především dosáhnout vysokého společenského postavení.", "jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Jaké je vaše nejvyšší dosažené vzdělání?", "jin7", "Bez vzdělání", "Základní", "Vyučen/Střední bez maturity", "Střední s maturitou nebo vyučen s maturitou", "VOŠ", "Bakalářské", "Magisterské a vyšší"],
+  ["Užívat drogy je špatné.", "_jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Jste spokojení se svou životní úrovní?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
+  ["Členství ČR v Evropské unii mně osobně přináší nové možnosti a příležitosti.", "_bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Zajímám se o mezinárodní události.", "jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["S vývojem, který proběhl v ČR od listopadu 1989, jsem spokojen(a).", "_bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Současná politika se řídí morálními zásadami.", "jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["EU by měla uprchlíky okamžitě vracet do státu, ze kterého přišli", "jin4", "Určitě ano", "Spíše ano", "Spíše ne", "Určitě ne"],
+  ["Téměř každý den sleduji vývoj na naší politické scéně.", "jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Úpadek naší společnosti může být zastaven pouze prosazením tvrdších zákonů.", "_jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Křesťanské zásady mají trvalou platnost.", "jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Stát by měl zabezpečit přijatelnou životní úroveň pro každého.", "jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Trh by měl být omezovaný zásahem státu.", "_jin5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
 ];
 
 var odpovedi = [];
@@ -253,10 +253,28 @@ function novaOtazka() {
   var progres = (cisloOtazky-1) / 20 * 100 + '%';
 
   var barvy = [];
-  if (otazka.length-1 == 3) {
-    barvy = ['#18807A', '#F84045', '#444']
-  } else if (otazka.length-1 == 6) {
-    barvy = ['#18807A', '#4FBA8A', '#FFCE6D', '#FF7858', '#F84045', '#444']
+  if (otazka[1] == 'bar4') {
+    barvy = ['#1a9641','#a6d96a','#fdae61','#d7191c'];
+  } else if (otazka[1] == 'bar5') {
+    barvy = ['#d7191c','#fdae61','#ffffbf','#a6d96a','#1a9641'];
+  } else if (otazka[1] == 'bar7') {
+    barvy = ['#d73027','#fc8d59','#fee08b','#ffff80','#d9ef8b','#91cf60','#1a9850'];
+  } else if (otazka[1] == 'bar9') {
+    barvy = ['#d73027','#f46d43','#fdae61','#fee08b','#ffff80','#d9ef8b','#a6d96a','#66bd63','#1a9850'];
+  } else if (otazka[1] == 'jin2') {
+    barvy = ['#5ab4ac', '#d8b365']
+  } else if (otazka[1] == 'jin4') {
+    barvy = ['#a6611a','#dfc27d','#80cdc1','#018571']
+  } else if (otazka[1] == 'jin5') {
+    barvy = ['#018571','#80cdc1',' #cccccc','#dfc27d','#a6611a']
+  } else if (otazka[1] == 'jin7') {
+    barvy = ['#8c510a','#d8b365','#f6e8c3','#cccccc','#c7eae5','#5ab4ac','#01665e']
+  } else if (otazka[1] == '_jin7') {
+    barvy = ['#005a32','#238443','#41ab5d','#78c679','#addd8e','#d9f0a3','#ffff66']
+  } else if (otazka[1] == '_jin5') {
+    barvy = ['#a6611a','#dfc27d',' #cccccc','#80cdc1','#018571']
+  } else if (otazka[1] == '_bar5') {
+    barvy = ['#1a9641','#a6d96a','#ffff80','#fdae61','#d7191c'];
   }
 
   var text = '<div class="otazka">';
@@ -265,8 +283,8 @@ function novaOtazka() {
   text += '<h3>' + otazka[0] + '</h3>';
   text += '<div class="buttons">';
 
-  for (var i = 1; i < otazka.length; i++) {
-    text += '<button class="test-button" type="button" style="background-color:' + barvy[i-1] + '">' + otazka[i] + '</button>';
+  for (var i = 2; i < otazka.length; i++) {
+    text += '<button class="test-button" type="button" value="' + parseInt(i-1) + '" style="background-color:' + barvy[i-2] + '">' + otazka[i] + '</button>';
   }
 
   text += '</div>';
@@ -277,7 +295,45 @@ function novaOtazka() {
 
   $('.test-button').click(function(event){
     event.preventDefault();
-    odpovedi[cisloOtazky-1] = $(this).text();
+    // spešl chování u věku
+    if (cisloOtazky == 3) {
+      var odpoved = $(this)[0].value;
+      if (odpoved == '1') {
+        odpovedi[cisloOtazky-1] = 15;
+      } else if (odpoved == '2') {
+        odpovedi[cisloOtazky-1] = 24;
+      } else if (odpoved == '3') {
+        odpovedi[cisloOtazky-1] = 34;
+      } else if (odpoved == '4') {
+        odpovedi[cisloOtazky-1] = 44;
+      } else if (odpoved == '5') {
+        odpovedi[cisloOtazky-1] = 54;
+      } else if (odpoved == '6') {
+        odpovedi[cisloOtazky-1] = 64;
+      } else if (odpoved == '7') {
+        odpovedi[cisloOtazky-1] = 74;
+      }
+    // spešl chování u příjmu
+    } else if (cisloOtazky == 4) {
+      var odpoved = $(this)[0].value;
+      if (odpoved == '1') {
+        odpovedi[cisloOtazky-1] = 1;
+      } else if (odpoved == '2') {
+        odpovedi[cisloOtazky-1] = 2;
+      } else if (odpoved == '3') {
+        odpovedi[cisloOtazky-1] = 4;
+      } else if (odpoved == '4') {
+        odpovedi[cisloOtazky-1] = 6;
+      } else if (odpoved == '5') {
+        odpovedi[cisloOtazky-1] = 9;
+      } else if (odpoved == '6') {
+        odpovedi[cisloOtazky-1] = 11;
+      } else if (odpoved == '7') {
+        odpovedi[cisloOtazky-1] = 13;
+      }
+    } else {
+      odpovedi[cisloOtazky-1] = parseInt($(this)[0].value);
+    }
     cisloOtazky++;
     novaOtazka();
     zmenVelikosti();
