@@ -35,15 +35,14 @@ var otazky = [
 // inicializace mediánovým voličem
 var odpovedi = [0, 1, 1, 54, 4, 3, 5, 3, 8, 3, 2, 1, 3, 5, 1, 1, 4, 4, 1, 1, 4];
 
-// tady taky inicializovat
 var segmenty = [
-  ["Levicový (ne)volič", 0.13],
-  ["Materialista", 0.13],
-  ["Městský liberál", 0.13],
-  ["Mladý těkavý", 0.13],
-  ["Obranář", 0.13],
-  ["Politicky pasivní", 0.13],
-  ["Skutečný křesťan", 0.13]
+  ["Levicový (ne)volič", 0.142],
+  ["Materialista", 0.142],
+  ["Městský liberál", 0.142],
+  ["Mladý těkavý", 0.142],
+  ["Obranář", 0.142],
+  ["Politicky pasivní", 0.142],
+  ["Skutečný křesťan", 0.142]
 ];
 
 
@@ -53,6 +52,11 @@ var segmenty = [
 var indexSkupiny = [];
 
 var indexOstatnichSkupin = [];
+
+// ***
+// změnit za jen některé
+// ***
+var otazkyKTestovani = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
 
 
@@ -85,7 +89,10 @@ var odpovediUcast = volebniUcast.map(function(d) {
         return d[0];
     });
 
-/*var stranickePreference = [
+// ***
+// upravit nebo dát pryč
+// ***
+var stranickePreference = [
   ["ČSSD",8.7,18.7,20.2,3.7,31.6,17.0,0.0],
   ["ANO",6.0,22.5,19.5,4.5,42.4,5.1,0.0],
   ["KSČM",3.9,42.7,14.8,0.0,16.7,21.9,0.0],
@@ -94,7 +101,7 @@ var odpovediUcast = volebniUcast.map(function(d) {
   ["KDU-ČSL",2.7,2.4,58.4,22.6,9.8,4.1,0.0],
   ["Piráti",21.6,10.4,9.2,37.3,10.3,5.4,5.7],
   ["SPD",6.6,49.1,13.9,1.9,21.9,6.5,0.0]
-];*/
+];
 
 
 
@@ -167,6 +174,9 @@ var odpovediPozice = pozice.map(function(d) {
 
 // data pro grafy: ostatní otázky
 
+// ***
+// všechny upravit nebo dát pryč
+// ***
 var verici = [
   ["ano",22.3,28.1,98.5,30.1,2.2,16.5,10.1],
   ["ne",75.1,70.4,0.5,68.6,96.9,81.6,89.0]
@@ -250,7 +260,7 @@ var uprchlikyVracet = [
 function novaOtazka() {
 
   var otazka = otazky[cisloOtazky-1];
-console.log(otazka)
+
   var progres = (cisloOtazky-1) / 20 * 100 + '%';
 
   var barvy = [];
@@ -273,7 +283,7 @@ console.log(otazka)
     barvy = ['#8c510a','#bf812d','#dfc27d','#f6e8c3','#cccccc','#c7eae5','#80cdc1','#35978f','#01665e'];
     barvy.reverse();
   } else if (otazka[1] == 'bar10') {
-    barvy = ['#543005','#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e','#003c30',];
+    barvy = ['#543005','#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e','#003c30'];
     barvy.reverse();
   }
 
@@ -318,37 +328,77 @@ console.log(otazka)
     } else {
       odpovedi[cisloOtazky-1] = parseInt($(this)[0].value);
     }
+console.log('číslo otázky: ' + cisloOtazky)
+console.log('segmenty: ' + segmenty)
+console.log('top segment: ' + indexSkupiny)
+    // asynchronně nahoď otázku
+    cisloOtazky++;
+    novaOtazka();
 
-    var postInput =  JSON.stringify({"arr": "[" + String(odpovedi) + "]"});
+    // synchronně spočítej odpověď; jen po některých otázkách
+    var postInput = JSON.stringify({"arr": "[" + String(odpovedi) + "]"});
 
-/*
-    $.ajax({
-      type: "POST",
-      url: "http://52.59.162.193/ocpu/library/medianModel/R/spocti/json",
-      data: postInput,
-      contentType : 'application/json',
-      success: function(data) {
-        var postOutput = JSON.parse(data[0]);
-        console.log(postOutput);
+    if ((cisloOtazky-1) in otazkyKTestovani) {
 
+      $.ajax({
+        type: "POST",
+        url: "http://54.229.75.149/ocpu/library/medianModel/R/spocti/json",
+        data: postInput,
+        contentType : 'application/json',
+        success: function(data) {
+          var postOutput = JSON.parse(data[0]);
+
+          for (var i = 1; i < postOutput.length; i++) {
+            segmenty[i][1] = postOutput[i];
+          }
+
+          prepocitejIndexSkupiny();
+
+          zmenVelikosti();
+
+          prekresliGrafy();
+
+console.log('číslo otázky: ' + cisloOtazky)
+console.log('segmenty: ' + segmenty)
+console.log('top segment: ' + indexSkupiny)
+
+        }
+      });
+
+    }
+
+
+
+/* na testování
         prepocitejIndexSkupiny();
         zmenVelikosti();
         prekresliGrafy();
         cisloOtazky++;
         novaOtazka();
-      }
-    });
 */
-        prepocitejIndexSkupiny();
-        zmenVelikosti();
-        prekresliGrafy();
-        cisloOtazky++;
-        novaOtazka();
 
   });
 
   return true;
 
+}
+
+
+
+function prepocitejIndexSkupiny() {
+
+  var poleSegmentu = [];
+
+  poleSegmentu = segmenty.map(function(d) {
+        return d[1];
+    });
+
+  indexSkupiny = poleSegmentu.indexOf(Math.max(...poleSegmentu));
+
+  indexOstatnichSkupin = [0, 1, 2, 3, 4, 5, 6];
+  indexOstatnichSkupin.splice(indexOstatnichSkupin.indexOf(indexSkupiny), 1);
+
+  return true;
 }
 
 
@@ -384,23 +434,6 @@ function zmenVelikosti() {
   img.style.width = 90 * segmenty[6][1] + '%';
 
   return true;
-
-}
-
-
-
-function prepocitejIndexSkupiny() {
-
-  var poleSegmentu;
-
-  poleSegmentu = segmenty.map(function(d) {
-        return d[1];
-    });
-
-  indexSkupiny = poleSegmentu.indexOf(Math.max(...poleSegmentu));
-
-  indexOstatnichSkupin = [0, 1, 2, 3, 4, 5, 6];
-  indexOstatnichSkupin.splice(indexOstatnichSkupin.indexOf(indexSkupiny), 1);
 
 }
 
@@ -1139,13 +1172,15 @@ Highcharts.chart('demo-pozice', {
     }]
 });
 
+  return true;
+
 }
 
 
 
 // inicializace kvízu
-
-prepocitejIndexSkupiny();
-prekresliGrafy()
-zmenVelikosti();
 novaOtazka();
+prepocitejIndexSkupiny();
+zmenVelikosti();
+prekresliGrafy()
+
