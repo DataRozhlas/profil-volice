@@ -37,13 +37,13 @@ var odpovedi = [0, 1, 1, 54, 4, 3, 5, 3, 8, 3, 2, 1, 3, 5, 1, 1, 4, 4, 1, 1, 4];
 
 // tady taky inicializovat
 var segmenty = [
-  ["Levicový (ne)volič", 0.15],
-  ["Materialista", 0.2],
-  ["Městský liberál", 0.25],
-  ["Mladý těkavý", 0.05],
-  ["Obranář", 0],
-  ["Politicky pasivní", 0.15],
-  ["Skutečný křesťan", 0.2]
+  ["Levicový (ne)volič", 0.13],
+  ["Materialista", 0.13],
+  ["Městský liberál", 0.13],
+  ["Mladý těkavý", 0.13],
+  ["Obranář", 0.13],
+  ["Politicky pasivní", 0.13],
+  ["Skutečný křesťan", 0.13]
 ];
 
 
@@ -250,7 +250,7 @@ var uprchlikyVracet = [
 function novaOtazka() {
 
   var otazka = otazky[cisloOtazky-1];
-
+console.log(otazka)
   var progres = (cisloOtazky-1) / 20 * 100 + '%';
 
   var barvy = [];
@@ -321,6 +321,7 @@ function novaOtazka() {
 
     var postInput =  JSON.stringify({"arr": "[" + String(odpovedi) + "]"});
 
+/*
     $.ajax({
       type: "POST",
       url: "http://52.59.162.193/ocpu/library/medianModel/R/spocti/json",
@@ -337,6 +338,12 @@ function novaOtazka() {
         novaOtazka();
       }
     });
+*/
+        prepocitejIndexSkupiny();
+        zmenVelikosti();
+        prekresliGrafy();
+        cisloOtazky++;
+        novaOtazka();
 
   });
 
