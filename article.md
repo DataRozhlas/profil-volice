@@ -11,9 +11,6 @@ options: [] #wide, noheader (, nopic)
 <div class="test-big">
 
 <h2>Otestujte, jaký typ voliče jste</h2>
-<div class="test"></div>
-
-</div>
 
 <div class="skupina">
 
@@ -24,6 +21,10 @@ options: [] #wide, noheader (, nopic)
 <div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/obranar.jpg"/></div>
 <div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/pasivni.jpg"/></div>
 <div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/krestan.jpg"></div>
+
+</div>
+
+<div class="test"></div>
 
 </div>
 

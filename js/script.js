@@ -10,11 +10,11 @@ var colors = ['#EA614A', '#20649B', '#008836', '#6B96CA', '#A38456', '#A87A93', 
 var cisloOtazky = 1;
 
 var otazky = [
-  ["Zúčastnil(a) byste se voleb do Poslanecké sněmovny kdyby se konaly nyní?", "bar4", "Určitě ano", "Spíše ano", "Spíše ne", "Určitě ne"],
+  ["Zúčastnil(a) byste se voleb do Poslanecké sněmovny, kdyby se konaly nyní?", "bar4", "Určitě ano", "Spíše ano", "Spíše ne", "Určitě ne"],
   ["Považujete sám(a) sebe za věřícího člověka?", "bar2", "Ano", "Ne"],
-  ["Kolik je vám let?", "bar7", "12-19 let", "20-29 let", "30-39 let", "40-49 let", "50-59 let", "60-69 let", "70-79 let"],
-  ["Jaký je váš čistý měsíční příjem?", "bar7", "bez příjmu", "do 4 000 Kč", "do 10 000 Kč", "do 15 000 Kč", "do 20 000 Kč", "do 30 000 Kč", "nad 30 000 Kč"],
-  ["Jak jste spokojen(a) s politickou situací v ČR?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
+  ["Kolik je vám let?", "bar8", "do 12 let", "12-15 let", "16-24 let", "25-34 let", "35-44 let", "45-54 let", "55-64 let", "nad 65 let"],
+  ["Jaký je váš čistý měsíční příjem?", "bar10", "do 4 000 Kč", "4 001 až 8 000 Kč", "8 001 až 10 000 Kč", "10 001 až 12 500 Kč", "12 501 až 15 000 Kč", "15 001 až 17 500 Kč","17 501 až 20 000 Kč", "20 001 až 25 000 Kč", "25 001 až 40 000 Kč", "nad 40 000 Kč"],
+  ["Morálka dnešní společnosti mi připadá příliš uvolněná.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Jak jste spokojen(a) se společností, kde žijete?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
   ["V životě bych chtěl(a) především dosáhnout vysokého společenského postavení.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Jaké je vaše nejvyšší dosažené vzdělání?", "bar7", "Bez vzdělání", "Základní", "Vyučen/Střední bez maturity", "Střední s maturitou nebo vyučen s maturitou", "VOŠ", "Bakalářské", "Magisterské a vyšší"],
@@ -32,26 +32,27 @@ var otazky = [
   ["Trh by měl být omezovaný zásahem státu.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
 ];
 
-var odpovedi = [];
+// inicializace mediánovým voličem
+var odpovedi = [0, 1, 1, 54, 4, 3, 5, 3, 8, 3, 2, 1, 3, 5, 1, 1, 4, 4, 1, 1, 4];
 
+// tady taky inicializovat
 var segmenty = [
-  ["Levicový (ne)volič", 0],
-  ["Materialista", 0],
-  ["Městský liberál", 0],
-  ["Mladý těkavý", 0],
+  ["Levicový (ne)volič", 0.15],
+  ["Materialista", 0.2],
+  ["Městský liberál", 0.25],
+  ["Mladý těkavý", 0.05],
   ["Obranář", 0],
-  ["Politicky pasivní", 0],
-  ["Skutečný křesťan", 0]
+  ["Politicky pasivní", 0.15],
+  ["Skutečný křesťan", 0.2]
 ];
 
 
 
 // výsledek testu
 
-var indexSkupiny = 1;
+var indexSkupiny = [];
 
-var indexOstatnichSkupin = [0, 1, 2, 3, 4, 5, 6];
-indexOstatnichSkupin.splice(indexOstatnichSkupin.indexOf(indexSkupiny), 1);
+var indexOstatnichSkupin = [];
 
 
 
@@ -265,8 +266,14 @@ function novaOtazka() {
   } else if (otazka[1] == 'bar7') {
     barvy = ['#8c510a','#d8b365','#f6e8c3','#cccccc','#c7eae5','#5ab4ac','#01665e'];
     barvy.reverse();
+  } else if (otazka[1] == 'bar8') {
+    barvy = ['#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e'];
+    barvy.reverse();
   } else if (otazka[1] == 'bar9') {
     barvy = ['#8c510a','#bf812d','#dfc27d','#f6e8c3','#cccccc','#c7eae5','#80cdc1','#35978f','#01665e'];
+    barvy.reverse();
+  } else if (otazka[1] == 'bar10') {
+    barvy = ['#543005','#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e','#003c30',];
     barvy.reverse();
   }
 
@@ -292,44 +299,45 @@ function novaOtazka() {
     if (cisloOtazky == 3) {
       var odpoved = $(this)[0].value;
       if (odpoved == '1') {
-        odpovedi[cisloOtazky-1] = 15;
+        odpovedi[cisloOtazky-1] = 12;
       } else if (odpoved == '2') {
-        odpovedi[cisloOtazky-1] = 24;
+        odpovedi[cisloOtazky-1] = 14;
       } else if (odpoved == '3') {
-        odpovedi[cisloOtazky-1] = 34;
+        odpovedi[cisloOtazky-1] = 20;
       } else if (odpoved == '4') {
-        odpovedi[cisloOtazky-1] = 44;
+        odpovedi[cisloOtazky-1] = 30;
       } else if (odpoved == '5') {
-        odpovedi[cisloOtazky-1] = 54;
+        odpovedi[cisloOtazky-1] = 40;
       } else if (odpoved == '6') {
-        odpovedi[cisloOtazky-1] = 64;
+        odpovedi[cisloOtazky-1] = 50;
       } else if (odpoved == '7') {
-        odpovedi[cisloOtazky-1] = 74;
-      }
-    // spešl chování u příjmu
-    } else if (cisloOtazky == 4) {
-      var odpoved = $(this)[0].value;
-      if (odpoved == '1') {
-        odpovedi[cisloOtazky-1] = 1;
-      } else if (odpoved == '2') {
-        odpovedi[cisloOtazky-1] = 2;
-      } else if (odpoved == '3') {
-        odpovedi[cisloOtazky-1] = 4;
-      } else if (odpoved == '4') {
-        odpovedi[cisloOtazky-1] = 6;
-      } else if (odpoved == '5') {
-        odpovedi[cisloOtazky-1] = 9;
-      } else if (odpoved == '6') {
-        odpovedi[cisloOtazky-1] = 11;
-      } else if (odpoved == '7') {
-        odpovedi[cisloOtazky-1] = 13;
+        odpovedi[cisloOtazky-1] = 60;
+      } else if (odpoved == '8') {
+        odpovedi[cisloOtazky-1] = 65;
       }
     } else {
       odpovedi[cisloOtazky-1] = parseInt($(this)[0].value);
     }
-    cisloOtazky++;
-    novaOtazka();
-    zmenVelikosti();
+
+    var postInput =  JSON.stringify({"arr": "[" + String(odpovedi) + "]"});
+
+    $.ajax({
+      type: "POST",
+      url: "http://52.59.162.193/ocpu/library/medianModel/R/spocti/json",
+      data: postInput,
+      contentType : 'application/json',
+      success: function(data) {
+        var postOutput = JSON.parse(data[0]);
+        console.log(postOutput);
+
+        prepocitejIndexSkupiny();
+        zmenVelikosti();
+        prekresliGrafy();
+        cisloOtazky++;
+        novaOtazka();
+      }
+    });
+
   });
 
   return true;
@@ -342,38 +350,31 @@ function zmenVelikosti() {
 
   // Levicový (ne)volič
   var img = document.querySelectorAll(".skupina .fotka img")[0];
-  segmenty[0][1] = 10;
-  img.style.width = segmenty[0][1] + '%';
+  img.style.width = 90 * segmenty[0][1] + '%';
 
   // Materialista
   var img = document.querySelectorAll(".skupina .fotka img")[1];
-  segmenty[1][1] = 10;
-  img.style.width = segmenty[1][1] + '%';
+  img.style.width = 90 * segmenty[1][1] + '%';
 
   // Městský liberál
   var img = document.querySelectorAll(".skupina .fotka img")[2];
-  segmenty[2][1] = 10;
-  img.style.width = segmenty[2][1] + '%';
+  img.style.width = 90 * segmenty[2][1] + '%';
 
   // Mladý a těkavý
   var img = document.querySelectorAll(".skupina .fotka img")[3];
-  segmenty[3][1] = 10;
-  img.style.width = segmenty[3][1] + '%';
+  img.style.width = 90 * segmenty[3][1] + '%';
 
   // Obranář
   var img = document.querySelectorAll(".skupina .fotka img")[4];
-  segmenty[4][1] = 10;
-  img.style.width = segmenty[4][1] + '%';
+  img.style.width = 90 * segmenty[4][1] + '%';
 
   // Politicky pasivní
   var img = document.querySelectorAll(".skupina .fotka img")[5];
-  segmenty[5][1] = 25;
-  img.style.width = segmenty[5][1] + '%';
+  img.style.width = 90 * segmenty[5][1] + '%';
 
   // Skutečný křesťan
   var img = document.querySelectorAll(".skupina .fotka img")[6];
-  segmenty[6][1] = 20;
-  img.style.width = segmenty[6][1] + '%';
+  img.style.width = 90 * segmenty[6][1] + '%';
 
   return true;
 
@@ -381,15 +382,26 @@ function zmenVelikosti() {
 
 
 
-// inicializace kvízu
+function prepocitejIndexSkupiny() {
 
-novaOtazka();
+  var poleSegmentu;
+
+  poleSegmentu = segmenty.map(function(d) {
+        return d[1];
+    });
+
+  indexSkupiny = poleSegmentu.indexOf(Math.max(...poleSegmentu));
+
+  indexOstatnichSkupin = [0, 1, 2, 3, 4, 5, 6];
+  indexOstatnichSkupin.splice(indexOstatnichSkupin.indexOf(indexSkupiny), 1);
+
+}
 
 
 
 // grafy
 
-$(function () {
+function prekresliGrafy() {
 
 Highcharts.chart('koho-voli', {
     chart: {
@@ -1120,7 +1132,13 @@ Highcharts.chart('demo-pozice', {
     }]
 });
 
-})
+}
 
 
 
+// inicializace kvízu
+
+prepocitejIndexSkupiny();
+prekresliGrafy()
+zmenVelikosti();
+novaOtazka();
