@@ -58,6 +58,7 @@ var indexOstatnichSkupin = [];
 // ***
 var otazkyKTestovani = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
+var vyhodnoceni = false;
 
 
 // data pro grafy: politický profil
@@ -294,7 +295,7 @@ function novaOtazka() {
   text += '<div class="buttons">';
 
   for (var i = 2; i < otazka.length; i++) {
-    text += '<button class="test-button" type="button" value="' + parseInt(i-1) + '" style="background-color:' + barvy[i-2] + '">' + otazka[i] + '</button>';
+    text += '<button class="test-button" type="button" disabled="disabled" value="' + parseInt(i-1) + '" style="opacity:0.3; background-color:' + barvy[i-2] + '">' + otazka[i] + '</button>';
   }
 
   text += '</div>';
@@ -328,56 +329,52 @@ function novaOtazka() {
     } else {
       odpovedi[cisloOtazky-1] = parseInt($(this)[0].value);
     }
-console.log('číslo otázky: ' + cisloOtazky)
-console.log('segmenty: ' + segmenty)
-console.log('top segment: ' + indexSkupiny)
+
+//console.log('číslo otázky: ' + cisloOtazky); console.log('odpovedi: ' + odpovedi); console.log('segmenty: ' + segmenty); console.log('top segment: ' + indexSkupiny);
+
     // asynchronně nahoď otázku
-    cisloOtazky++;
-    novaOtazka();
+    if (cisloOtazky < 20) {
+      cisloOtazky++;
+      novaOtazka();
+    } else {
+      vyhodnoceni = true;
+    }
 
     // synchronně spočítej odpověď; jen po některých otázkách
-    var postInput = JSON.stringify({"arr": "[" + String(odpovedi) + "]"});
+    var postInput = 'https://d24y44bifobrtj.cloudfront.net/?arr=[' + odpovedi + ']';
 
     if ((cisloOtazky-1) in otazkyKTestovani) {
 
-      $.ajax({
-        type: "POST",
-        url: "http://54.229.75.149/ocpu/library/medianModel/R/spocti/json",
-        data: postInput,
-        contentType : 'application/json',
-        success: function(data) {
-          var postOutput = JSON.parse(data[0]);
+      $.getJSON(postInput, function(data) {
+        var postOutput = data;
 
-          for (var i = 1; i < postOutput.length; i++) {
-            segmenty[i][1] = postOutput[i];
-          }
+        // přehození pořadí výstupů
+        segmenty[3][1] = postOutput[0];
+        segmenty[4][1] = postOutput[1];
+        segmenty[6][1] = postOutput[2];
+        segmenty[2][1] = postOutput[3];
+        segmenty[1][1] = postOutput[4];
+        segmenty[0][1] = postOutput[5];
+        segmenty[5][1] = postOutput[6];
 
-          prepocitejIndexSkupiny();
+        prepocitejIndexSkupiny();
+        $('.test-button').animate({'opacity':'1'}, 1000);
 
-          zmenVelikosti();
+        zmenVelikosti();
 
-          prekresliGrafy();
+        prekresliGrafy();
 
-console.log('číslo otázky: ' + cisloOtazky)
-console.log('segmenty: ' + segmenty)
-console.log('top segment: ' + indexSkupiny)
-
+        if (vyhodnoceni) {
+          vyhodnotTest();
         }
+
+//console.log('číslo otázky: ' + cisloOtazky); console.log('odpovedi: ' + odpovedi); console.log('segmenty: ' + segmenty); console.log('top segment: ' + indexSkupiny);
+
       });
 
     }
 
-
-
-/* na testování
-        prepocitejIndexSkupiny();
-        zmenVelikosti();
-        prekresliGrafy();
-        cisloOtazky++;
-        novaOtazka();
-*/
-
-  });
+});
 
   return true;
 
@@ -398,6 +395,8 @@ function prepocitejIndexSkupiny() {
   indexOstatnichSkupin = [0, 1, 2, 3, 4, 5, 6];
   indexOstatnichSkupin.splice(indexOstatnichSkupin.indexOf(indexSkupiny), 1);
 
+  $(".test-button").attr("disabled",false);
+
   return true;
 }
 
@@ -405,39 +404,85 @@ function prepocitejIndexSkupiny() {
 
 function zmenVelikosti() {
 
+  // přepočet šířky fotek, aby nebyly gargantuovské ani nemizely
+  var poleSegmentu = segmenty.map(function(d) {
+        return d[1];
+    });
+
+  for (var i = 0; i < poleSegmentu.length; i++) {
+    poleSegmentu[i] = Math.max(poleSegmentu[i], 0.05);
+    poleSegmentu[i] = Math.min(poleSegmentu[i], 0.4);
+  }
+
+
+
   // Levicový (ne)volič
   var img = document.querySelectorAll(".skupina .fotka img")[0];
-  img.style.width = 90 * segmenty[0][1] + '%';
+  img.style.width = 80 * poleSegmentu[0] + '%';
 
   // Materialista
   var img = document.querySelectorAll(".skupina .fotka img")[1];
-  img.style.width = 90 * segmenty[1][1] + '%';
+  img.style.width = 80 * poleSegmentu[1] + '%';
 
   // Městský liberál
   var img = document.querySelectorAll(".skupina .fotka img")[2];
-  img.style.width = 90 * segmenty[2][1] + '%';
+  img.style.width = 80 * poleSegmentu[2] + '%';
 
   // Mladý a těkavý
   var img = document.querySelectorAll(".skupina .fotka img")[3];
-  img.style.width = 90 * segmenty[3][1] + '%';
+  img.style.width = 80 * poleSegmentu[3] + '%';
 
   // Obranář
   var img = document.querySelectorAll(".skupina .fotka img")[4];
-  img.style.width = 90 * segmenty[4][1] + '%';
+  img.style.width = 80 * poleSegmentu[4] + '%';
 
   // Politicky pasivní
   var img = document.querySelectorAll(".skupina .fotka img")[5];
-  img.style.width = 90 * segmenty[5][1] + '%';
+  img.style.width = 80 * poleSegmentu[5] + '%';
 
   // Skutečný křesťan
   var img = document.querySelectorAll(".skupina .fotka img")[6];
-  img.style.width = 90 * segmenty[6][1] + '%';
+  img.style.width = 80 * poleSegmentu[6] + '%';
 
   return true;
 
 }
 
 
+
+function vyhodnotTest() {
+
+  var segmentObjekt = objectify(segmenty);
+
+  let serazeneSegmenty = Object.keys(segmentObjekt);
+
+  serazeneSegmenty.sort(function(a, b) {
+    return segmentObjekt[a] - segmentObjekt[b];
+  });
+
+  serazeneSegmenty.reverse();
+
+  var serazeneVysledky = segmenty.map(function(d) {
+    return d[1];
+  });
+
+  serazeneVysledky.sort().reverse();
+
+  var text = '<div class="vyhodnoceni">';
+  text += '<h3>Podle modelu Medianu jste</h3>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#01665e' + '">' + serazeneSegmenty[0] + ': ' + Math.round(1000*serazeneVysledky[0],3)/10 + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#5ab4ac' + '">' + serazeneSegmenty[1] + ': ' + Math.round(1000*serazeneVysledky[1],3)/10 + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#c7eae5' + '">' + serazeneSegmenty[2] + ': ' + Math.round(1000*serazeneVysledky[2],3)/10 + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#dddddd' + '">' + serazeneSegmenty[3] + ': ' + Math.round(1000*serazeneVysledky[3],3)/10 + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#f6e8c3' + '">' + serazeneSegmenty[4] + ': ' + Math.round(1000*serazeneVysledky[4],3)/10 + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#d8b365' + '">' + serazeneSegmenty[5] + ': ' + Math.round(1000*serazeneVysledky[5],3)/10 + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#8c510a' + '">' + serazeneSegmenty[6] + ': ' + Math.round(1000*serazeneVysledky[6],3)/10 + ' %</div>';
+  text += '</div>';
+  document.getElementsByClassName("test")[0].innerHTML = text;
+
+  return true;
+
+}
 
 // grafy
 
@@ -1178,9 +1223,19 @@ Highcharts.chart('demo-pozice', {
 
 
 
+function objectify(array) {
+  return array.reduce(function(p, c) {
+    p[c[0]] = c[1];
+      return p;
+  }, {});
+}
+
+
 // inicializace kvízu
+
 novaOtazka();
+$('.test-button').animate({'opacity':'1'}, 1000);
 prepocitejIndexSkupiny();
 zmenVelikosti();
-prekresliGrafy()
+prekresliGrafy();
 

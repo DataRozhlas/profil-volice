@@ -18,6 +18,7 @@ hr {
 	background-color: #ccc;
 	color: #000;
 	text-align: center;
+	margin-bottom: 20px;
 }
 
 .test-big h2 {
@@ -65,8 +66,7 @@ hr {
 }
 
 .skupina {
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 10px;
 	text-align: center;
 }
 
@@ -79,7 +79,7 @@ hr {
 }
 
 .fotka img {
-    width: 13%;
+    width: 14%;
    -moz-transition: height 1s, width 1s;
     -webkit-transition: height 1s, width 1s;
     transition:  height 1s, width 1s;
@@ -103,4 +103,39 @@ hr {
     min-width: 350px;
     height: 200px;
     float: left;
+}
+
+.profil {
+	display: inline-flex;
+}
+
+.profil-fotka {
+	width: 100px;
+}
+
+.profil-list {
+	margin-left: 0px;
+	padding-left: 0px;
+	font-family: "Noticia Text",serif !important;
+}
+
+.profil-list li::before {
+  content: "▪ ";
+  color: red;
+  font-size: 20px;
+}
+
+.vyhodnoceni h3 {
+	padding-top: 20px;
+}
+
+.vyhodnoceni-skupina {
+	width: 100%;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 5px;
+	border-width: 0px;
+	font-size: 18px;
+	line-height: 1;
+	color: #fff;
 }
