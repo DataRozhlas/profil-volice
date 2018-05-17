@@ -139,3 +139,15 @@ hr {
 	line-height: 1;
 	color: #fff;
 }
+
+#sdilitko {
+    width: 33%;
+    padding: 10px;
+    border-radius: 5px;
+    border-width: 0px;
+    font-size: 18px;
+    line-height: 1;
+    color: #fff;
+    background-color: darkgreen;
+    font-weight: bold;
+}

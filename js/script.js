@@ -404,7 +404,6 @@ function prepocitejIndexSkupiny() {
 }
 
 
-
 function zmenVelikosti() {
 
   // přepočet šířky fotek, aby nebyly gargantuovské ani nemizely
@@ -412,79 +411,44 @@ function zmenVelikosti() {
         return d[1];
     });
 
+  var img; 
+
   for (var i = 0; i < poleSegmentu.length; i++) {
     poleSegmentu[i] = Math.max(poleSegmentu[i], 0.05);
     poleSegmentu[i] = Math.min(poleSegmentu[i], 0.3);
+
+    img = document.querySelectorAll(".skupina .fotka img")[i];
+    img.style.width = 80 * poleSegmentu[i] + '%';
   }
-
-
-
-  // Levicový (ne)volič
-  var img = document.querySelectorAll(".skupina .fotka img")[0];
-  img.style.width = 80 * poleSegmentu[0] + '%';
-
-  // Materialista
-  var img = document.querySelectorAll(".skupina .fotka img")[1];
-  img.style.width = 80 * poleSegmentu[1] + '%';
-
-  // Městský liberál
-  var img = document.querySelectorAll(".skupina .fotka img")[2];
-  img.style.width = 80 * poleSegmentu[2] + '%';
-
-  // Mladý a těkavý
-  var img = document.querySelectorAll(".skupina .fotka img")[3];
-  img.style.width = 80 * poleSegmentu[3] + '%';
-
-  // Obranář
-  var img = document.querySelectorAll(".skupina .fotka img")[4];
-  img.style.width = 80 * poleSegmentu[4] + '%';
-
-  // Politicky pasivní
-  var img = document.querySelectorAll(".skupina .fotka img")[5];
-  img.style.width = 80 * poleSegmentu[5] + '%';
-
-  // Skutečný křesťan
-  var img = document.querySelectorAll(".skupina .fotka img")[6];
-  img.style.width = 80 * poleSegmentu[6] + '%';
-
-  return true;
-
 }
 
 
 
+function nicenum(num) {
+  return (Math.round(1000*num,3)/10).toString().replace(".",",");
+}
+
 function vyhodnotTest() {
-
-  var segmentObjekt = objectify(segmenty);
-
-  let serazeneSegmenty = Object.keys(segmentObjekt);
-
-  serazeneSegmenty.sort(function(a, b) {
-    return segmentObjekt[a] - segmentObjekt[b];
+  // neseřazené hodnoty (pro share): levicový nevolič, materialista, městský liberál, mladý těkavý, obranář, politicky pasivní, skutečný křesťan
+  var sdileciVysledky = segmenty.map(function(d) {
+    return Math.round(1000*d[1],3)/10;
   });
 
-  serazeneSegmenty.reverse();
-
-  var serazeneVysledky = segmenty.map(function(d) {
-    return d[1];
-  });
-
-  serazeneVysledky.sort().reverse();
+  // seřazení výsledků; vy výpisu pak nicenum() pro pěkná procenta
+  var serazeneSegmenty = segmenty.sort(function(a,b){return b[1] - a[1]});
 
   var text = '<div class="vyhodnoceni">';
   text += '<h3>Podle modelu Medianu jste</h3>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#01665e' + '">' + serazeneSegmenty[0] + ': ' + Math.round(1000*serazeneVysledky[0],3)/10 + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#42918a' + '">' + serazeneSegmenty[1] + ': ' + Math.round(1000*serazeneVysledky[1],3)/10 + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#82bcb6' + '">' + serazeneSegmenty[2] + ': ' + Math.round(1000*serazeneVysledky[2],3)/10 + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#aaaaaa' + '">' + serazeneSegmenty[3] + ': ' + Math.round(1000*serazeneVysledky[3],3)/10 + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#c19c66' + '">' + serazeneSegmenty[4] + ': ' + Math.round(1000*serazeneVysledky[4],3)/10 + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#a67638' + '">' + serazeneSegmenty[5] + ': ' + Math.round(1000*serazeneVysledky[5],3)/10 + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#8c510a' + '">' + serazeneSegmenty[6] + ': ' + Math.round(1000*serazeneVysledky[6],3)/10 + ' %</div>';
-  text += '</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#01665e' + '">' + serazeneSegmenty[0][0] + ': ' + nicenum(serazeneSegmenty[0][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#42918a' + '">' + serazeneSegmenty[1][0] + ': ' + nicenum(serazeneSegmenty[1][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#82bcb6' + '">' + serazeneSegmenty[2][0] + ': ' + nicenum(serazeneSegmenty[2][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#aaaaaa' + '">' + serazeneSegmenty[3][0] + ': ' + nicenum(serazeneSegmenty[3][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#c19c66' + '">' + serazeneSegmenty[4][0] + ': ' + nicenum(serazeneSegmenty[4][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#a67638' + '">' + serazeneSegmenty[5][0] + ': ' + nicenum(serazeneSegmenty[5][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#8c510a' + '">' + serazeneSegmenty[6][0] + ': ' + nicenum(serazeneSegmenty[6][1]) + ' %</div>';
+  text += '<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://dev.datarozhlas.cz/profil-volice/landing/' + serazeneSegmenty[0][0].toLowerCase().slice(0,4).replace("ě","e") + '.html"><button id="sdilitko">Sdílet</button></a>';
+
   document.getElementsByClassName("test")[0].innerHTML = text;
-
-  return true;
-
 }
 
 // grafy
@@ -1222,15 +1186,6 @@ Highcharts.chart('demo-pozice', {
 
   return true;
 
-}
-
-
-
-function objectify(array) {
-  return array.reduce(function(p, c) {
-    p[c[0]] = c[1];
-      return p;
-  }, {});
 }
 
 
