@@ -7,7 +7,7 @@ var colors = ['#EA614A', '#20649B', '#008836', '#6B96CA', '#A38456', '#A87A93', 
 
 // proměnné pro test
 
-var cisloOtazky = 1;
+var cisloOtazky = 19;
 
 var otazky = [
   ["Zúčastnil(a) byste se voleb do Poslanecké sněmovny, kdyby se konaly nyní?", "bar4", "Určitě ano", "Spíše ano", "Spíše ne", "Určitě ne"],
