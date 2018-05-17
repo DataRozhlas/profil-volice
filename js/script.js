@@ -1,18 +1,28 @@
 
 // barvy seřazené podle segmentů
 
-var colors = ['#EA614A', '#20649B', '#008836', '#6B96CA', '#A38456', '#A87A93', '#D19C95'];
+var barvySkupiny = ['#EA614A', '#20649B', '#008836', '#6B96CA', '#A38456', '#A87A93', '#D19C95'];
+
+var barvyCudliky2 = ['#a6611a','#018571'],
+    barvyCudliky4 = ['#a6611a','#dfc27d','#80cdc1','#018571'],
+    barvyCudliky5 = ['#a6611a','#dfc27d','#aaaaaa','#80cdc1','#018571'],
+    barvyCudliky6 = ['#8c510a','#a67638','#c19c66','#82bcb6','#42918a','#01665e'],
+    barvyCudliky7 = ['#8c510a','#a67638','#c19c66','#aaaaaa','#82bcb6','#42918a','#01665e'],
+    barvyCudliky9 = ['#8c510a','#9d6a29','#af8347','#c09c66','#aaaaaa','#75b3ad','#4e9a93','#288078','#01665e'],
+    barvyCudliky10 = ['#543005','#69481e','#83663c','#987e55','#b29c74','#7daaa2','#5a8b83','#3f7369','#1c5449','#003c30'];
+
+barvyCudliky2.reverse(); barvyCudliky4.reverse(); barvyCudliky5.reverse(); barvyCudliky6.reverse(); barvyCudliky7.reverse(); barvyCudliky9.reverse(); barvyCudliky10.reverse();
 
 
 
 // proměnné pro test
 
-var cisloOtazky = 19;
+var cisloOtazky = 1;
 
 var otazky = [
   ["Zúčastnil(a) byste se voleb do Poslanecké sněmovny, kdyby se konaly nyní?", "bar4", "Určitě ano", "Spíše ano", "Spíše ne", "Určitě ne"],
   ["Považujete sám(a) sebe za věřícího člověka?", "bar2", "Ano", "Ne"],
-  ["Kolik je vám let?", "bar8", "do 12 let", "12-15 let", "16-24 let", "25-34 let", "35-44 let", "45-54 let", "55-64 let", "nad 65 let"],
+  ["Kolik je vám let?", "bar6", "18-24 let", "25-34 let", "35-44 let", "45-54 let", "55-64 let", "nad 65 let"],
   ["Jaký je váš čistý měsíční příjem?", "bar10", "do 4 000 Kč", "4 001 až 8 000 Kč", "8 001 až 10 000 Kč", "10 001 až 12 500 Kč", "12 501 až 15 000 Kč", "15 001 až 17 500 Kč","17 501 až 20 000 Kč", "20 001 až 25 000 Kč", "25 001 až 40 000 Kč", "nad 40 000 Kč"],
   ["Morálka dnešní společnosti mi připadá příliš uvolněná.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Jak jste spokojen(a) se společností, kde žijete?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
@@ -35,9 +45,6 @@ var otazky = [
 // inicializace mediánovým voličem
 var odpovedi = [0, 2, 2, 4, 7, 2, 6, 3, 4, 1, 6, 3, 3, 3, 4, 1, 3, 3, 3, 2, 3];
 
-// ***
-// incializovat je podle mediánového voliče?
-// ***
 var segmenty = [
   ["Levicový (ne)volič", 0.142],
   ["Materialista", 0.142],
@@ -48,6 +55,8 @@ var segmenty = [
   ["Skutečný křesťan", 0.142]
 ];
 
+var stisknutyCudlikZpet = false;
+
 
 
 // výsledek testu
@@ -56,12 +65,10 @@ var indexSkupiny = [];
 
 var indexOstatnichSkupin = [];
 
-// ***
-// změnit za jen některé
-// ***
 var otazkyKTestovani = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
 var vyhodnoceni = false;
+
 
 
 // data pro grafy: politický profil
@@ -93,9 +100,6 @@ var odpovediUcast = volebniUcast.map(function(d) {
         return d[0];
     });
 
-// ***
-// upravit nebo dát pryč
-// ***
 var stranickePreference = [
   ["ČSSD",8.7,18.7,20.2,3.7,31.6,17.0,0.0],
   ["ANO",6.0,22.5,19.5,4.5,42.4,5.1,0.0],
@@ -178,9 +182,6 @@ var odpovediPozice = pozice.map(function(d) {
 
 // data pro grafy: ostatní otázky
 
-// ***
-// všechny upravit nebo dát pryč
-// ***
 var verici = [
   ["ano",22.3,28.1,98.5,30.1,2.2,16.5,10.1],
   ["ne",75.1,70.4,0.5,68.6,96.9,81.6,89.0]
@@ -265,93 +266,104 @@ function novaOtazka() {
 
   var otazka = otazky[cisloOtazky-1];
 
-  var progres = (cisloOtazky-1) / 20 * 100 + '%';
+  var progres = cisloOtazky / 20 * 100 + '%';
 
   var barvy = [];
   if (otazka[1] == 'bar2') {
-    barvy = ['#dfc27d','#80cdc1'];
-    barvy.reverse();
+    barvy = barvyCudliky2;
   } else if (otazka[1] == 'bar4') {
-    barvy = ['#a6611a','#dfc27d','#80cdc1','#018571'];
-    barvy.reverse();
+    barvy = barvyCudliky4;
   } else if (otazka[1] == 'bar5') {
-    barvy = ['#a6611a','#dfc27d','#aaaaaa','#80cdc1','#018571'];
-    barvy.reverse();
+    barvy = barvyCudliky5;
+  } else if (otazka[1] == 'bar6') {
+    barvy = barvyCudliky6;
   } else if (otazka[1] == 'bar7') {
-    barvy = ['#8c510a','#a67638','#c19c66','#aaaaaa','#82bcb6','#42918a','#01665e'];
-    barvy.reverse();
-  } else if (otazka[1] == 'bar8') {
-    barvy = ['#8c510a','#9d6a29','#af8347','#c09c66','#75b3ad','#4e9a93','#288078','#01665e'];
-    barvy.reverse();
+    barvy = barvyCudliky7;
   } else if (otazka[1] == 'bar9') {
-    barvy = ['#8c510a','#9d6a29','#af8347','#c09c66','#aaaaaa','#75b3ad','#4e9a93','#288078','#01665e'];
-    barvy.reverse();
+    barvy = barvyCudliky9;
   } else if (otazka[1] == 'bar10') {
-    barvy = ['#543005','#69481e','#83663c','#987e55','#b29c74','#7daaa2','#5a8b83','#3f7369','#1c5449','#003c30'];
-    barvy.reverse();
+    barvy = barvyCudliky10;
   }
 
+  // hlavička otázky
   var text = '<div class="otazka">';
   text += '<p>Otázka ' + cisloOtazky + '</p>';
   text += '<div class="progresbar"></div>';
   text += '<h3>' + otazka[0] + '</h3>';
   text += '<div class="buttons">';
 
+  // čudlíky s odpověďmi
   for (var i = 2; i < otazka.length; i++) {
     text += '<button class="test-button" type="button" disabled="disabled" value="' + parseInt(i-1) + '" style="opacity:0.3; background-color:' + barvy[i-2] + '">' + otazka[i] + '</button>';
+  }
+
+  // vracecí čudlík
+  if (cisloOtazky > 1) {
+    text += '<button class="test-button" type="button" id="zpet" disabled="disabled" style="opacity:0.3; background-color:white; color:#999999; border: 1px solid #999999;">ZPĚT</button>';
   }
 
   text += '</div>';
 
   document.getElementsByClassName("test")[0].innerHTML = text;
 
+  // změna šířky progresbaru
   $('.progresbar').css('width', progres);
 
+  // kliknutí na tlačítko
   $('.test-button').click(function(event){
+
     event.preventDefault();
-    // spešl chování u věku
+
+    // zaznamenání odpovědi; spešl chování u věku
     if (cisloOtazky == 3) {
+
       var odpoved = $(this)[0].value;
+
       if (odpoved == '1') {
-        odpovedi[cisloOtazky] = 12;
+        odpovedi[cisloOtazky] = 21;
       } else if (odpoved == '2') {
-        odpovedi[cisloOtazky] = 14;
-      } else if (odpoved == '3') {
-        odpovedi[cisloOtazky] = 20;
-      } else if (odpoved == '4') {
         odpovedi[cisloOtazky] = 30;
-      } else if (odpoved == '5') {
+      } else if (odpoved == '3') {
         odpovedi[cisloOtazky] = 40;
-      } else if (odpoved == '6') {
+      } else if (odpoved == '4') {
         odpovedi[cisloOtazky] = 50;
-      } else if (odpoved == '7') {
+      } else if (odpoved == '5') {
         odpovedi[cisloOtazky] = 60;
-      } else if (odpoved == '8') {
+      } else if (odpoved == '6') {
         odpovedi[cisloOtazky] = 65;
       }
+
+    // zaznamenání odpovědi; standardní chování
     } else {
-      odpovedi[cisloOtazky] = parseInt($(this)[0].value);
+      if (!isNaN(parseInt($(this)[0].value))) {
+        odpovedi[cisloOtazky] = parseInt($(this)[0].value);
+      }
     }
 
-//console.log('číslo otázky: ' + cisloOtazky); console.log('odpovedi: ' + odpovedi); console.log('segmenty: ' + segmenty); console.log('top segment: ' + indexSkupiny);
+    // kliknutí na čudlík zpět posune počítadlo -1 a nahodí otázku
+    if ($(this)[0].id == 'zpet') {
+      cisloOtazky--;
+      novaOtazka();
 
-    // asynchronně nahoď otázku
-    if (cisloOtazky < 20) {
+    // kliknutí na odpověď (kromě poslední) posune počítadlo +1 a nahodí otázku
+    } else if (cisloOtazky < 20) {
       cisloOtazky++;
       novaOtazka();
+
+    // kliknutí na poslední odpověď nahodí výsledek
     } else {
       vyhodnoceni = true;
     }
 
-    // synchronně spočítej odpověď; jen po některých otázkách
-    var postInput = 'https://d24y44bifobrtj.cloudfront.net/?arr=[' + odpovedi + ']';
-
+    // spočítej odpověď a překresli; synchronně, jen po některých otázkách
     if ((cisloOtazky-1) in otazkyKTestovani) {
+
+      var postInput = 'https://d24y44bifobrtj.cloudfront.net/?arr=[' + odpovedi + ']';
 
       $.getJSON(postInput, function(data) {
         var postOutput = data;
 
-        // přehození pořadí výstupů
+        // zaznamenej nové rozdělení do segmentů
         segmenty[3][1] = postOutput[0];
         segmenty[4][1] = postOutput[1];
         segmenty[6][1] = postOutput[2];
@@ -360,24 +372,28 @@ function novaOtazka() {
         segmenty[0][1] = postOutput[5];
         segmenty[5][1] = postOutput[6];
 
+        // urči dominantní segment
         prepocitejIndexSkupiny();
-        $('.test-button').animate({'opacity':'1'}, 1000);
 
+        // oddisablení
+        ozivCudliky();
+
+        // změň velikost panáčků
         zmenVelikosti();
 
+        // překresli grafy
         prekresliGrafy();
 
+        // po poslední otázce nahoď vyhodnocení
         if (vyhodnoceni) {
           vyhodnotTest();
         }
-
-//console.log('číslo otázky: ' + cisloOtazky); console.log('odpovedi: ' + odpovedi); console.log('segmenty: ' + segmenty); console.log('top segment: ' + indexSkupiny);
 
       });
 
     }
 
-});
+  });
 
   return true;
 
@@ -398,58 +414,95 @@ function prepocitejIndexSkupiny() {
   indexOstatnichSkupin = [0, 1, 2, 3, 4, 5, 6];
   indexOstatnichSkupin.splice(indexOstatnichSkupin.indexOf(indexSkupiny), 1);
 
-  $(".test-button").attr("disabled",false);
-
   return true;
+
 }
 
 
 function zmenVelikosti() {
 
   // přepočet šířky fotek, aby nebyly gargantuovské ani nemizely
+
+  // odmocnění, aby se velikosti srovnaly
   var poleSegmentu = segmenty.map(function(d) {
-        return d[1];
-    });
+        return Math.sqrt(Math.sqrt(d[1]));
+  });
 
-  var img; 
-
+  // srovnání zpět na 100 procent
+  var sumaFotek = eval(poleSegmentu.join('+'));
   for (var i = 0; i < poleSegmentu.length; i++) {
-    poleSegmentu[i] = Math.max(poleSegmentu[i], 0.05);
-    poleSegmentu[i] = Math.min(poleSegmentu[i], 0.3);
+    poleSegmentu[i] = poleSegmentu[i]/sumaFotek;
+  }
 
-    img = document.querySelectorAll(".skupina .fotka img")[i];
+  // ořezání extrémních rozměrů
+  for (var i = 0; i < poleSegmentu.length; i++) {
+    poleSegmentu[i] = Math.max(poleSegmentu[i], 0.07);
+    poleSegmentu[i] = Math.min(poleSegmentu[i], 0.2);
+  }
+
+  // opět srovnání na 100 procent
+  sumaFotek = eval(poleSegmentu.join('+'));
+  for (var i = 0; i < poleSegmentu.length; i++) {
+    poleSegmentu[i] = poleSegmentu[i]/sumaFotek;
+  }
+
+  // a změna velikosti, maximum je 80 procent šířky
+  for (var i = 0; i < poleSegmentu.length; i++) {
+    var img = document.querySelectorAll(".skupina .fotka img")[i];
     img.style.width = 80 * poleSegmentu[i] + '%';
   }
+
+  return true;
+
 }
 
 
 
 function nicenum(num) {
+
   return (Math.round(1000*num,3)/10).toString().replace(".",",");
+
 }
 
+
+
+function ozivCudliky() {
+
+  $(".test-button").attr("disabled",false);
+  $('.test-button').animate({'opacity':'1'}, 1000);
+
+}
+
+
+
 function vyhodnotTest() {
+
   // neseřazené hodnoty (pro share): levicový nevolič, materialista, městský liberál, mladý těkavý, obranář, politicky pasivní, skutečný křesťan
   var sdileciVysledky = segmenty.map(function(d) {
     return Math.round(1000*d[1],3)/10;
   });
 
-  // seřazení výsledků; vy výpisu pak nicenum() pro pěkná procenta
+  // seřazení výsledků; ve výpisu pak nicenum() pro pěkná procenta
   var serazeneSegmenty = segmenty.sort(function(a,b){return b[1] - a[1]});
 
   var text = '<div class="vyhodnoceni">';
   text += '<h3>Podle modelu Medianu jste</h3>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#01665e' + '">' + serazeneSegmenty[0][0] + ': ' + nicenum(serazeneSegmenty[0][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#42918a' + '">' + serazeneSegmenty[1][0] + ': ' + nicenum(serazeneSegmenty[1][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#82bcb6' + '">' + serazeneSegmenty[2][0] + ': ' + nicenum(serazeneSegmenty[2][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#aaaaaa' + '">' + serazeneSegmenty[3][0] + ': ' + nicenum(serazeneSegmenty[3][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#c19c66' + '">' + serazeneSegmenty[4][0] + ': ' + nicenum(serazeneSegmenty[4][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#a67638' + '">' + serazeneSegmenty[5][0] + ': ' + nicenum(serazeneSegmenty[5][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#8c510a' + '">' + serazeneSegmenty[6][0] + ': ' + nicenum(serazeneSegmenty[6][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[6] + '">' + serazeneSegmenty[0][0] + ': ' + nicenum(serazeneSegmenty[0][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[5] + '">' + serazeneSegmenty[1][0] + ': ' + nicenum(serazeneSegmenty[1][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[4] + '">' + serazeneSegmenty[2][0] + ': ' + nicenum(serazeneSegmenty[2][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[3] + '">' + serazeneSegmenty[3][0] + ': ' + nicenum(serazeneSegmenty[3][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[2] + '">' + serazeneSegmenty[4][0] + ': ' + nicenum(serazeneSegmenty[4][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[1] + '">' + serazeneSegmenty[5][0] + ': ' + nicenum(serazeneSegmenty[5][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[0] + '">' + serazeneSegmenty[6][0] + ': ' + nicenum(serazeneSegmenty[6][1]) + ' %</div>';
   text += '<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://dev.datarozhlas.cz/profil-volice/landing/' + serazeneSegmenty[0][0].toLowerCase().slice(0,4).replace("ě","e") + '.html"><button id="sdilitko">Sdílet</button></a>';
 
   document.getElementsByClassName("test")[0].innerHTML = text;
+
+  return true;
+
 }
+
+
 
 // grafy
 
@@ -499,48 +552,48 @@ Highcharts.chart('koho-voli', {
         data: indexStrany.map(function(d) {
             return d[indexSkupiny + 1];
         }),
-        color: colors[indexSkupiny]
+        color: barvySkupiny[indexSkupiny]
     }, {
         name: segmenty[indexOstatnichSkupin[0]][0],
         data: indexStrany.map(function(d) {
             return d[indexOstatnichSkupin[0] + 1];
         }),
-        color: colors[indexOstatnichSkupin[0]],
+        color: barvySkupiny[indexOstatnichSkupin[0]],
         visible: false
     }, {
         name: segmenty[indexOstatnichSkupin[1]][0],
         data: indexStrany.map(function(d) {
             return d[indexOstatnichSkupin[1] + 1];
         }),
-        color: colors[indexOstatnichSkupin[1]],
+        color: barvySkupiny[indexOstatnichSkupin[1]],
         visible: false
     }, {
         name: segmenty[indexOstatnichSkupin[2]][0],
         data: indexStrany.map(function(d) {
             return d[indexOstatnichSkupin[2] + 1];
         }),
-        color: colors[indexOstatnichSkupin[2]],
+        color: barvySkupiny[indexOstatnichSkupin[2]],
         visible: false
     }, {
         name: segmenty[indexOstatnichSkupin[3]][0],
         data: indexStrany.map(function(d) {
             return d[indexOstatnichSkupin[3] + 1];
         }),
-        color: colors[indexOstatnichSkupin[3]],
+        color: barvySkupiny[indexOstatnichSkupin[3]],
         visible: false
     }, {
         name: segmenty[indexOstatnichSkupin[4]][0],
         data: indexStrany.map(function(d) {
             return d[indexOstatnichSkupin[4] + 1];
         }),
-        color: colors[indexOstatnichSkupin[4]],
+        color: barvySkupiny[indexOstatnichSkupin[4]],
         visible: false
     }, {
         name: segmenty[indexOstatnichSkupin[5]][0],
         data: indexStrany.map(function(d) {
             return d[indexOstatnichSkupin[5] + 1];
         }),
-        color: colors[indexOstatnichSkupin[5]],
+        color: barvySkupiny[indexOstatnichSkupin[5]],
         visible: false
     }]
 });
@@ -580,48 +633,48 @@ Highcharts.chart('volebni-ucast', {
         data: volebniUcast.map(function(d) {
             return d[indexSkupiny + 1];
         }),
-        color: colors[indexSkupiny]
+        color: barvySkupiny[indexSkupiny]
     }, {
         name: segmenty[indexOstatnichSkupin[0]][0],
         data: volebniUcast.map(function(d) {
             return d[indexOstatnichSkupin[0] + 1];
         }),
-        color: colors[indexOstatnichSkupin[0]],
+        color: barvySkupiny[indexOstatnichSkupin[0]],
         visible: false
     }, {
         name: segmenty[indexOstatnichSkupin[1]][0],
         data: volebniUcast.map(function(d) {
             return d[indexOstatnichSkupin[1] + 1];
         }),
-        color: colors[indexOstatnichSkupin[1]],
+        color: barvySkupiny[indexOstatnichSkupin[1]],
         visible: false
     }, {
         name: segmenty[indexOstatnichSkupin[2]][0],
         data: volebniUcast.map(function(d) {
             return d[indexOstatnichSkupin[2] + 1];
         }),
-        color: colors[indexOstatnichSkupin[2]],
+        color: barvySkupiny[indexOstatnichSkupin[2]],
         visible: false
     }, {
         name: segmenty[indexOstatnichSkupin[3]][0],
         data: volebniUcast.map(function(d) {
             return d[indexOstatnichSkupin[3] + 1];
         }),
-        color: colors[indexOstatnichSkupin[3]],
+        color: barvySkupiny[indexOstatnichSkupin[3]],
         visible: false
     }, {
         name: segmenty[indexOstatnichSkupin[4]][0],
         data: volebniUcast.map(function(d) {
             return d[indexOstatnichSkupin[4] + 1];
         }),
-        color: colors[indexOstatnichSkupin[4]],
+        color: barvySkupiny[indexOstatnichSkupin[4]],
         visible: false
     }, {
         name: segmenty[indexOstatnichSkupin[5]][0],
         data: volebniUcast.map(function(d) {
             return d[indexOstatnichSkupin[5] + 1];
         }),
-        color: colors[indexOstatnichSkupin[5]],
+        color: barvySkupiny[indexOstatnichSkupin[5]],
         visible: false
     }, {
         name: 'Celá populace',
@@ -727,14 +780,14 @@ Highcharts.chart('demo-pohlavi', {
         data: pohlavi.map(function(d) {
             return d[indexSkupiny + 1];
         }),
-        color: colors[indexSkupiny]
+        color: barvySkupiny[indexSkupiny]
     }, {
         id: 'demo2',
         name: segmenty[indexOstatnichSkupin[0]][0],
         data: pohlavi.map(function(d) {
             return d[indexOstatnichSkupin[0] + 1];
         }),
-        color: colors[indexOstatnichSkupin[0]],
+        color: barvySkupiny[indexOstatnichSkupin[0]],
         visible: false
     }, {
         id: 'demo3',
@@ -742,7 +795,7 @@ Highcharts.chart('demo-pohlavi', {
         data: pohlavi.map(function(d) {
             return d[indexOstatnichSkupin[1] + 1];
         }),
-        color: colors[indexOstatnichSkupin[1]],
+        color: barvySkupiny[indexOstatnichSkupin[1]],
         visible: false
     }, {
         id: 'demo4',
@@ -750,7 +803,7 @@ Highcharts.chart('demo-pohlavi', {
         data: pohlavi.map(function(d) {
             return d[indexOstatnichSkupin[2] + 1];
         }),
-        color: colors[indexOstatnichSkupin[2]],
+        color: barvySkupiny[indexOstatnichSkupin[2]],
         visible: false
     }, {
         id: 'demo5',
@@ -758,7 +811,7 @@ Highcharts.chart('demo-pohlavi', {
         data: pohlavi.map(function(d) {
             return d[indexOstatnichSkupin[3] + 1];
         }),
-        color: colors[indexOstatnichSkupin[3]],
+        color: barvySkupiny[indexOstatnichSkupin[3]],
         visible: false
     }, {
         id: 'demo6',
@@ -766,7 +819,7 @@ Highcharts.chart('demo-pohlavi', {
         data: pohlavi.map(function(d) {
             return d[indexOstatnichSkupin[4] + 1];
         }),
-        color: colors[indexOstatnichSkupin[4]],
+        color: barvySkupiny[indexOstatnichSkupin[4]],
         visible: false
     }, {
         id: 'demo7',
@@ -774,7 +827,7 @@ Highcharts.chart('demo-pohlavi', {
         data: pohlavi.map(function(d) {
             return d[indexOstatnichSkupin[5] + 1];
         }),
-        color: colors[indexOstatnichSkupin[5]],
+        color: barvySkupiny[indexOstatnichSkupin[5]],
         visible: false
     }, {
         id: 'demo8',
@@ -826,14 +879,14 @@ Highcharts.chart('demo-vek', {
         data: vek.map(function(d) {
             return d[indexSkupiny + 1];
         }),
-        color: colors[indexSkupiny]
+        color: barvySkupiny[indexSkupiny]
     }, {
         id: 'demo2',
         name: segmenty[indexOstatnichSkupin[0]][0],
         data: vek.map(function(d) {
             return d[indexOstatnichSkupin[0] + 1];
         }),
-        color: colors[indexOstatnichSkupin[0]],
+        color: barvySkupiny[indexOstatnichSkupin[0]],
         visible: false
     }, {
         id: 'demo3',
@@ -841,7 +894,7 @@ Highcharts.chart('demo-vek', {
         data: vek.map(function(d) {
             return d[indexOstatnichSkupin[1] + 1];
         }),
-        color: colors[indexOstatnichSkupin[1]],
+        color: barvySkupiny[indexOstatnichSkupin[1]],
         visible: false
     }, {
         id: 'demo4',
@@ -849,7 +902,7 @@ Highcharts.chart('demo-vek', {
         data: vek.map(function(d) {
             return d[indexOstatnichSkupin[2] + 1];
         }),
-        color: colors[indexOstatnichSkupin[2]],
+        color: barvySkupiny[indexOstatnichSkupin[2]],
         visible: false
     }, {
         id: 'demo5',
@@ -857,7 +910,7 @@ Highcharts.chart('demo-vek', {
         data: vek.map(function(d) {
             return d[indexOstatnichSkupin[3] + 1];
         }),
-        color: colors[indexOstatnichSkupin[3]],
+        color: barvySkupiny[indexOstatnichSkupin[3]],
         visible: false
     }, {
         id: 'demo6',
@@ -865,7 +918,7 @@ Highcharts.chart('demo-vek', {
         data: vek.map(function(d) {
             return d[indexOstatnichSkupin[4] + 1];
         }),
-        color: colors[indexOstatnichSkupin[4]],
+        color: barvySkupiny[indexOstatnichSkupin[4]],
         visible: false
     }, {
         id: 'demo7',
@@ -873,7 +926,7 @@ Highcharts.chart('demo-vek', {
         data: vek.map(function(d) {
             return d[indexOstatnichSkupin[5] + 1];
         }),
-        color: colors[indexOstatnichSkupin[5]],
+        color: barvySkupiny[indexOstatnichSkupin[5]],
         visible: false
     }, {
         id: 'demo8',
@@ -925,14 +978,14 @@ Highcharts.chart('demo-vzdelani', {
         data: vzdelani.map(function(d) {
             return d[indexSkupiny + 1];
         }),
-        color: colors[indexSkupiny]
+        color: barvySkupiny[indexSkupiny]
     }, {
         id: 'demo2',
         name: segmenty[indexOstatnichSkupin[0]][0],
         data: vzdelani.map(function(d) {
             return d[indexOstatnichSkupin[0] + 1];
         }),
-        color: colors[indexOstatnichSkupin[0]],
+        color: barvySkupiny[indexOstatnichSkupin[0]],
         visible: false
     }, {
         id: 'demo3',
@@ -940,7 +993,7 @@ Highcharts.chart('demo-vzdelani', {
         data: vzdelani.map(function(d) {
             return d[indexOstatnichSkupin[1] + 1];
         }),
-        color: colors[indexOstatnichSkupin[1]],
+        color: barvySkupiny[indexOstatnichSkupin[1]],
         visible: false
     }, {
         id: 'demo4',
@@ -948,7 +1001,7 @@ Highcharts.chart('demo-vzdelani', {
         data: vzdelani.map(function(d) {
             return d[indexOstatnichSkupin[2] + 1];
         }),
-        color: colors[indexOstatnichSkupin[2]],
+        color: barvySkupiny[indexOstatnichSkupin[2]],
         visible: false
     }, {
         id: 'demo5',
@@ -956,7 +1009,7 @@ Highcharts.chart('demo-vzdelani', {
         data: vzdelani.map(function(d) {
             return d[indexOstatnichSkupin[3] + 1];
         }),
-        color: colors[indexOstatnichSkupin[3]],
+        color: barvySkupiny[indexOstatnichSkupin[3]],
         visible: false
     }, {
         id: 'demo6',
@@ -964,7 +1017,7 @@ Highcharts.chart('demo-vzdelani', {
         data: vzdelani.map(function(d) {
             return d[indexOstatnichSkupin[4] + 1];
         }),
-        color: colors[indexOstatnichSkupin[4]],
+        color: barvySkupiny[indexOstatnichSkupin[4]],
         visible: false
     }, {
         id: 'demo7',
@@ -972,7 +1025,7 @@ Highcharts.chart('demo-vzdelani', {
         data: vzdelani.map(function(d) {
             return d[indexOstatnichSkupin[5] + 1];
         }),
-        color: colors[indexOstatnichSkupin[5]],
+        color: barvySkupiny[indexOstatnichSkupin[5]],
         visible: false
     }, {
         id: 'demo8',
@@ -1024,14 +1077,14 @@ Highcharts.chart('demo-prijem', {
         data: prijem.map(function(d) {
             return d[indexSkupiny + 1];
         }),
-        color: colors[indexSkupiny]
+        color: barvySkupiny[indexSkupiny]
     }, {
         id: 'demo2',
         name: segmenty[indexOstatnichSkupin[0]][0],
         data: prijem.map(function(d) {
             return d[indexOstatnichSkupin[0] + 1];
         }),
-        color: colors[indexOstatnichSkupin[0]],
+        color: barvySkupiny[indexOstatnichSkupin[0]],
         visible: false
     }, {
         id: 'demo3',
@@ -1039,7 +1092,7 @@ Highcharts.chart('demo-prijem', {
         data: prijem.map(function(d) {
             return d[indexOstatnichSkupin[1] + 1];
         }),
-        color: colors[indexOstatnichSkupin[1]],
+        color: barvySkupiny[indexOstatnichSkupin[1]],
         visible: false
     }, {
         id: 'demo4',
@@ -1047,7 +1100,7 @@ Highcharts.chart('demo-prijem', {
         data: prijem.map(function(d) {
             return d[indexOstatnichSkupin[2] + 1];
         }),
-        color: colors[indexOstatnichSkupin[2]],
+        color: barvySkupiny[indexOstatnichSkupin[2]],
         visible: false
     }, {
         id: 'demo5',
@@ -1055,7 +1108,7 @@ Highcharts.chart('demo-prijem', {
         data: prijem.map(function(d) {
             return d[indexOstatnichSkupin[3] + 1];
         }),
-        color: colors[indexOstatnichSkupin[3]],
+        color: barvySkupiny[indexOstatnichSkupin[3]],
         visible: false
     }, {
         id: 'demo6',
@@ -1063,7 +1116,7 @@ Highcharts.chart('demo-prijem', {
         data: prijem.map(function(d) {
             return d[indexOstatnichSkupin[4] + 1];
         }),
-        color: colors[indexOstatnichSkupin[4]],
+        color: barvySkupiny[indexOstatnichSkupin[4]],
         visible: false
     }, {
         id: 'demo7',
@@ -1071,7 +1124,7 @@ Highcharts.chart('demo-prijem', {
         data: prijem.map(function(d) {
             return d[indexOstatnichSkupin[5] + 1];
         }),
-        color: colors[indexOstatnichSkupin[5]],
+        color: barvySkupiny[indexOstatnichSkupin[5]],
         visible: false
     }, {
         id: 'demo8',
@@ -1123,14 +1176,14 @@ Highcharts.chart('demo-pozice', {
         data: pozice.map(function(d) {
             return d[indexSkupiny + 1];
         }),
-        color: colors[indexSkupiny]
+        color: barvySkupiny[indexSkupiny]
     }, {
         id: 'demo2',
         name: segmenty[indexOstatnichSkupin[0]][0],
         data: pozice.map(function(d) {
             return d[indexOstatnichSkupin[0] + 1];
         }),
-        color: colors[indexOstatnichSkupin[0]],
+        color: barvySkupiny[indexOstatnichSkupin[0]],
         visible: false
     }, {
         id: 'demo3',
@@ -1138,7 +1191,7 @@ Highcharts.chart('demo-pozice', {
         data: pozice.map(function(d) {
             return d[indexOstatnichSkupin[1] + 1];
         }),
-        color: colors[indexOstatnichSkupin[1]],
+        color: barvySkupiny[indexOstatnichSkupin[1]],
         visible: false
     }, {
         id: 'demo4',
@@ -1146,7 +1199,7 @@ Highcharts.chart('demo-pozice', {
         data: pozice.map(function(d) {
             return d[indexOstatnichSkupin[2] + 1];
         }),
-        color: colors[indexOstatnichSkupin[2]],
+        color: barvySkupiny[indexOstatnichSkupin[2]],
         visible: false
     }, {
         id: 'demo5',
@@ -1154,7 +1207,7 @@ Highcharts.chart('demo-pozice', {
         data: pozice.map(function(d) {
             return d[indexOstatnichSkupin[3] + 1];
         }),
-        color: colors[indexOstatnichSkupin[3]],
+        color: barvySkupiny[indexOstatnichSkupin[3]],
         visible: false
     }, {
         id: 'demo6',
@@ -1162,7 +1215,7 @@ Highcharts.chart('demo-pozice', {
         data: pozice.map(function(d) {
             return d[indexOstatnichSkupin[4] + 1];
         }),
-        color: colors[indexOstatnichSkupin[4]],
+        color: barvySkupiny[indexOstatnichSkupin[4]],
         visible: false
     }, {
         id: 'demo7',
@@ -1170,7 +1223,7 @@ Highcharts.chart('demo-pozice', {
         data: pozice.map(function(d) {
             return d[indexOstatnichSkupin[5] + 1];
         }),
-        color: colors[indexOstatnichSkupin[5]],
+        color: barvySkupiny[indexOstatnichSkupin[5]],
         visible: false
     }, {
         id: 'demo8',
@@ -1189,10 +1242,11 @@ Highcharts.chart('demo-pozice', {
 }
 
 
+
 // inicializace kvízu
 
 novaOtazka();
-$('.test-button').animate({'opacity':'1'}, 1000);
+ozivCudliky();
 prepocitejIndexSkupiny();
 zmenVelikosti();
 prekresliGrafy();
