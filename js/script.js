@@ -33,8 +33,11 @@ var otazky = [
 ];
 
 // inicializace mediánovým voličem
-var odpovedi = [0, 1, 1, 54, 4, 3, 5, 3, 8, 3, 2, 1, 3, 5, 1, 1, 4, 4, 1, 1, 4];
+var odpovedi = [0, 2, 2, 4, 7, 2, 6, 3, 4, 1, 6, 3, 3, 3, 4, 1, 3, 3, 3, 2, 3];
 
+// ***
+// incializovat je podle mediánového voliče?
+// ***
 var segmenty = [
   ["Levicový (ne)volič", 0.142],
   ["Materialista", 0.142],
@@ -272,19 +275,19 @@ function novaOtazka() {
     barvy = ['#a6611a','#dfc27d','#80cdc1','#018571'];
     barvy.reverse();
   } else if (otazka[1] == 'bar5') {
-    barvy = ['#a6611a','#dfc27d','#cccccc','#80cdc1','#018571'];
+    barvy = ['#a6611a','#dfc27d','#aaaaaa','#80cdc1','#018571'];
     barvy.reverse();
   } else if (otazka[1] == 'bar7') {
-    barvy = ['#8c510a','#d8b365','#f6e8c3','#cccccc','#c7eae5','#5ab4ac','#01665e'];
+    barvy = ['#8c510a','#a67638','#c19c66','#aaaaaa','#82bcb6','#42918a','#01665e'];
     barvy.reverse();
   } else if (otazka[1] == 'bar8') {
-    barvy = ['#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e'];
+    barvy = ['#8c510a','#9d6a29','#af8347','#c09c66','#75b3ad','#4e9a93','#288078','#01665e'];
     barvy.reverse();
   } else if (otazka[1] == 'bar9') {
-    barvy = ['#8c510a','#bf812d','#dfc27d','#f6e8c3','#cccccc','#c7eae5','#80cdc1','#35978f','#01665e'];
+    barvy = ['#8c510a','#9d6a29','#af8347','#c09c66','#aaaaaa','#75b3ad','#4e9a93','#288078','#01665e'];
     barvy.reverse();
   } else if (otazka[1] == 'bar10') {
-    barvy = ['#543005','#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e','#003c30'];
+    barvy = ['#543005','#69481e','#83663c','#987e55','#b29c74','#7daaa2','#5a8b83','#3f7369','#1c5449','#003c30'];
     barvy.reverse();
   }
 
@@ -310,24 +313,24 @@ function novaOtazka() {
     if (cisloOtazky == 3) {
       var odpoved = $(this)[0].value;
       if (odpoved == '1') {
-        odpovedi[cisloOtazky-1] = 12;
+        odpovedi[cisloOtazky] = 12;
       } else if (odpoved == '2') {
-        odpovedi[cisloOtazky-1] = 14;
+        odpovedi[cisloOtazky] = 14;
       } else if (odpoved == '3') {
-        odpovedi[cisloOtazky-1] = 20;
+        odpovedi[cisloOtazky] = 20;
       } else if (odpoved == '4') {
-        odpovedi[cisloOtazky-1] = 30;
+        odpovedi[cisloOtazky] = 30;
       } else if (odpoved == '5') {
-        odpovedi[cisloOtazky-1] = 40;
+        odpovedi[cisloOtazky] = 40;
       } else if (odpoved == '6') {
-        odpovedi[cisloOtazky-1] = 50;
+        odpovedi[cisloOtazky] = 50;
       } else if (odpoved == '7') {
-        odpovedi[cisloOtazky-1] = 60;
+        odpovedi[cisloOtazky] = 60;
       } else if (odpoved == '8') {
-        odpovedi[cisloOtazky-1] = 65;
+        odpovedi[cisloOtazky] = 65;
       }
     } else {
-      odpovedi[cisloOtazky-1] = parseInt($(this)[0].value);
+      odpovedi[cisloOtazky] = parseInt($(this)[0].value);
     }
 
 //console.log('číslo otázky: ' + cisloOtazky); console.log('odpovedi: ' + odpovedi); console.log('segmenty: ' + segmenty); console.log('top segment: ' + indexSkupiny);
@@ -411,7 +414,7 @@ function zmenVelikosti() {
 
   for (var i = 0; i < poleSegmentu.length; i++) {
     poleSegmentu[i] = Math.max(poleSegmentu[i], 0.05);
-    poleSegmentu[i] = Math.min(poleSegmentu[i], 0.4);
+    poleSegmentu[i] = Math.min(poleSegmentu[i], 0.3);
   }
 
 
@@ -471,11 +474,11 @@ function vyhodnotTest() {
   var text = '<div class="vyhodnoceni">';
   text += '<h3>Podle modelu Medianu jste</h3>';
   text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#01665e' + '">' + serazeneSegmenty[0] + ': ' + Math.round(1000*serazeneVysledky[0],3)/10 + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#5ab4ac' + '">' + serazeneSegmenty[1] + ': ' + Math.round(1000*serazeneVysledky[1],3)/10 + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#c7eae5' + '">' + serazeneSegmenty[2] + ': ' + Math.round(1000*serazeneVysledky[2],3)/10 + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#dddddd' + '">' + serazeneSegmenty[3] + ': ' + Math.round(1000*serazeneVysledky[3],3)/10 + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#f6e8c3' + '">' + serazeneSegmenty[4] + ': ' + Math.round(1000*serazeneVysledky[4],3)/10 + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#d8b365' + '">' + serazeneSegmenty[5] + ': ' + Math.round(1000*serazeneVysledky[5],3)/10 + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#42918a' + '">' + serazeneSegmenty[1] + ': ' + Math.round(1000*serazeneVysledky[1],3)/10 + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#82bcb6' + '">' + serazeneSegmenty[2] + ': ' + Math.round(1000*serazeneVysledky[2],3)/10 + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#aaaaaa' + '">' + serazeneSegmenty[3] + ': ' + Math.round(1000*serazeneVysledky[3],3)/10 + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#c19c66' + '">' + serazeneSegmenty[4] + ': ' + Math.round(1000*serazeneVysledky[4],3)/10 + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#a67638' + '">' + serazeneSegmenty[5] + ': ' + Math.round(1000*serazeneVysledky[5],3)/10 + ' %</div>';
   text += '<div class="vyhodnoceni-skupina" style="background-color:' + '#8c510a' + '">' + serazeneSegmenty[6] + ': ' + Math.round(1000*serazeneVysledky[6],3)/10 + ' %</div>';
   text += '</div>';
   document.getElementsByClassName("test")[0].innerHTML = text;
