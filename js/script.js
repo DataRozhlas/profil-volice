@@ -28,7 +28,7 @@ var otazky = [
   ["Jak jste spokojen(a) se společností, kde žijete?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
   ["V životě bych chtěl(a) především dosáhnout vysokého společenského postavení.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Jaké je vaše nejvyšší dosažené vzdělání?", "bar7", "Bez vzdělání", "Základní", "Vyučen/Střední bez maturity", "Střední s maturitou nebo vyučen s maturitou", "VOŠ", "Bakalářské", "Magisterské a vyšší"],
-  ["Užívat drogy je špatné.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Užívat drogy je špatné‼", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Jste spokojení se svou životní úrovní?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
   ["Členství ČR v Evropské unii mně osobně přináší nové možnosti a příležitosti.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Zajímám se o mezinárodní události.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
@@ -65,7 +65,7 @@ var indexSkupiny = [];
 
 var indexOstatnichSkupin = [];
 
-var otazkyKTestovani = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+var otazkyKTestovani = [5, 10, 15, 20];
 
 var vyhodnoceni = false;
 
@@ -287,6 +287,7 @@ function novaOtazka() {
 
   // hlavička otázky
   var text = '<div class="otazka">';
+  text += '<div id="pandulaci"></br></div>';
   text += '<p>Otázka ' + cisloOtazky + '</p>';
   text += '<div class="progresbar"></div>';
   text += '<h3>' + otazka[0] + '</h3>';
@@ -352,15 +353,22 @@ function novaOtazka() {
 
     // kliknutí na poslední odpověď nahodí výsledek
     } else {
+      cisloOtazky++;
       vyhodnoceni = true;
     }
 
+    // u otázek, které se nevyhodnocují, se čudlíky oživí bez čekání
+    if (!otazkyKTestovani.includes(cisloOtazky-1)) {
+      ozivCudliky();
+    }
+
     // spočítej odpověď a překresli; synchronně, jen po některých otázkách
-    if ((cisloOtazky-1) in otazkyKTestovani) {
+    if (otazkyKTestovani.includes(cisloOtazky-1)) {
 
       var postInput = 'https://d24y44bifobrtj.cloudfront.net/?arr=[' + odpovedi + ']';
 
       $.getJSON(postInput, function(data) {
+
         var postOutput = data;
 
         // zaznamenej nové rozdělení do segmentů
@@ -372,14 +380,18 @@ function novaOtazka() {
         segmenty[0][1] = postOutput[5];
         segmenty[5][1] = postOutput[6];
 
-        // urči dominantní segment
-        prepocitejIndexSkupiny();
-
         // oddisablení
         ozivCudliky();
 
+        // urči dominantní segment
+        prepocitejIndexSkupiny();
+
         // změň velikost panáčků
         zmenVelikosti();
+
+        // aktualizovali jsme panďuláky
+        var text = '<div id="pandulaci"><p style="color:#cc0000">▲ ▲ ▲ AKTUALIZOVALI JSME PANĎULÁKY ▲ ▲ ▲</p></div>';
+        document.getElementById("pandulaci").innerHTML = text;
 
         // překresli grafy
         prekresliGrafy();
@@ -388,6 +400,7 @@ function novaOtazka() {
         if (vyhodnoceni) {
           vyhodnotTest();
         }
+
 
       });
 
@@ -487,13 +500,13 @@ function vyhodnotTest() {
 
   var text = '<div class="vyhodnoceni">';
   text += '<h3>Podle modelu Medianu jste</h3>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[6] + '">' + serazeneSegmenty[0][0] + ': ' + nicenum(serazeneSegmenty[0][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[5] + '">' + serazeneSegmenty[1][0] + ': ' + nicenum(serazeneSegmenty[1][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[4] + '">' + serazeneSegmenty[2][0] + ': ' + nicenum(serazeneSegmenty[2][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[0] + '">' + serazeneSegmenty[0][0] + ': ' + nicenum(serazeneSegmenty[0][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[1] + '">' + serazeneSegmenty[1][0] + ': ' + nicenum(serazeneSegmenty[1][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[2] + '">' + serazeneSegmenty[2][0] + ': ' + nicenum(serazeneSegmenty[2][1]) + ' %</div>';
   text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[3] + '">' + serazeneSegmenty[3][0] + ': ' + nicenum(serazeneSegmenty[3][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[2] + '">' + serazeneSegmenty[4][0] + ': ' + nicenum(serazeneSegmenty[4][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[1] + '">' + serazeneSegmenty[5][0] + ': ' + nicenum(serazeneSegmenty[5][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[0] + '">' + serazeneSegmenty[6][0] + ': ' + nicenum(serazeneSegmenty[6][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[4] + '">' + serazeneSegmenty[4][0] + ': ' + nicenum(serazeneSegmenty[4][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[5] + '">' + serazeneSegmenty[5][0] + ': ' + nicenum(serazeneSegmenty[5][1]) + ' %</div>';
+  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[6] + '">' + serazeneSegmenty[6][0] + ': ' + nicenum(serazeneSegmenty[6][1]) + ' %</div>';
   text += '<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://dev.datarozhlas.cz/profil-volice/landing/' + serazeneSegmenty[0][0].toLowerCase().slice(0,4).replace("ě","e") + '.html"><button id="sdilitko">Sdílet</button></a>';
 
   document.getElementsByClassName("test")[0].innerHTML = text;
