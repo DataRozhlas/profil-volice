@@ -12,7 +12,7 @@ var barvyCudliky10 = ["#003c30", "#1c5449", "#3f7369", "#5a8b83", "#7daaa2", "#b
 
 // proměnné pro test
 
-var cisloOtazky = 15;
+var cisloOtazky = 19;
 var stamp = Date.now() + Math.floor(Math.random() * 10000);
 
 var otazky = [
@@ -508,16 +508,26 @@ function vyhodnotTest() {
   for(var i = 0; i < 7; i++) {
     text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[i] + '">' + serazeneSegmenty[i][0] + ': ' + nicenum(serazeneSegmenty[i][1]) + ' %</div>';
   }
-    text += '<button id="sdilitko" onclick="sdilej()">Sdílet</button>';
+    text += '<button id="sdilitko">Sdílet</button>';
 
   document.getElementsByClassName("test")[0].innerHTML = text;
 
+  $("#sdilitko").click(function() {
+    sdilej(sdileciVysledky);
+  });
+   
   return true;
 
 }
 
-function sdilej() {
-  console.log("ok!");
+function sdilej(vysledek) {
+   $.ajax({
+                url: "https://s0zqrf2j0b.execute-api.eu-central-1.amazonaws.com/prod?arr=[" + vysledek.toString() + "]",
+                type: "GET",
+                crossDomain: !0,
+                dataType: "json",
+                success: function (response) {console.log(response);}
+  });
 }
 
 
