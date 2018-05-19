@@ -1,21 +1,18 @@
-
 // barvy seřazené podle segmentů
 
 var barvySkupiny = ['#EA614A', '#20649B', '#008836', '#6B96CA', '#A38456', '#A87A93', '#D19C95'];
 
-var barvyCudliky2 = ['#a6611a','#018571'],
-    barvyCudliky4 = ['#a6611a','#dfc27d','#80cdc1','#018571'],
-    barvyCudliky5 = ['#a6611a','#dfc27d','#aaaaaa','#80cdc1','#018571'],
-    barvyCudliky6 = ['#8c510a','#a67638','#c19c66','#82bcb6','#42918a','#01665e'],
-    barvyCudliky7 = ['#8c510a','#a67638','#c19c66','#aaaaaa','#82bcb6','#42918a','#01665e'],
-    barvyCudliky9 = ['#8c510a','#9d6a29','#af8347','#c09c66','#aaaaaa','#75b3ad','#4e9a93','#288078','#01665e'],
-    barvyCudliky10 = ['#543005','#69481e','#83663c','#987e55','#b29c74','#7daaa2','#5a8b83','#3f7369','#1c5449','#003c30'];
-
-barvyCudliky2.reverse(); barvyCudliky4.reverse(); barvyCudliky5.reverse(); barvyCudliky6.reverse(); barvyCudliky7.reverse(); barvyCudliky9.reverse(); barvyCudliky10.reverse();
+var barvyCudliky2 = ["#018571", "#a6611a"];
+var barvyCudliky4 = ["#018571", "#80cdc1", "#dfc27d", "#a6611a"];
+var barvyCudliky5 = ["#018571", "#80cdc1", "#aaaaaa", "#dfc27d", "#a6611a"];
+var barvyCudliky6 = ["#01665e", "#42918a", "#82bcb6", "#c19c66", "#a67638", "#8c510a"];
+var barvyCudliky7 = ["#01665e", "#42918a", "#82bcb6", "#aaaaaa", "#c19c66", "#a67638", "#8c510a"];
+var barvyCudliky9 = ["#8c510a", "#9d6a29", "#af8347", "#c09c66", "#aaaaaa", "#75b3ad", "#4e9a93", "#288078", "#01665e"];
+var barvyCudliky10 = ["#003c30", "#1c5449", "#3f7369", "#5a8b83", "#7daaa2", "#b29c74", "#987e55", "#83663c", "#69481e", "#543005"];
 
 // proměnné pro test
 
-var cisloOtazky = 19;
+var cisloOtazky = 15;
 var stamp = Date.now() + Math.floor(Math.random() * 10000);
 
 var otazky = [
@@ -27,18 +24,18 @@ var otazky = [
   ["Jak jste spokojen(a) se společností, kde žijete?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
   ["V životě bych chtěl(a) především dosáhnout vysokého společenského postavení.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Jaké je vaše nejvyšší dosažené vzdělání?", "bar7", "Bez vzdělání", "Základní", "Vyučen/Střední bez maturity", "Střední s maturitou nebo vyučen s maturitou", "VOŠ", "Bakalářské", "Magisterské a vyšší"],
-  ["Užívat drogy je špatné‼", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Užívat drogy je špatné.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Jste spokojení se svou životní úrovní?", "bar9", "1 (nejméně)", "2", "3", "4", "5 (středně)", "6", "7", "8", "9 (nejvíce)"],
   ["Členství ČR v Evropské unii mně osobně přináší nové možnosti a příležitosti.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Zajímám se o mezinárodní události.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["S vývojem, který proběhl v ČR od listopadu 1989, jsem spokojen(a).", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Současná politika se řídí morálními zásadami.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
-  ["EU by měla uprchlíky okamžitě vracet do státu, ze kterého přišli", "bar4", "Určitě ano", "Spíše ano", "Spíše ne", "Určitě ne"],
+  ["EU by měla uprchlíky okamžitě vracet do státu, ze kterého přišli.", "bar4", "Určitě ano", "Spíše ano", "Spíše ne", "Určitě ne"],
   ["Téměř každý den sleduji vývoj na naší politické scéně.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Úpadek naší společnosti může být zastaven pouze prosazením tvrdších zákonů.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Křesťanské zásady mají trvalou platnost.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
   ["Stát by měl zabezpečit přijatelnou životní úroveň pro každého.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
-  ["Trh by měl být omezovaný zásahem státu.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"],
+  ["Trh by měl být omezovaný zásahem státu.", "bar5", "Určitě ano", "Spíše ano", "Ani ano ani ne", "Spíše ne", "Určitě ne"]
 ];
 
 // inicializace mediánovým voličem
@@ -184,7 +181,7 @@ var odpovediPozice = pozice.map(function(d) {
 var verici = [
   ["ano",22.3,28.1,98.5,30.1,2.2,16.5,10.1],
   ["ne",75.1,70.4,0.5,68.6,96.9,81.6,89.0]
-]
+];
 
 var polistopadovyVyvoj = [
   ["určitě ano",5.0,1.7,5.8,9.7,5.7,2.8,4.8],
@@ -193,7 +190,7 @@ var polistopadovyVyvoj = [
   ["spíše ne",20.2,30.2,20.9,14.8,18.6,22.3,21.0],
   ["určitě ne",14.3,46.0,10.7,4.6,9.0,27.4,12.2],
   ["neuvedeno",3.2,0.9,1.9,1.1,2.6,1.7,2.7]
-]
+];
 
 var tvrdsiZakony = [
   ["určitě ano",9.9,38.7,23.3,9.3,18.6,23.1,19.5],
@@ -202,7 +199,7 @@ var tvrdsiZakony = [
   ["spíše ne",19.3,6.0,10.6,31.4,9.4,10.5,12.8],
   ["určitě ne",10.2,2.7,2.4,12.8,2.3,5.3,2.6],
   ["neuvedeno",3.2,1.5,3.0,0.7,2.4,3.4,4.5]
-]
+];
 
 var clenstviNATO = [
   ["určitě ano",10.3,5.6,12.1,31.1,10.2,3.6,9.3],
@@ -211,7 +208,7 @@ var clenstviNATO = [
   ["spíše ne",21.5,17.4,12.8,3.9,12.9,18.2,15.5],
   ["určitě ne",9.9,25.8,5.6,0.7,3.8,16.8,3.1],
   ["neuvedeno",2.6,2.1,2.4,1.5,2.5,3.4,5.2]
-]
+];
 
 var volbyOvlivni = [
   ["určitě ano",6.4,15.9,17.4,19.9,16.2,4.6,10.1],
@@ -220,7 +217,7 @@ var volbyOvlivni = [
   ["spíše ne",26.8,21.9,12.2,11.4,11.7,24.7,18.0],
   ["určitě ne",17.6,14.8,5.0,2.9,4.2,20.0,11.1],
   ["neuvedeno",3.7,0.6,3.1,2.0,2.9,3.9,4.6]
-]
+];
 
 var konzumniSpolecnost = [
   ["určitě ano",13.6,49.6,26.9,26.8,19.2,30.2,15.5],
@@ -229,7 +226,7 @@ var konzumniSpolecnost = [
   ["spíše ne",17.9,1.0,2.5,7.5,4.2,4.9,12.1],
   ["určitě ne",7.3,0.1,0.1,0.3,1.3,2.7,4.7],
   ["neuvedeno",2.5,0.2,2.8,2.1,3.5,2.8,5.6]
-]
+];
 
 var drogyJsouZlo = [
   ["určitě ano",33.1,87.2,77.4,65.3,60.4,72.4,47.4],
@@ -238,7 +235,7 @@ var drogyJsouZlo = [
   ["spíše ne",14.1,0.8,2.5,1.5,3.3,2.7,8.0],
   ["určitě ne",9.9,0.7,1.2,2.2,1.4,3.5,5.5],
   ["neuvedeno",3.5,0.8,2.3,2.1,3.6,3.1,4.3]
-]
+];
 
 var clenstviEU = [
   ["určitě ano",7.9,1.5,6.9,19.1,7.2,3.0,4.9],
@@ -247,7 +244,7 @@ var clenstviEU = [
   ["spíše ne",24.6,21.0,18.8,19.3,20.1,25.6,19.8],
   ["určitě ne",19.2,52.5,14.8,4.5,8.9,29.2,12.5],
   ["neuvedeno",3.5,1.2,2.8,1.2,2.6,3.3,7.0]
-]
+];
 
 var uprchlikyVracet = [
   ["určitě ano",48.3,79.9,41.2,19.4,55.9,70.1,45.0],
@@ -255,7 +252,7 @@ var uprchlikyVracet = [
   ["spíše ne",15.3,3.1,16.3,31.7,11.9,4.1,14.6],
   ["určitě ne",4.1,0.3,3.6,16.3,2.2,2.6,4.4],
   ["neuvedeno",0.9,1.2,0.4,0.8,0.4,0.1,0.8]
-]
+];
 
 
 
@@ -357,12 +354,12 @@ function novaOtazka() {
     }
 
     // u otázek, které se nevyhodnocují, se čudlíky oživí bez čekání
-    if (!otazkyKTestovani.includes(cisloOtazky-1)) {
+    if ($.inArray(cisloOtazky-1, otazkyKTestovani) === -1) {
       ozivCudliky();
     }
 
     // spočítej odpověď a překresli; synchronně, jen po některých otázkách
-    if (otazkyKTestovani.includes(cisloOtazky-1)) {
+    else {
 
       var postInput = 'https://d24y44bifobrtj.cloudfront.net/?arr=[' + odpovedi + ']';
 
@@ -412,16 +409,6 @@ function novaOtazka() {
 
 }
 
-function zalogujVysledek() {
-   $.ajax({
-                url: "https://r0e3ykepmd.execute-api.eu-central-1.amazonaws.com/prod",
-                type: "POST",
-                crossDomain: !0,
-                contentType: "application/json",
-                data: JSON.stringify({ "uid": stamp, "resp": odpovedi.toString(), "ok": 0 }),
-                dataType: "json"
-  });
-}
 
 function prepocitejIndexSkupiny() {
 
@@ -495,7 +482,16 @@ function ozivCudliky() {
 
 }
 
-
+function zalogujVysledek() {
+   $.ajax({
+                url: "https://r0e3ykepmd.execute-api.eu-central-1.amazonaws.com/prod",
+                type: "POST",
+                crossDomain: !0,
+                contentType: "application/json",
+                data: JSON.stringify({ "uid": stamp, "resp": odpovedi.toString(), "ok": 0 }),
+                dataType: "json"
+  });
+}
 
 function vyhodnotTest() {
 
@@ -512,7 +508,7 @@ function vyhodnotTest() {
   for(var i = 0; i < 7; i++) {
     text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[i] + '">' + serazeneSegmenty[i][0] + ': ' + nicenum(serazeneSegmenty[i][1]) + ' %</div>';
   }
-    text += '<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://dev.datarozhlas.cz/profil-volice/landing/' + serazeneSegmenty[0][0].toLowerCase().slice(0,4).replace("ě","e") + '.html"><button id="sdilitko">Sdílet</button></a>';
+    text += '<button id="sdilitko" onclick="sdilej()">Sdílet</button>';
 
   document.getElementsByClassName("test")[0].innerHTML = text;
 
@@ -520,6 +516,9 @@ function vyhodnotTest() {
 
 }
 
+function sdilej() {
+  console.log("ok!");
+}
 
 
 // grafy
