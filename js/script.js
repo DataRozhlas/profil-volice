@@ -13,11 +13,10 @@ var barvyCudliky2 = ['#a6611a','#018571'],
 
 barvyCudliky2.reverse(); barvyCudliky4.reverse(); barvyCudliky5.reverse(); barvyCudliky6.reverse(); barvyCudliky7.reverse(); barvyCudliky9.reverse(); barvyCudliky10.reverse();
 
-
-
 // proměnné pro test
 
-var cisloOtazky = 1;
+var cisloOtazky = 19;
+var stamp = Date.now() + Math.floor(Math.random() * 10000);
 
 var otazky = [
   ["Zúčastnil(a) byste se voleb do Poslanecké sněmovny, kdyby se konaly nyní?", "bar4", "Určitě ano", "Spíše ano", "Spíše ne", "Určitě ne"],
@@ -398,6 +397,7 @@ function novaOtazka() {
 
         // po poslední otázce nahoď vyhodnocení
         if (vyhodnoceni) {
+          zalogujVysledek();
           vyhodnotTest();
         }
 
@@ -412,7 +412,16 @@ function novaOtazka() {
 
 }
 
-
+function zalogujVysledek() {
+   $.ajax({
+                url: "https://r0e3ykepmd.execute-api.eu-central-1.amazonaws.com/prod",
+                type: "POST",
+                crossDomain: !0,
+                contentType: "application/json",
+                data: JSON.stringify({ "uid": stamp, "resp": odpovedi.toString(), "ok": 0 }),
+                dataType: "json"
+  });
+}
 
 function prepocitejIndexSkupiny() {
 
@@ -422,7 +431,7 @@ function prepocitejIndexSkupiny() {
         return d[1];
     });
 
-  indexSkupiny = poleSegmentu.indexOf(Math.max(...poleSegmentu));
+  indexSkupiny = poleSegmentu.indexOf(Math.max.apply(null,poleSegmentu));
 
   indexOstatnichSkupin = [0, 1, 2, 3, 4, 5, 6];
   indexOstatnichSkupin.splice(indexOstatnichSkupin.indexOf(indexSkupiny), 1);
@@ -500,14 +509,10 @@ function vyhodnotTest() {
 
   var text = '<div class="vyhodnoceni">';
   text += '<h3>Podle modelu Medianu jste</h3>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[0] + '">' + serazeneSegmenty[0][0] + ': ' + nicenum(serazeneSegmenty[0][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[1] + '">' + serazeneSegmenty[1][0] + ': ' + nicenum(serazeneSegmenty[1][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[2] + '">' + serazeneSegmenty[2][0] + ': ' + nicenum(serazeneSegmenty[2][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[3] + '">' + serazeneSegmenty[3][0] + ': ' + nicenum(serazeneSegmenty[3][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[4] + '">' + serazeneSegmenty[4][0] + ': ' + nicenum(serazeneSegmenty[4][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[5] + '">' + serazeneSegmenty[5][0] + ': ' + nicenum(serazeneSegmenty[5][1]) + ' %</div>';
-  text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[6] + '">' + serazeneSegmenty[6][0] + ': ' + nicenum(serazeneSegmenty[6][1]) + ' %</div>';
-  text += '<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://dev.datarozhlas.cz/profil-volice/landing/' + serazeneSegmenty[0][0].toLowerCase().slice(0,4).replace("ě","e") + '.html"><button id="sdilitko">Sdílet</button></a>';
+  for(var i = 0; i < 7; i++) {
+    text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[i] + '">' + serazeneSegmenty[i][0] + ': ' + nicenum(serazeneSegmenty[i][1]) + ' %</div>';
+  }
+    text += '<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://dev.datarozhlas.cz/profil-volice/landing/' + serazeneSegmenty[0][0].toLowerCase().slice(0,4).replace("ě","e") + '.html"><button id="sdilitko">Sdílet</button></a>';
 
   document.getElementsByClassName("test")[0].innerHTML = text;
 

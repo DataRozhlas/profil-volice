@@ -14,12 +14,12 @@ options: [] #wide, noheader (, nopic)
 
 <div class="skupina">
 
-<div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/nevolic.png"/></div>
+<div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/nevolic.png"></div>
 <div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/materialista.png"></div>
-<div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/liberal.png"/></div>
-<div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/tekavy.png"/></div>
-<div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/obranar.png"/></div>
-<div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/pasivni.png"/></div>
+<div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/liberal.png"></div>
+<div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/tekavy.png"></div>
+<div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/obranar.png"></div>
+<div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/pasivni.png"></div>
 <div class="fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/krestan.png"></div>
 
 </div>
@@ -44,7 +44,7 @@ XX XXX XXXXXX XX XXX XXX XX XXX XXXXXX XX XXX XXX XX XXX XXXXXX XX XXX XXX
 
 <left><div class="profil">
 
-<div class="profil-fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/nevolic.png"/ style="width: 100px"></div>
+<div class="profil-fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/nevolic.png" style="width: 100px"></div>
 
 <div class="profil-list"><ul><li>50+ let</li><li>maximálně vyučen</li><li>velmi nízký příjem</li><li>prekarizovaný</li><li>paternalistický</li></ul></div>
 
@@ -60,7 +60,7 @@ XX XXX XXXXXX XX XXX XXX XX XXX XXXXXX XX XXX XXX XX XXX XXXXXX XX XXX XXX
 
 <right><div class="profil">
 
-<div class="profil-fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/materialista.png"/ style="width: 100px"></div>
+<div class="profil-fotka"><img src="https://dev.datarozhlas.cz/profil-volice/images/materialista.png" style="width: 100px"></div>
 
 <div class="profil-list"><ul><li>25–55 let</li><li>maturita nebo bakalářský titul</li><li>vysoký příjem</li><li>vedoucí pracovník</li><li>nevěřící</li></ul></div>
 
