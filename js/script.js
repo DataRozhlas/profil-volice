@@ -1,3 +1,4 @@
+
 // barvy seřazené podle segmentů
 
 var barvySkupiny = ['#EA614A', '#20649B', '#008836', '#6B96CA', '#A38456', '#A87A93', '#D19C95'];
@@ -12,9 +13,12 @@ var barvyCudliky = {
   "bar10": ["#003c30", "#1c5449", "#3f7369", "#5a8b83", "#7daaa2", "#b29c74", "#987e55", "#83663c", "#69481e", "#543005"]
 };
 
+
+
 // proměnné pro test
 
 var cisloOtazky = 1;
+
 var stamp = Date.now() + Math.floor(Math.random() * 10000);
 
 var otazky = [
@@ -52,6 +56,7 @@ var segmenty = [
   ["Politicky pasivní", 0.142],
   ["Skutečný křesťan", 0.142]
 ];
+
 
 
 // výsledek testu
@@ -175,86 +180,6 @@ var odpovediPozice = pozice.map(function(d) {
 
 
 
-// data pro grafy: ostatní otázky
-
-var verici = [
-  ["ano",22.3,28.1,98.5,30.1,2.2,16.5,10.1],
-  ["ne",75.1,70.4,0.5,68.6,96.9,81.6,89.0]
-];
-
-var polistopadovyVyvoj = [
-  ["určitě ano",5.0,1.7,5.8,9.7,5.7,2.8,4.8],
-  ["spíše ano",21.0,6.2,25.5,32.1,26.7,7.1,23.4],
-  ["ani ano ani ne",36.3,15.1,35.3,37.7,37.4,38.7,36.0],
-  ["spíše ne",20.2,30.2,20.9,14.8,18.6,22.3,21.0],
-  ["určitě ne",14.3,46.0,10.7,4.6,9.0,27.4,12.2],
-  ["neuvedeno",3.2,0.9,1.9,1.1,2.6,1.7,2.7]
-];
-
-var tvrdsiZakony = [
-  ["určitě ano",9.9,38.7,23.3,9.3,18.6,23.1,19.5],
-  ["spíše ano",19.4,28.9,31.0,15.7,36.0,30.5,23.8],
-  ["ani ano ani ne",38.1,22.2,29.7,30.0,31.2,27.3,36.8],
-  ["spíše ne",19.3,6.0,10.6,31.4,9.4,10.5,12.8],
-  ["určitě ne",10.2,2.7,2.4,12.8,2.3,5.3,2.6],
-  ["neuvedeno",3.2,1.5,3.0,0.7,2.4,3.4,4.5]
-];
-
-var clenstviNATO = [
-  ["určitě ano",10.3,5.6,12.1,31.1,10.2,3.6,9.3],
-  ["spíše ano",18.3,17.3,28.4,38.6,33.8,12.6,19.1],
-  ["ani ano ani ne",37.4,31.8,38.8,24.3,36.8,45.4,47.9],
-  ["spíše ne",21.5,17.4,12.8,3.9,12.9,18.2,15.5],
-  ["určitě ne",9.9,25.8,5.6,0.7,3.8,16.8,3.1],
-  ["neuvedeno",2.6,2.1,2.4,1.5,2.5,3.4,5.2]
-];
-
-var volbyOvlivni = [
-  ["určitě ano",6.4,15.9,17.4,19.9,16.2,4.6,10.1],
-  ["spíše ano",13.3,21.2,35.7,42.3,33.2,15.8,20.2],
-  ["ani ano ani ne",32.1,25.5,26.5,21.5,31.8,30.9,35.9],
-  ["spíše ne",26.8,21.9,12.2,11.4,11.7,24.7,18.0],
-  ["určitě ne",17.6,14.8,5.0,2.9,4.2,20.0,11.1],
-  ["neuvedeno",3.7,0.6,3.1,2.0,2.9,3.9,4.6]
-];
-
-var konzumniSpolecnost = [
-  ["určitě ano",13.6,49.6,26.9,26.8,19.2,30.2,15.5],
-  ["spíše ano",24.5,34.3,42.1,48.5,44.4,30.0,25.8],
-  ["ani ano ani ne",34.2,14.9,25.6,14.8,27.4,29.4,36.4],
-  ["spíše ne",17.9,1.0,2.5,7.5,4.2,4.9,12.1],
-  ["určitě ne",7.3,0.1,0.1,0.3,1.3,2.7,4.7],
-  ["neuvedeno",2.5,0.2,2.8,2.1,3.5,2.8,5.6]
-];
-
-var drogyJsouZlo = [
-  ["určitě ano",33.1,87.2,77.4,65.3,60.4,72.4,47.4],
-  ["spíše ano",16.2,7.8,7.6,19.4,17.6,6.3,15.9],
-  ["ani ano ani ne",23.2,2.7,8.9,9.6,13.6,11.8,18.9],
-  ["spíše ne",14.1,0.8,2.5,1.5,3.3,2.7,8.0],
-  ["určitě ne",9.9,0.7,1.2,2.2,1.4,3.5,5.5],
-  ["neuvedeno",3.5,0.8,2.3,2.1,3.6,3.1,4.3]
-];
-
-var clenstviEU = [
-  ["určitě ano",7.9,1.5,6.9,19.1,7.2,3.0,4.9],
-  ["spíše ano",13.9,5.5,18.3,24.2,21.1,7.4,14.7],
-  ["ani ano ani ne",31.0,18.3,38.4,31.7,40.1,31.5,41.1],
-  ["spíše ne",24.6,21.0,18.8,19.3,20.1,25.6,19.8],
-  ["určitě ne",19.2,52.5,14.8,4.5,8.9,29.2,12.5],
-  ["neuvedeno",3.5,1.2,2.8,1.2,2.6,3.3,7.0]
-];
-
-var uprchlikyVracet = [
-  ["určitě ano",48.3,79.9,41.2,19.4,55.9,70.1,45.0],
-  ["spíše ano",31.4,15.5,38.6,31.7,29.6,23.0,35.1],
-  ["spíše ne",15.3,3.1,16.3,31.7,11.9,4.1,14.6],
-  ["určitě ne",4.1,0.3,3.6,16.3,2.2,2.6,4.4],
-  ["neuvedeno",0.9,1.2,0.4,0.8,0.4,0.1,0.8]
-];
-
-
-
 // funkce pro kvíz
 
 function novaOtazka() {
@@ -364,7 +289,7 @@ function novaOtazka() {
         zmenVelikosti();
 
         // aktualizovali jsme panďuláky
-        var text = '<div id="pandulaci"><p style="color:#cc0000">▲ ▲ ▲ POSTUP AKTUALIZOVÁN ▲ ▲ ▲</p></div>';
+        var text = '<div id="pandulaci"><p style="color:#cc0000">AKTUALIZOVALI JSME PRŮBĚŽNÉ VÝSLEDKY A GRAFY V ČLÁNKU</p></div>';
         document.getElementById("pandulaci").innerHTML = text;
 
         // překresli grafy
@@ -388,6 +313,7 @@ function novaOtazka() {
 }
 
 
+
 function prepocitejIndexSkupiny() {
 
   var poleSegmentu = [];
@@ -404,6 +330,7 @@ function prepocitejIndexSkupiny() {
   return true;
 
 }
+
 
 
 function zmenVelikosti() {
@@ -460,6 +387,8 @@ function ozivCudliky() {
 
 }
 
+
+
 function zalogujVysledek() {
    $.ajax({
                 url: "https://r0e3ykepmd.execute-api.eu-central-1.amazonaws.com/prod",
@@ -470,6 +399,8 @@ function zalogujVysledek() {
                 dataType: "json"
   });
 }
+
+
 
 function vyhodnotTest() {
 
@@ -509,8 +440,10 @@ function vyhodnotTest() {
       });
     }
   });
-   
+
 }
+
+
 
 // grafy
 
@@ -521,7 +454,7 @@ Highcharts.chart('koho-voli', {
         type: 'column'
     },
     title: {
-        text: 'Koho volí vaše skupina?'
+        text: 'Koho volíte?'
     },
     xAxis: {
         categories: strany
@@ -1245,6 +1178,231 @@ Highcharts.chart('demo-pozice', {
     }]
 });
 
+Highcharts.chart('scatter-spokojenost', {
+    chart: {
+        type: 'scatter',
+        zoomType: 'xy'
+    },
+    title: {
+        text: 'Spokojenost s politickým vývojem × pravolevá identifikace'
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        title: {
+            text: '<— nespokojenější × spokojenější —>'
+        },
+        max: 0.5
+    },
+    yAxis: {
+        title: {
+            text: '<— pravicovější × levicovější —>'
+        }
+    },
+    tooltip: {
+        formatter: function() {
+            return '<b>' + this.series.name + '</b><br/>Důvěra ve vládu, spokojenost s politickou situací: ' + this.x + '<br/>Sebeidentifikace na ose pravice × levice: ' + this.y;
+        }
+    },
+    exporting: {
+        enabled: false
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        scatter: {
+            marker: {
+                radius: 5,
+                states: {
+                    hover: {
+                        enabled: true,
+                        lineColor: 'rgb(0,0,0)'
+                    }
+                }
+            },
+            states: {
+                hover: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Levicový (ne)volič',
+        color: barvySkupiny[0],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[-0.4, 0.5]]
+
+    }, {
+        name: 'Materialista',
+        color: barvySkupiny[1],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[0.4, -0.2]]
+    }, {
+        name: 'Městský liberál',
+        color: barvySkupiny[2],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[0.3, -0.3]]
+    }, {
+        name: 'Mladý těkavý',
+        color: barvySkupiny[3],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[0, 0.1]]
+    }, {
+        name: 'Obranář',
+        color: barvySkupiny[4],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[-0.8, 0.1]]
+    }, {
+        name: 'Politicky pasivní',
+        color: barvySkupiny[5],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[0.2, 0]]
+    }, {
+        name: 'Skutečný křesťan',
+        color: barvySkupiny[6],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[0.3, 0.1]]
+    }]
+});
+
+Highcharts.chart('scatter-zakony', {
+    chart: {
+        type: 'scatter',
+        zoomType: 'xy'
+    },
+    title: {
+        text: 'Autoritativnost × odmítání uprchlíků'
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        title: {
+            text: '<— proti tvrdším zákonům × pro tvrdší zákony —>'
+        },
+        max: 4.1
+    },
+    yAxis: {
+        title: {
+            text: '<—  pro uprchlíky × proti uprchlíkům —>'
+        }
+    },
+    tooltip: {
+        formatter: function() {
+            return '<b>' + this.series.name + '</b><br/>Úpadek společnosti můžou zastavit tvrdší zákony: ' + this.x + '<br/>Odmítání uprchlíků: ' + this.y;
+        }
+    },
+    exporting: {
+        enabled: false
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        scatter: {
+            marker: {
+                radius: 5,
+                states: {
+                    hover: {
+                        enabled: true,
+                        lineColor: 'rgb(0,0,0)'
+                    }
+                }
+            },
+            states: {
+                hover: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Levicový (ne)volič',
+        color: barvySkupiny[0],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[3.6, 0.3]]
+    }, {
+        name: 'Materialista',
+        color: barvySkupiny[1],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[3.6, 0.1]]
+    }, {
+        name: 'Městský liberál',
+        color: barvySkupiny[2],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[2.8, -0.8]]
+    }, {
+        name: 'Mladý těkavý',
+        color: barvySkupiny[3],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[3.0, -0.1]]
+    }, {
+        name: 'Obranář',
+        color: barvySkupiny[4],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[4.0, 0.7]]
+    }, {
+        name: 'Politicky pasivní',
+        color: barvySkupiny[5],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[3.5, -0.3]]
+    }, {
+        name: 'Skutečný křesťan',
+        color: barvySkupiny[6],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[3.6, -0.2]]
+    }]
+});
+
   return true;
 
 }
@@ -1252,6 +1410,7 @@ Highcharts.chart('demo-pozice', {
 
 
 // inicializace kvízu
+
 $(function() {
   novaOtazka();
   ozivCudliky();
