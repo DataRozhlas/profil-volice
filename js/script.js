@@ -291,12 +291,12 @@ function novaOtazka() {
 
   // čudlíky s odpověďmi
   for (var i = 2; i < otazka.length; i++) {
-    text += '<button class="test-button" type="button" disabled="disabled" value="' + parseInt(i-1) + '" style="opacity:0.3; background-color:' + barvy[i-2] + '">' + otazka[i] + '</button>';
+    text += '<button class="test-button" type="button" disabled value="' + parseInt(i-1) + '" style="opacity:0.3; background-color:' + barvy[i-2] + '">' + otazka[i] + '</button>';
   }
 
   // vracecí čudlík
   if (cisloOtazky > 1) {
-    text += '<button class="test-button" type="button" id="zpet" disabled="disabled" style="opacity:0.3; background-color:white; color:#999999; border: 1px solid #999999;">ZPĚT</button>';
+    text += '<button class="test-button" type="button" id="zpet" disabled style="opacity:0.3; background-color:white; color:#999999; border: 1px solid #999999;">ZPĚT</button>';
   }
 
   text += '</div>';
@@ -477,7 +477,7 @@ function nicenum(num) {
 
 function ozivCudliky() {
 
-  $(".test-button").attr("disabled",false);
+  $(".test-button").removeAttr("disabled");
   $('.test-button').animate({'opacity':'1'}, 1000);
 
 }
@@ -504,15 +504,16 @@ function vyhodnotTest() {
   var serazeneSegmenty = segmenty.sort(function(a,b){return b[1] - a[1]});
 
   // vygenerování vyhodnocení
-  var sdileciURL = "https://www.facebook.com/sharer/sharer.php?u=https://www.irozhlas.cz/node/7209152"
+  var iframeKodPre = '<iframe id="initSdilitko" src="https://www.facebook.com/plugins/share_button.php?href='
+  var iframeKodPost = '&layout=button&size=large&mobile_iframe=true&appId=1956454367976014&width=72&height=28" width="72" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>'
+  var sdileciURL = "https://www.irozhlas.cz/node/7209152"
   var text = '<div class="vyhodnoceni">';
   text += '<h3>Podle modelu Medianu jste</h3>';
   for(var i = 0; i < 7; i++) {
     text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[i] + '">' + serazeneSegmenty[i][0] + ': ' + nicenum(serazeneSegmenty[i][1]) + ' %</div>';
   }
-    text += '<a id="sdilitkoOdkaz" href="' + sdileciURL + '" target="_blank"><button id="sdilitko">Sdílet</button></a>';
-
-  document.getElementsByClassName("test")[0].innerHTML = text;
+    text += iframeKodPre + sdileciURL + iframeKodPost
+  $(".test").html(text);
 
   // sdílítko - defaultní URL článku se dynamicky nahradí vygenerovanou
   $.ajax({
@@ -521,7 +522,7 @@ function vyhodnotTest() {
     crossDomain: !0,
     dataType: "json",
     success: function (response) {
-      sdileciURL = "https://www.facebook.com/sharer/sharer.php?u=https://dev.datarozhlas.cz/profil-volice/share/" + response + ".html";
+      sdileciURL = "https://dev.datarozhlas.cz/profil-volice/share/" + response + ".html";
       $("#sdilitkoOdkaz").attr("href", sdileciURL);
     }
   });
