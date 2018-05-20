@@ -503,33 +503,30 @@ function vyhodnotTest() {
   // seřazení výsledků; ve výpisu pak nicenum() pro pěkná procenta
   var serazeneSegmenty = segmenty.sort(function(a,b){return b[1] - a[1]});
 
+  // vygenerování vyhodnocení
+  var sdileciURL = "https://www.facebook.com/sharer/sharer.php?u=https://www.irozhlas.cz/node/7209152"
   var text = '<div class="vyhodnoceni">';
   text += '<h3>Podle modelu Medianu jste</h3>';
   for(var i = 0; i < 7; i++) {
     text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[i] + '">' + serazeneSegmenty[i][0] + ': ' + nicenum(serazeneSegmenty[i][1]) + ' %</div>';
   }
-    text += '<button id="sdilitko">Sdílet</button>';
+    text += '<a id="sdilitkoOdkaz" href="' + sdileciURL + '" target="_blank"><button id="sdilitko">Sdílet</button></a>';
 
   document.getElementsByClassName("test")[0].innerHTML = text;
 
-  $("#sdilitko").click(function() {
-    sdilej(sdileciVysledky);
+  // sdílítko - defaultní URL článku se dynamicky nahradí vygenerovanou
+  $.ajax({
+    url: "https://s0zqrf2j0b.execute-api.eu-central-1.amazonaws.com/prod?arr=[" + sdileciVysledky.toString() + "]",
+    type: "GET",
+    crossDomain: !0,
+    dataType: "json",
+    success: function (response) {
+      sdileciURL = "https://www.facebook.com/sharer/sharer.php?u=https://dev.datarozhlas.cz/profil-volice/share/" + response + ".html";
+      $("#sdilitkoOdkaz").attr("href", sdileciURL);
+    }
   });
    
-  return true;
-
 }
-
-function sdilej(vysledek) {
-   $.ajax({
-                url: "https://s0zqrf2j0b.execute-api.eu-central-1.amazonaws.com/prod?arr=[" + vysledek.toString() + "]",
-                type: "GET",
-                crossDomain: !0,
-                dataType: "json",
-                success: function (response) {console.log(response);}
-  });
-}
-
 
 // grafy
 
