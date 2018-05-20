@@ -85,6 +85,17 @@ hr {
     transition:  height 1s, width 1s;
 }
 
+#prokop {
+    width: 200px; 
+    padding: 10px;
+}
+
+@media screen and (max-width: 700px) {
+   #prokop {
+       width: 129px;
+   }
+}
+
 .chart-div {
     max-width: 100%;
     overflow: hidden;
@@ -111,6 +122,12 @@ hr {
 .profil-fotka {
 	width: 100px;
 	padding-bottom: 10px;
+}
+
+@media screen and (min-width: 800px) {
+   .profil {
+       display: inline-flex;
+   }
 }
 
 .profil-list {
