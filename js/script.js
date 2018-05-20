@@ -503,17 +503,24 @@ function vyhodnotTest() {
   // seřazení výsledků; ve výpisu pak nicenum() pro pěkná procenta
   var serazeneSegmenty = segmenty.sort(function(a,b){return b[1] - a[1]});
 
+  
+  //onclick="window.open(this.href, 'mywin',
+  //'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+
   // vygenerování vyhodnocení
-  var iframeKodPre = '<iframe id="initSdilitko" src="https://www.facebook.com/plugins/share_button.php?href='
-  var iframeKodPost = '&layout=button&size=large&mobile_iframe=true&appId=1956454367976014&width=72&height=28" width="72" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>'
-  var sdileciURL = "https://www.irozhlas.cz/node/7209152"
+  var sdileciURL = "https://www.facebook.com/sharer/sharer.php?u=https://www.irozhlas.cz/node/7209152"
   var text = '<div class="vyhodnoceni">';
   text += '<h3>Podle modelu Medianu jste</h3>';
   for(var i = 0; i < 7; i++) {
     text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[i] + '">' + serazeneSegmenty[i][0] + ': ' + nicenum(serazeneSegmenty[i][1]) + ' %</div>';
   }
-    text += iframeKodPre + sdileciURL + iframeKodPost
+  text += '<button id="sdilitko">Sdílet</button>';
+
   $(".test").html(text);
+
+  $("#sdilitko").click(function() {
+    window.open(sdileciURL,'test','left=20,top=20,width=550,height=650,toolbar=0,resizable=0,menubar=0');
+  });
 
   // sdílítko - defaultní URL článku se dynamicky nahradí vygenerovanou
   $.ajax({
@@ -522,8 +529,10 @@ function vyhodnotTest() {
     crossDomain: !0,
     dataType: "json",
     success: function (response) {
-      sdileciURL = "https://dev.datarozhlas.cz/profil-volice/share/" + response + ".html";
-      $("#sdilitkoOdkaz").attr("href", sdileciURL);
+      sdileciURL = "https://www.facebook.com/sharer/sharer.php?u=https://dev.datarozhlas.cz/profil-volice/share/" + response + ".html";
+      $("#sdilitko").click(function() {
+        window.open(sdileciURL,'test','left=20,top=20,width=550,height=650,toolbar=0,resizable=0,menubar=0');
+      });
     }
   });
    
