@@ -1,7 +1,7 @@
 title: "„Nejsou jen liberálové a autoritáři, to je nebezpečná iluze,“ říká Dan Prokop. Test prozradí, koho volíte"
 perex: "Data ze šetření agentury Median identifikují sedm typů voličů: vedle obou zmíněných třeba materialistu nebo křesťana. Dvacet otázek vám prozradí, do které skupiny se nejspíš řadíte vy."
 published: "21. května 2018"
-coverimg: https://www.irozhlas.cz/sites/default/files/styles/zpravy_snowfall/public/uploader/zzz_180520-200208_jab.png?itok=SqAuE_WI
+coverimg: https://dev.datarozhlas.cz/profil-volice/images/title.png
 coverimg_note: "Foto <a href='#'>ČTK</a>"
 styles: []
 libraries: [jquery, highcharts]
