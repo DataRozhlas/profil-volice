@@ -2,13 +2,15 @@
 
 var barvySkupiny = ['#EA614A', '#20649B', '#008836', '#6B96CA', '#A38456', '#A87A93', '#D19C95'];
 
-var barvyCudliky2 = ["#018571", "#a6611a"];
-var barvyCudliky4 = ["#018571", "#80cdc1", "#dfc27d", "#a6611a"];
-var barvyCudliky5 = ["#018571", "#80cdc1", "#aaaaaa", "#dfc27d", "#a6611a"];
-var barvyCudliky6 = ["#01665e", "#42918a", "#82bcb6", "#c19c66", "#a67638", "#8c510a"];
-var barvyCudliky7 = ["#01665e", "#42918a", "#82bcb6", "#aaaaaa", "#c19c66", "#a67638", "#8c510a"];
-var barvyCudliky9 = ["#8c510a", "#9d6a29", "#af8347", "#c09c66", "#aaaaaa", "#75b3ad", "#4e9a93", "#288078", "#01665e"];
-var barvyCudliky10 = ["#003c30", "#1c5449", "#3f7369", "#5a8b83", "#7daaa2", "#b29c74", "#987e55", "#83663c", "#69481e", "#543005"];
+var barvyCudliky = {
+  "bar2": ["#018571", "#a6611a"],
+  "bar4": ["#018571", "#80cdc1", "#dfc27d", "#a6611a"],
+  "bar5": ["#018571", "#80cdc1", "#aaaaaa", "#dfc27d", "#a6611a"],
+  "bar6": ["#01665e", "#42918a", "#82bcb6", "#c19c66", "#a67638", "#8c510a"],
+  "bar7": ["#01665e", "#42918a", "#82bcb6", "#aaaaaa", "#c19c66", "#a67638", "#8c510a"],
+  "bar9": ["#8c510a", "#9d6a29", "#af8347", "#c09c66", "#aaaaaa", "#75b3ad", "#4e9a93", "#288078", "#01665e"],
+  "bar10": ["#003c30", "#1c5449", "#3f7369", "#5a8b83", "#7daaa2", "#b29c74", "#987e55", "#83663c", "#69481e", "#543005"]
+}
 
 // proměnné pro test
 
@@ -264,22 +266,7 @@ function novaOtazka() {
 
   var progres = cisloOtazky / 20 * 100 + '%';
 
-  var barvy = [];
-  if (otazka[1] == 'bar2') {
-    barvy = barvyCudliky2;
-  } else if (otazka[1] == 'bar4') {
-    barvy = barvyCudliky4;
-  } else if (otazka[1] == 'bar5') {
-    barvy = barvyCudliky5;
-  } else if (otazka[1] == 'bar6') {
-    barvy = barvyCudliky6;
-  } else if (otazka[1] == 'bar7') {
-    barvy = barvyCudliky7;
-  } else if (otazka[1] == 'bar9') {
-    barvy = barvyCudliky9;
-  } else if (otazka[1] == 'bar10') {
-    barvy = barvyCudliky10;
-  }
+  var barvy = barvyCudliky[otazka[1]];
 
   // hlavička otázky
   var text = '<div class="otazka">';
@@ -503,16 +490,12 @@ function vyhodnotTest() {
   // seřazení výsledků; ve výpisu pak nicenum() pro pěkná procenta
   var serazeneSegmenty = segmenty.sort(function(a,b){return b[1] - a[1]});
 
-  
-  //onclick="window.open(this.href, 'mywin',
-  //'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
-
   // vygenerování vyhodnocení
   var sdileciURL = "https://www.facebook.com/sharer/sharer.php?u=https://www.irozhlas.cz/node/7209152"
   var text = '<div class="vyhodnoceni">';
   text += '<h3>Podle modelu Medianu jste</h3>';
   for(var i = 0; i < 7; i++) {
-    text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky7[i] + '">' + serazeneSegmenty[i][0] + ': ' + nicenum(serazeneSegmenty[i][1]) + ' %</div>';
+    text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky.bar7[i] + '">' + serazeneSegmenty[i][0] + ': ' + nicenum(serazeneSegmenty[i][1]) + ' %</div>';
   }
   text += '<button id="sdilitko">Sdílet</button>';
 

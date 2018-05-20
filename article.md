@@ -4,7 +4,7 @@ published: "15. května 2018"
 coverimg: https://interaktivni.rozhlas.cz/brexit/media/cover.jpg
 coverimg_note: "Foto <a href='#'>ČTK</a>"
 styles: []
-libraries: [highcharts]
+libraries: [jquery, highcharts]
 options: [] #wide, noheader (, nopic)
 ---
 <div class="test-big">
@@ -82,19 +82,18 @@ XX XXX XXXXXX XX XXX XXX XX XXX XXXXXX XX XXX XXX XX XXX XXXXXX XX XXX XXX
 XX XXX XXXXXX XX XXX XXX XX XXX XXXXXX XX XXX XXX XX XXX XXXXXX XX XXX XXX
 
 ## Demografie
-
 <div style="max-width: 100%; overflow: hidden; display: block;">
-    <div class="chart small-legend" id="demo-pohlavi"></div>
+    <div class="small-legend" id="demo-pohlavi"></div>
 </div>
 
 <div style="max-width: 100%; overflow: hidden; display: block;">
-    <div class="chart small" id="demo-vek"></div>
-    <div class="chart small" id="demo-vzdelani"></div>
+    <div class="small" id="demo-vek"></div>
+    <div class="small" id="demo-vzdelani"></div>
 </div>
 
 <div style="max-width: 100%; overflow: hidden; display: block;">
-    <div class="chart small" id="demo-prijem"></div>
-    <div class="chart small" id="demo-pozice"></div>
+    <div class="small" id="demo-prijem"></div>
+    <div class="small" id="demo-pozice"></div>
 </div>
 
 ## Ostatní otázky
