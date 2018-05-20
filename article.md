@@ -2,7 +2,7 @@ title: "„Nejsou jen liberálové a autoritáři, to je nebezpečná iluze,“ 
 perex: "Data ze šetření agentury Median identifikují sedm typů voličů: vedle obou zmíněných třeba materialistu nebo křesťana. Dvacet otázek vám prozradí, do které skupiny se nejspíš řadíte vy."
 published: "21. května 2018"
 coverimg: https://dev.datarozhlas.cz/profil-volice/images/title.png
-coverimg_note: "Foto <a href='#'>ČTK</a>"
+coverimg_note: "Foto Median"
 styles: []
 libraries: [jquery, highcharts]
 options: [] #wide, noheader (, nopic)

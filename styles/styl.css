@@ -108,12 +108,9 @@ hr {
     float: left;
 }
 
-.profil {
-	display: inline-flex;
-}
-
 .profil-fotka {
 	width: 100px;
+	padding-bottom: 10px;
 }
 
 .profil-list {
