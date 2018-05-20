@@ -28,13 +28,25 @@ options: [] #wide, noheader (, nopic)
 
 </div>
 
-## Politické chování vaší skupiny
+_Otázky vycházejí z modelu společnosti Median nad daty z výzkumu MML-TGI, který probírá od roku 1996 a ptá se 15 tisíc respondentů ročně._
+
+_Během vyplňování testu se aktualizují grafy tak, aby zobrazovaly skupinu, ke které podle otázek patříte (barevný sloupec), a průměr všech respondentů (bílý sloupec). Kliknutím na název jiné skupiny v legendě si můžete zobrazit její výsledky._
+
+_Grafy vždy zobrazují podíl respondentů s danou odpovědí, výjimkou je následující graf – ten ukazuje šanci, že budete volit danou stranu, kdy index 100 znamená průměrného voliče a vyšší index vyšší pravděpodobnost volby. Zdrojem všech dat v článku je Median._
+
+### Politické chování vaší skupiny
 
 <div id="koho-voli" style="max-width: 100%"></div>
 
 <div id="volebni-ucast" style="max-width: 100%"></div>
 
-<right><strong>Daniel Prokop</strong> je sociolog a ředitel výzkumu společnosti MEDIAN. Působí také na FSV UK.</right>
+<hr>
+
+<right><strong>Daniel Prokop</strong> je sociolog a ředitel výzkumu společnosti MEDIAN. Působí také na FSV UK.
+
+<img src="https://dev.datarozhlas.cz/profil-volice/images/prokop.jpg" style="width: 200px; padding: 10px">
+
+</right>
 
 <strong>Test v článku vychází z modelu, který jste vytvořili v Medianu. Co umí?</strong>
 
@@ -64,7 +76,7 @@ Přesně tak, je to dvacet otázek, které dokáží předpovědět segment nejl
 
 Ještě je tu druhý typ nepřesnosti, model pracuje s ideálními typy a nemusíte spadat čistě do jednoho segmentu, můžete se pohybovat mezi dvěma segmenty a jednomu být jen blíž. Proto jsme taky do modelu přidali procenta a odhadujeme, do jaké míry jste v které skupině.
 
-## Demografie vaší skupiny
+### Demografie vaší skupiny
 
 <div class="chart-div">
     <div class="small-legend" id="demo-pohlavi"></div>
@@ -96,7 +108,7 @@ Dominance některé skupiny znamená, že jste hluboce zanořený ve svých post
 
 To je jedno vysvětlení. Mohou to být lidé, kteří chtějí, aby ten stát by měl pomáhat jen lidem jako oni – nikoli „nepřizpůsobivým“ pod nimi a „privilegovaným“ nad nimi. Ale hlavně si myslím, že v tom zdánlivém rozporu je vlastně obsažená logika ANO a Babiše. Když je stát řízený dobře, všichni se budou mít dobře. Ale kdo se fláká, ten by se mezi nimi měl mít nejhůř. To je přece Babišův apel na efektivní stát, který tím mimochodem ruší levopravou logiku. Nabízí jistoty a zásluhovost zároveň. Tyhle postoje jsou mimochodem specifické pro typ _materialista_, což je nejčastější volič ANO.
 
-## XXX
+## Liberálům chybí velký příběh
 
 <strong>Z těch 150 otázek, které vstupují do modelu, se ukázaly jako klíčové otázky na spokojenost s polistopadovou politikou, angažovanost a otázky okolo „slušného chování“. Ekonomická a sociální témata se mezi ně nedostala. Chápu správně, že českou společnost teď nezajímají?</strong>
 
@@ -114,7 +126,7 @@ Vlastně moc nechápu, proč tradiční strany dobrovolně opustily ekonomickou 
 
 <strong>Pokud jsou to změny, způsobené vstupem ANO a SPD do politiky, jsou dočasné?</strong>
 
-Spíš dlouhodobé. Mají dva nebo tři důvody, první je ekonomická konjunktura. Když je stát v lehkém schodku nebo přebytku, tak se voličům hůř prodávají pravicová řešení jako placené školství nebo zdravotnictví, protože vlastně ztrácejí legitimitu. Stejně tak levicový argument, že by se měly navýšit příjmy státu progresivní daní. Takže vlastně levopravé soutěžení o zdroje – jestli šetřit na výdajích, nebo naopak zvyšovat příjmy – postrádá naléhavost. Na rozdíl od argumentu, že zdrojů je dost, jenom je stačí nerozkrádat, případně zdůrazňování kulturních rozdílů.
+Myslím, že spíš dlouhodobé, příčin je víc a každá má jiné důsledky. První je ekonomická konjunktura. Když je stát v lehkém schodku nebo přebytku, tak se voličům hůř prodávají pravicová řešení jako placené školství nebo zdravotnictví, protože vlastně ztrácejí legitimitu. Stejně tak levicový argument, že by se měly navýšit příjmy státu progresivní daní. Takže vlastně levopravé soutěžení o zdroje – jestli šetřit na výdajích, nebo naopak zvyšovat příjmy – postrádá naléhavost. Na rozdíl od argumentu, že zdrojů je dost, jenom je stačí nerozkrádat, případně zdůrazňování kulturních rozdílů.
 
 <strong>Jenže tradiční strany se pořád – a možná o to hlasitěji – drží dělení na levici a pravici.</strong>
 
@@ -125,6 +137,8 @@ To ano, jenže když Zimola řekne „my jsme levice“, má problém přidat k 
 Role pravolevého štěpení může myslím oscilovat závislosti na té konjuktuře, která ruší souboj o zdroje, a tom, jak se periodicky vyčerpávají nová hnutí. Ale některé další změny jsou dlouhodobé. Vizuální a dnes nová média nastolují témata rychle a emotivně, stejně rychle vzápětí zmizí. Politolog Sartori to nazývá _videopolitika_. Často jde o zahraniční politiku nebo globální témata spojená s kulturními postoji. Politici na to musejí reagovat a mají menší prostor pro dlouhodobější nastolování socioekonomických témat, protože nemají tuhle rychlost a obrazovou apelativnost.
 
 Politická soutěž také reaguje na to, že se společnost fragmentuje. Kde Marx viděl dvě, později tři třídy, [našli Britové před pár lety sedm tříd](http://journals.sagepub.com/doi/abs/10.1177/0038038513481128), které se liší kulturním kapitálem, sociálními vazbami a samozřejmě ekonomickým postavením. Odlivem lidí z výrobního sektoru služeb zmizel homogenní kus elektorátu s podobnými zájmy. Dnes jsou práce a s nimi spojené společenské pozice a životní styly diverznější. Pro stranu je pak těžké oslovit voliče jednotnou politikou: třeba sociální demokracie by měla oslovit od matek samoživitelek, přes nezaměstnané, nízkopříjmové pracující, důchodce, lidi s hendikepem, kteří potřebují sociální služby, až po intelektuální levičáky. Udělat takovouto koalici se povede jen s charismatickým lídrem.
+
+### Hodnotové orientace segmentů
 
 <div id="scatter-spokojenost" style="max-width: 100%; height: 500px"></div>
 
@@ -154,9 +168,9 @@ Druhá varianta je sjednotit liberální voliče ve volbě proti někomu. Jak se
 
 <strong>Není to vlastně v pořádku? Liberálové by měli umět tvořit koalice, překonávat rozpory…</strong>
 
-Teoreticky ano, ale ne vždy se to povede. Liberální části společnosti myslím trochu chybí velký příběh. Velké příběhy 20. století – socialistický, volno-tržní i příběh pokroku společnosti díky vědě – se trochu vyčerpaly. A autoritáři nabízejí nový staronové téma návratu ke starým pořádkům, ochrany před údajným úpadkem společnosti.
+Teoreticky ano, ale ne vždy se to povede. Liberální části společnosti myslím trochu chybí velký příběh. Velké příběhy 20. století – socialistický, volno-tržní i příběh pokroku společnosti díky vědě – se trochu vyčerpaly. A autoritáři nabízejí staronové téma návratu ke starým pořádkům, ochrany před údajným úpadkem společnosti.
 
-## XXX
+## Souboj dvou segmentů je mýtus, „zbytek společnosti“ není jednotný
 
 <strong>V modelu vyšlo, že nejsilnější segment jsou _materialisté_, těch je v populaci asi dvacet procent. Nejslabší _liberálové_, necelých deset.</strong>
 
@@ -225,3 +239,5 @@ Na nedávném křtu knížky _Proč vyhrál Zeman_ jeden autor, mimochodem znám
 Naše segmentace je dobrá v tom, že ukazuje, že společnost nemá jen nějaké dva póly. Možná, když se o ní přestaneme takto bavit a přiznáme si velkou diverzitu postojů, tak k té polarizaci i přestane směřovat.
 
 Rozložení společnosti do několika segmentů taky napovídá, proč je pro liberály nebo autoritáře těžké vyhrát jen intenzivním prosazováním svých hodnot. Třeba Zeman tohle ví a jeho kampaň byla směřovaná na více segmentů. Obranáře si získal odsuzováním kavárny a migrantů. _Materialisty_ osloví tím, že zdůrazňuje politickou zkušenost a vládnutí. Část politicky pasivních, kteří se nezajímají o hard policy témata, mobilizoval tématy jako je kouření v hospodách či držení zbraní a jazykem bonmotů.
+
+<wide><div id="stranicke-kompozice" style="max-width: 100%; height: 600px"></div></wide>

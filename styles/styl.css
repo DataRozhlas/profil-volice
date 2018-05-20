@@ -87,7 +87,7 @@ hr {
 
 .chart-div {
     max-width: 100%;
-    overflow: hidden; 
+    overflow: hidden;
     display: block;
 }
 
@@ -151,6 +151,6 @@ hr {
     font-size: 18px;
     line-height: 1;
     color: #fff;
-    background-color: darkgreen;
+    background-color: #3B5998;
     font-weight: bold;
 }

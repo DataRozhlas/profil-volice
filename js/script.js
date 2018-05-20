@@ -9,7 +9,7 @@ var barvyCudliky = {
   "bar5": ["#018571", "#80cdc1", "#aaaaaa", "#dfc27d", "#a6611a"],
   "bar6": ["#01665e", "#42918a", "#82bcb6", "#c19c66", "#a67638", "#8c510a"],
   "bar7": ["#01665e", "#42918a", "#82bcb6", "#aaaaaa", "#c19c66", "#a67638", "#8c510a"],
-  "bar9": ["#8c510a", "#9d6a29", "#af8347", "#c09c66", "#aaaaaa", "#75b3ad", "#4e9a93", "#288078", "#01665e"],
+  "bar9": ["#01665e", "#288078", "#4e9a93", "#75b3ad", "#aaaaaa", "#c09c66", "#af8347", "#9d6a29", "#8c510a"],
   "bar10": ["#003c30", "#1c5449", "#3f7369", "#5a8b83", "#7daaa2", "#b29c74", "#987e55", "#83663c", "#69481e", "#543005"]
 };
 
@@ -101,15 +101,19 @@ var odpovediUcast = volebniUcast.map(function(d) {
     });
 
 var stranickePreference = [
-  ["ČSSD",8.7,18.7,20.2,3.7,31.6,17.0,0.0],
-  ["ANO",6.0,22.5,19.5,4.5,42.4,5.1,0.0],
-  ["KSČM",3.9,42.7,14.8,0.0,16.7,21.9,0.0],
-  ["TOP 09",9.8,5.1,15.7,29.6,29.4,8.5,1.9],
-  ["ODS",5.7,9.1,17.5,30.2,35.2,0.5,1.8],
-  ["KDU-ČSL",2.7,2.4,58.4,22.6,9.8,4.1,0.0],
-  ["Piráti",21.6,10.4,9.2,37.3,10.3,5.4,5.7],
-  ["SPD",6.6,49.1,13.9,1.9,21.9,6.5,0.0]
+  ["ČSSD",17.0,31.6,3.7,8.7,18.7,0,20.2],
+  ["ANO",5.1,42.4,4.5,6.0,22.5,0,19.5],
+  ["KSČM",21.9,16.7,0,3.9,42.7,0,14.8],
+  ["TOP 09",8.5,29.4,29.6,9.8,5.1,1.9,15.7],
+  ["ODS",0.5,35.2,30.2,5.7,9.1,1.8,17.5],
+  ["KDU-ČSL",4.1,9.8,22.6,2.7,2.4,0,58.4],
+  ["Piráti",5.4,10.3,37.3,21.6,10.4,5.7,9.2],
+  ["SPD",6.5,21.9,1.9,6.6,49.1,0,13.9]
 ];
+
+var stranickePreferenceNames = stranickePreference.map(function(d) {
+        return d[0];
+    });
 
 
 
@@ -1193,12 +1197,15 @@ Highcharts.chart('scatter-spokojenost', {
         title: {
             text: '<— nespokojenější × spokojenější —>'
         },
-        max: 0.5
+        min: -0.8,
+        max: 0.8
     },
     yAxis: {
         title: {
             text: '<— pravicovější × levicovější —>'
-        }
+        },
+        min: -0.6,
+        max: 0.6
     },
     tooltip: {
         formatter: function() {
@@ -1214,7 +1221,6 @@ Highcharts.chart('scatter-spokojenost', {
     plotOptions: {
         scatter: {
             marker: {
-                radius: 5,
                 states: {
                     hover: {
                         enabled: true,
@@ -1400,6 +1406,199 @@ Highcharts.chart('scatter-zakony', {
             radius: 20
         },
         data: [[3.6, -0.2]]
+    }]
+});
+
+Highcharts.chart('scatter-buh', {
+    chart: {
+        type: 'scatter',
+        zoomType: 'xy'
+    },
+    title: {
+        text: 'Víra v Boha × členství v EU'
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        title: {
+            text: '<— méně věřící × více věřící —>'
+        },
+        min: 0.9,
+        max: 2.1
+    },
+    yAxis: {
+        title: {
+            text: '<— méně příležitostí × více příležitostí —>'
+        }
+    },
+    tooltip: {
+        formatter: function() {
+            return '<b>' + this.series.name + '</b><br/>Považuji sám sebe za věřícího člověka: ' + this.x + '<br/>Členství v EU mi přináší nové příležitosti: ' + this.y;
+        }
+    },
+    exporting: {
+        enabled: false
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        scatter: {
+            marker: {
+                states: {
+                    hover: {
+                        enabled: true,
+                        lineColor: 'rgb(0,0,0)'
+                    }
+                }
+            },
+            states: {
+                hover: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Levicový (ne)volič',
+        color: barvySkupiny[0],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[1.2, 2.3]]
+
+    }, {
+        name: 'Materialista',
+        color: barvySkupiny[1],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[1.0, 3.0]]
+    }, {
+        name: 'Městský liberál',
+        color: barvySkupiny[2],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[1.3, 3.3]]
+    }, {
+        name: 'Mladý těkavý',
+        color: barvySkupiny[3],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[1.2, 2.7]]
+    }, {
+        name: 'Obranář',
+        color: barvySkupiny[4],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[1.3, 1.8]]
+    }, {
+        name: 'Politicky pasivní',
+        color: barvySkupiny[5],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[1.1, 2.8]]
+    }, {
+        name: 'Skutečný křesťan',
+        color: barvySkupiny[6],
+        marker: {
+            symbol: 'circle',
+            radius: 20
+        },
+        data: [[2.0, 2.8]]
+    }]
+});
+
+Highcharts.chart('stranicke-kompozice', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Složení elektorátu stran'
+    },
+    xAxis: {
+        categories: stranickePreferenceNames
+    },
+    yAxis: {
+        min: 0,
+        max: 100,
+        title: {
+            text: 'podíl voličů'
+        },
+        labels: {
+            format: '{value} %'
+        }
+    },
+    tooltip: {
+        pointFormat: '<span style="color:{series.color}">{series.name}</span>: {point.y}' + ' %' + '<br/>',
+        shared: true
+    },
+    exporting: {
+        enabled: false
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        column: {
+            stacking: 'stacked'
+        }
+    },
+    series: [{
+        name: segmenty[0][0],
+        data: stranickePreference.map(function(d) {
+            return d[1];
+        }),
+        color: barvySkupiny[0]
+    }, {
+        name: segmenty[1][0],
+        data: stranickePreference.map(function(d) {
+            return d[2];
+        }),
+        color: barvySkupiny[1]
+    }, {
+        name: segmenty[2][0],
+        data: stranickePreference.map(function(d) {
+            return d[3];
+        }),
+        color: barvySkupiny[2]
+    }, {
+        name: segmenty[3][0],
+        data: stranickePreference.map(function(d) {
+            return d[4];
+        }),
+        color: barvySkupiny[3]
+    }, {
+        name: segmenty[4][0],
+        data: stranickePreference.map(function(d) {
+            return d[5];
+        }),
+        color: barvySkupiny[4]
+    }, {
+        name: segmenty[5][0],
+        data: stranickePreference.map(function(d) {
+            return d[6];
+        }),
+        color: barvySkupiny[5]
+    }, {
+        name: segmenty[6][0],
+        data: stranickePreference.map(function(d) {
+            return d[7];
+        }),
+        color: barvySkupiny[6]
     }]
 });
 
