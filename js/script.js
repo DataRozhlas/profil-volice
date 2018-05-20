@@ -10,11 +10,11 @@ var barvyCudliky = {
   "bar7": ["#01665e", "#42918a", "#82bcb6", "#aaaaaa", "#c19c66", "#a67638", "#8c510a"],
   "bar9": ["#8c510a", "#9d6a29", "#af8347", "#c09c66", "#aaaaaa", "#75b3ad", "#4e9a93", "#288078", "#01665e"],
   "bar10": ["#003c30", "#1c5449", "#3f7369", "#5a8b83", "#7daaa2", "#b29c74", "#987e55", "#83663c", "#69481e", "#543005"]
-}
+};
 
 // proměnné pro test
 
-var cisloOtazky = 19;
+var cisloOtazky = 1;
 var stamp = Date.now() + Math.floor(Math.random() * 10000);
 
 var otazky = [
@@ -52,9 +52,6 @@ var segmenty = [
   ["Politicky pasivní", 0.142],
   ["Skutečný křesťan", 0.142]
 ];
-
-var stisknutyCudlikZpet = false;
-
 
 
 // výsledek testu
@@ -340,13 +337,10 @@ function novaOtazka() {
       vyhodnoceni = true;
     }
 
-    // u otázek, které se nevyhodnocují, se čudlíky oživí bez čekání
-    if ($.inArray(cisloOtazky-1, otazkyKTestovani) === -1) {
-      ozivCudliky();
-    }
+    ozivCudliky();
 
     // spočítej odpověď a překresli; synchronně, jen po některých otázkách
-    else {
+    if ($.inArray(cisloOtazky-1, otazkyKTestovani) != -1) {
 
       var postInput = 'https://d24y44bifobrtj.cloudfront.net/?arr=[' + odpovedi + ']';
 
@@ -363,9 +357,6 @@ function novaOtazka() {
         segmenty[0][1] = postOutput[5];
         segmenty[5][1] = postOutput[6];
 
-        // oddisablení
-        ozivCudliky();
-
         // urči dominantní segment
         prepocitejIndexSkupiny();
 
@@ -373,7 +364,7 @@ function novaOtazka() {
         zmenVelikosti();
 
         // aktualizovali jsme panďuláky
-        var text = '<div id="pandulaci"><p style="color:#cc0000">▲ ▲ ▲ AKTUALIZOVALI JSME PANĎULÁKY ▲ ▲ ▲</p></div>';
+        var text = '<div id="pandulaci"><p style="color:#cc0000">▲ ▲ ▲ POSTUP AKTUALIZOVÁN ▲ ▲ ▲</p></div>';
         document.getElementById("pandulaci").innerHTML = text;
 
         // překresli grafy
@@ -1261,10 +1252,10 @@ Highcharts.chart('demo-pozice', {
 
 
 // inicializace kvízu
-
-novaOtazka();
-ozivCudliky();
-prepocitejIndexSkupiny();
-zmenVelikosti();
-prekresliGrafy();
-
+$(function() {
+  novaOtazka();
+  ozivCudliky();
+  prepocitejIndexSkupiny();
+  zmenVelikosti();
+  prekresliGrafy();
+});

@@ -85,6 +85,12 @@ hr {
     transition:  height 1s, width 1s;
 }
 
+.chart-div {
+    max-width: 100%;
+    overflow: hidden; 
+    display: block;
+}
+
 .small {
     max-width: 500px;
     min-width: 300px;

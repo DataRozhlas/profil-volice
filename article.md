@@ -82,16 +82,16 @@ XX XXX XXXXXX XX XXX XXX XX XXX XXXXXX XX XXX XXX XX XXX XXXXXX XX XXX XXX
 XX XXX XXXXXX XX XXX XXX XX XXX XXXXXX XX XXX XXX XX XXX XXXXXX XX XXX XXX
 
 ## Demografie
-<div style="max-width: 100%; overflow: hidden; display: block;">
+<div class="chart-div">
     <div class="small-legend" id="demo-pohlavi"></div>
 </div>
 
-<div style="max-width: 100%; overflow: hidden; display: block;">
+<div class="chart-div">
     <div class="small" id="demo-vek"></div>
     <div class="small" id="demo-vzdelani"></div>
 </div>
 
-<div style="max-width: 100%; overflow: hidden; display: block;">
+<div class="chart-div">
     <div class="small" id="demo-prijem"></div>
     <div class="small" id="demo-pozice"></div>
 </div>
