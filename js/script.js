@@ -417,7 +417,7 @@ function vyhodnotTest() {
   var serazeneSegmenty = segmenty.sort(function(a,b){return b[1] - a[1]});
 
   // vygenerování vyhodnocení
-  var sdileciURL = "https://www.facebook.com/sharer/sharer.php?u=https://www.irozhlas.cz/node/7209152"
+  var sdileciURL = "https://www.facebook.com/sharer/sharer.php?u=https://www.irozhlas.cz/zpravy-domov/data-median-prokop-segmentace-volby-autoritari-liberalove_1805210740_cib"
   var text = '<div class="vyhodnoceni">';
   text += '<h3>Podle modelu Medianu jste</h3>';
   for(var i = 0; i < 7; i++) {
