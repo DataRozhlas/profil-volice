@@ -44,7 +44,7 @@ _Grafy vždy zobrazují podíl respondentů s danou odpovědí, výjimkou je ná
 
 <right><strong>Daniel Prokop</strong> je sociolog a ředitel výzkumu společnosti MEDIAN. Působí také na FSV UK.
 
-<img src="https://dev.datarozhlas.cz/profil-volice/images/prokop.jpg" style="width: 200px; padding: 10px">
+<img src="https://dev.datarozhlas.cz/profil-volice/images/prokop.jpg" id="prokop">
 
 </right>
 
