@@ -168,3 +168,16 @@ hr {
     background-color: #3B5998;
     font-weight: bold;
 }
+
+#tweetitko {
+    margin-top: 5px;
+    width: 33%;
+    padding: 10px;
+    border-radius: 5px;
+    border-width: 0px;
+    font-size: 18px;
+    line-height: 1;
+    color: #fff;
+    background-color: #00aced;
+    font-weight: bold;
+}

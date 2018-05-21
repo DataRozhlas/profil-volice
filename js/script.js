@@ -418,17 +418,23 @@ function vyhodnotTest() {
 
   // vygenerování vyhodnocení
   var sdileciURL = "https://www.facebook.com/sharer/sharer.php?u=https://www.irozhlas.cz/zpravy-domov/data-median-prokop-segmentace-volby-autoritari-liberalove_1805210740_cib"
+  var sdileciURLtw = "https://twitter.com/intent/tweet?text=Levicov%C3%BD%20nevoli%C4%8D%2C%20m%C4%9Bstsk%C3%BD%20liber%C3%A1l%20nebo%20skute%C4%8Dn%C3%BD%20k%C5%99es%C5%A5an%3F%20Test%20prozrad%C3%AD%2C%20koho%20vol%C3%ADte%3A&url=https%3A%2F%2Fwww.irozhlas.cz%2Fzpravy-domov%2Fdata-median-prokop-segmentace-volby-autoritari-liberalove_1805210740_cib"
   var text = '<div class="vyhodnoceni">';
   text += '<h3>Podle modelu Medianu jste</h3>';
   for(var i = 0; i < 7; i++) {
     text += '<div class="vyhodnoceni-skupina" style="background-color:' + barvyCudliky.bar7[i] + '">' + serazeneSegmenty[i][0] + ': ' + nicenum(serazeneSegmenty[i][1]) + ' %</div>';
   }
-  text += '<button id="sdilitko">Sdílet</button>';
+  text += '<button id="sdilitko">Sdílet</button><br>';
+  text += '<button id="tweetitko">Tweetnout</button>';
 
   $(".test").html(text);
 
   $("#sdilitko").click(function() {
     window.open(sdileciURL,'test','left=20,top=20,width=550,height=650,toolbar=0,resizable=0,menubar=0');
+  });
+
+  $("#tweetitko").click(function() {
+    window.open(sdileciURLtw,'test','left=20,top=20,width=550,height=250,toolbar=0,resizable=0,menubar=0');
   });
 
   // sdílítko - defaultní URL článku se dynamicky nahradí vygenerovanou
@@ -439,9 +445,13 @@ function vyhodnotTest() {
     dataType: "json",
     success: function (response) {
       sdileciURL = "https://www.facebook.com/sharer/sharer.php?u=https://dev.datarozhlas.cz/profil-volice/share/" + response + ".html";
+      sdileciURLtw = "https://twitter.com/intent/tweet?text=Levicov%C3%BD%20nevoli%C4%8D%2C%20m%C4%9Bstsk%C3%BD%20liber%C3%A1l%20nebo%20skute%C4%8Dn%C3%BD%20k%C5%99es%C5%A5an%3F%20Test%20prozrad%C3%AD%2C%20koho%20vol%C3%ADte%3A&url=https%3A%2F%2Fdev.datarozhlas.cz%2Fprofil-volice%2Fshare%2F" + response + ".html";
       $("#sdilitko").click(function() {
         window.open(sdileciURL,'test','left=20,top=20,width=550,height=650,toolbar=0,resizable=0,menubar=0');
       });
+      $("tweetitko").click(function() {
+        window.open(sdileciURLtw,'test','left=20,top=20,width=550,height=250,toolbar=0,resizable=0,menubar=0');
+      })
     }
   });
 
