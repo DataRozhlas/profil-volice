@@ -28,7 +28,7 @@ options: [] #wide, noheader (, nopic)
 
 </div>
 
-_Otázky vycházejí z modelu společnosti Median nad daty z výzkumu MML-TGI, který probírá od roku 1996 a ptá se 15 tisíc respondentů ročně._
+_Otázky vycházejí z modelu společnosti Median nad daty z výzkumu MML-TGI, který probíhá od roku 1996 a ptá se 15 tisíc respondentů ročně._
 
 _Během vyplňování testu se aktualizují grafy tak, aby zobrazovaly skupinu, ke které podle otázek patříte (barevný sloupec), a průměr všech respondentů (bílý sloupec). Kliknutím na název jiné skupiny v legendě si můžete zobrazit její výsledky._
 
@@ -68,7 +68,7 @@ V současné politice se obvykle sleduje _levopravost_, _společenský liberalis
 
 Když položíte respondentům hromadu otázek – původně jich bylo asi 150, ne 20 – přirozeně se rozdělí do několika shluků. V každém jsou lidi, kteří mají nějak podobné postoje. Uvnitř je malý názorový rozptyl, naopak od ostatních shluků jsou poměrně vzdálené. Nejstabilnější popis české politické scény, kde všechny segmenty mají nějaký jasný smysl a pozici, našel právě sedm základních politických typů. Nejdál je ve většině postojů _městský liberál_ od _obranáře_ neboli autoritáře; pokud mám ve své typologii velké procento obranáře, tak budu mít malé procento městského liberála, leda bych měl úplně protichůdné názory. Jiné chomáče jsou si v něčem blíž, ale taky tvoří oddělitelné a pojmenovatelné shluky.
 
-Tahle typologizace pomáhá uvažovat o politické scéně. A hlavně ukazuje, že neexistuje žádná polarizace na dvě skupiny. Společnost je dnes spíše politicky fragmentovaná. Je těžké ty skupiny najednou oslovit. Politici se polarizující mýty o „těch druhých“ používat právě proto, aby ve svém elektorátu spojily segmenty, které jsou přitom názorově dost odlišné.
+Tahle typologizace pomáhá uvažovat o politické scéně. A hlavně ukazuje, že neexistuje žádná polarizace na dvě skupiny. Společnost je dnes spíše politicky fragmentovaná. Je těžké ty skupiny najednou oslovit. Politici polarizující mýty o „těch druhých“ používají právě proto, aby ve svém elektorátu spojily segmenty, které jsou přitom názorově dost odlišné.
 
 <strong>Model se tedy učil na 150 otázkách a naši čtenáři odpovídají na 20, takže to je asi za cenu nějaké nepřesnosti?</strong>
 
@@ -106,7 +106,7 @@ Dominance některé skupiny znamená, že jste hluboce zanořený ve svých post
 
 <strong>V [rozhovoru pro DVTV](https://video.aktualne.cz/dvtv/prokop-utoky-na-babise-jsou-nebezpecna-strategie-hnuti-ano-v/r~d10f8c98581c11e894960cc47ab5f122/) jste takhle popisoval rozporné postoje voličů ANO: chtějí, aby stát všem zaručil slušnou životní úroveň, ale každý by se měl o sebe postarat sám. Jako by se na tom nechtěli podílet a říkali „já chci být citlivý k chudým, ale tady mi to nejde“.</strong>
 
-To je jedno vysvětlení. Mohou to být lidé, kteří chtějí, aby ten stát by měl pomáhat jen lidem jako oni – nikoli „nepřizpůsobivým“ pod nimi a „privilegovaným“ nad nimi. Ale hlavně si myslím, že v tom zdánlivém rozporu je vlastně obsažená logika ANO a Babiše. Když je stát řízený dobře, všichni se budou mít dobře. Ale kdo se fláká, ten by se mezi nimi měl mít nejhůř. To je přece Babišův apel na efektivní stát, který tím mimochodem ruší levopravou logiku. Nabízí jistoty a zásluhovost zároveň. Tyhle postoje jsou mimochodem specifické pro typ _materialista_, což je nejčastější volič ANO.
+To je jedno vysvětlení. Mohou to být lidé, kteří chtějí, aby stát pomáhal jen lidem jako oni – nikoli „nepřizpůsobivým“ pod nimi a „privilegovaným“ nad nimi. Ale hlavně si myslím, že v tom zdánlivém rozporu je vlastně obsažená logika ANO a Babiše. Když je stát řízený dobře, všichni se budou mít dobře. Ale kdo se fláká, ten by se mezi nimi měl mít nejhůř. To je přece Babišův apel na efektivní stát, který tím mimochodem ruší levopravou logiku. Nabízí jistoty a zásluhovost zároveň. Tyhle postoje jsou mimochodem specifické pro typ _materialista_, což je nejčastější volič ANO.
 
 ## Liberálům chybí velký příběh
 
