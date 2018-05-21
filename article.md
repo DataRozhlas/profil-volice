@@ -54,7 +54,7 @@ Podobné segmentace si dělají politické strany i firmy, aby pochopily svoje p
 
 <strong>Na jaká štěpení jste se zaměřili?</strong>
 
-V současné politice se obvykle sleduje _levopravost_, _společenský liberalismus nebo konzervatismus_, _míra autoritářství_ a _otevřenost globalizaci a zahraniční politice_. Včetně hodnocení, zda si v globálním světě připadáte jako vítěz, nebo poražený. Přidali jsme témata, na kterých se láme česká politická scéna, to je _spokojenost s polistopadovým vývojem_ či _postoj k uprchlíkům_. Ten sice u většiny respondentů souvisí s autoritářstvím, ale jsou důležité výjimky. A pak sledujeme politickou angažovanost. Ukazuje se, že dvě až tři skupiny jsou výrazně méně angažované než zbytek; _politicky pasivní_ jsou neaktivitou a nezájmem definovaní. Pak _mladí a těkaví_, a také _levicoví (ne)voliči_. Ti jsou zajímaví v tom, že by vlastně nemuseli být pasivní, ale kolem parlamentních voleb 2017, kdy jsme model počítali, nechtěli jít volit.
+V současné politice se obvykle sleduje _levopravost_, _společenský liberalismus nebo konzervatismus_, _míra autoritářství_ a _otevřenost globalizaci a zahraniční politice_. Včetně hodnocení, zda si v globálním světě připadáte jako vítěz, nebo poražený. Přidali jsme témata, na kterých se láme česká politická scéna, to je _spokojenost s polistopadovým vývojem_ či _postoj k uprchlíkům_. Ten sice u většiny respondentů souvisí s autoritářstvím, ale jsou důležité výjimky. A pak sledujeme politickou angažovanost. Ukazuje se, že dvě až tři skupiny jsou výrazně méně angažované než zbytek; _politicky pasivní_ jsou neaktivitou a nezájmem definovaní. Pak _mladí a těkaví_ a také _levicoví (ne)voliči_. Ti jsou zajímaví v tom, že by vlastně nemuseli být pasivní, ale kolem parlamentních voleb 2017, kdy jsme model počítali, nechtěli jít volit.
 
 <left><div class="profil">
 
@@ -68,11 +68,11 @@ V současné politice se obvykle sleduje _levopravost_, _společenský liberalis
 
 Když položíte respondentům hromadu otázek – původně jich bylo asi 150, ne 20 – přirozeně se rozdělí do několika shluků. V každém jsou lidi, kteří mají nějak podobné postoje. Uvnitř je malý názorový rozptyl, naopak od ostatních shluků jsou poměrně vzdálené. Nejstabilnější popis české politické scény, kde všechny segmenty mají nějaký jasný smysl a pozici, našel právě sedm základních politických typů. Nejdál je ve většině postojů _městský liberál_ od _obranáře_ neboli autoritáře; pokud mám ve své typologii velké procento obranáře, tak budu mít malé procento městského liberála, leda bych měl úplně protichůdné názory. Jiné chomáče jsou si v něčem blíž, ale taky tvoří oddělitelné a pojmenovatelné shluky.
 
-Tahle typologizace pomáhá uvažovat o politické scéně. A hlavně ukazuje, že neexistuje žádná polarizace na dvě skupiny. Společnost je dnes spíše politicky fragmentovaná. Je těžké ty skupiny najednou oslovit. Politici polarizující mýty o „těch druhých“ používají právě proto, aby ve svém elektorátu spojily segmenty, které jsou přitom názorově dost odlišné.
+Tahle typologizace pomáhá uvažovat o politické scéně. A hlavně ukazuje, že neexistuje žádná polarizace na dvě skupiny. Společnost je dnes spíše politicky fragmentovaná. Je těžké ty skupiny najednou oslovit. Politici polarizující mýty o „těch druhých“ používají právě proto, aby ve svém elektorátu spojili segmenty, které jsou přitom názorově dost odlišné.
 
 <strong>Model se tedy učil na 150 otázkách a naši čtenáři odpovídají na 20, takže to je asi za cenu nějaké nepřesnosti?</strong>
 
-Přesně tak, je to dvacet otázek, které dokáží předpovědět segment nejlépe, v pořadí od nejpodstatnějších po méně důležité. Tímhle testem odhadneme víc než 70 procent toho, co celý původní model.
+Přesně tak, je to dvacet otázek, které dokážou předpovědět segment nejlépe, v pořadí od nejpodstatnějších po méně důležité. Tímhle testem odhadneme víc než 70 procent toho co celý původní model.
 
 Ještě je tu druhý typ nepřesnosti, model pracuje s ideálními typy a nemusíte spadat čistě do jednoho segmentu, můžete se pohybovat mezi dvěma segmenty a jednomu být jen blíž. Proto jsme taky do modelu přidali procenta a odhadujeme, do jaké míry jste v které skupině.
 
@@ -136,7 +136,7 @@ To ano, jenže když Zimola řekne „my jsme levice“, má problém přidat k 
 
 Role pravolevého štěpení může myslím oscilovat závislosti na té konjuktuře, která ruší souboj o zdroje, a tom, jak se periodicky vyčerpávají nová hnutí. Ale některé další změny jsou dlouhodobé. Vizuální a dnes nová média nastolují témata rychle a emotivně, stejně rychle vzápětí zmizí. Politolog Sartori to nazývá _videopolitika_. Často jde o zahraniční politiku nebo globální témata spojená s kulturními postoji. Politici na to musejí reagovat a mají menší prostor pro dlouhodobější nastolování socioekonomických témat, protože nemají tuhle rychlost a obrazovou apelativnost.
 
-Politická soutěž také reaguje na to, že se společnost fragmentuje. Kde Marx viděl dvě, později tři třídy, [našli Britové před pár lety sedm tříd](http://journals.sagepub.com/doi/abs/10.1177/0038038513481128), které se liší kulturním kapitálem, sociálními vazbami a samozřejmě ekonomickým postavením. Odlivem lidí z výrobního sektoru služeb zmizel homogenní kus elektorátu s podobnými zájmy. Dnes jsou práce a s nimi spojené společenské pozice a životní styly diverznější. Pro stranu je pak těžké oslovit voliče jednotnou politikou: třeba sociální demokracie by měla oslovit od matek samoživitelek, přes nezaměstnané, nízkopříjmové pracující, důchodce, lidi s hendikepem, kteří potřebují sociální služby, až po intelektuální levičáky. Udělat takovouto koalici se povede jen s charismatickým lídrem.
+Politická soutěž také reaguje na to, že se společnost fragmentuje. Kde Marx viděl dvě, později tři třídy, [našli Britové před pár lety sedm tříd](http://journals.sagepub.com/doi/abs/10.1177/0038038513481128), které se liší kulturním kapitálem, sociálními vazbami a samozřejmě ekonomickým postavením. Odlivem lidí z výrobního sektoru služeb zmizel homogenní kus elektorátu s podobnými zájmy. Dnes jsou práce a s nimi spojené společenské pozice a životní styly diverznější. Pro stranu je pak těžké oslovit voliče jednotnou politikou: třeba sociální demokracie by měla oslovit od matek samoživitelek přes nezaměstnané, nízkopříjmové pracující, důchodce, lidi s hendikepem, kteří potřebují sociální služby, až po intelektuální levičáky. Udělat takovouto koalici se povede jen s charismatickým lídrem.
 
 ### Hodnotové orientace segmentů
 
@@ -146,7 +146,7 @@ Politická soutěž také reaguje na to, že se společnost fragmentuje. Kde Mar
 
 <div id="scatter-buh" style="max-width: 100%; height: 500px"></div>
 
-<strong>V loňských parlamentních volbách to vypadalo, že fragmentovanější jsou liberální strany. TOP 09, Starostové, piráti, zelení…</strong>
+<strong>V loňských parlamentních volbách to vypadalo, že fragmentovanější jsou liberální strany. TOP 09, STAN, Piráti, Zelení…</strong>
 
 Není to jen u nás. A jde mimo jiné o mediální zdroje. Když se v USA ptali na zdroje informací, tak 40 až 50 procent voličů Donalda Trumpa uvedlo jako hlavní zdroj Fox News, u Clintonové tahle dominantní informační síla chyběla. U ní byly zdroje informací úplně roztříštěné. Autoritářská část politiky je z hlediska postojů a zdrojů informací homogennější. Liberálové jsou fragmentovaní.
 
@@ -190,7 +190,7 @@ Je vůbec zajímavé, že právě segmenty, který jsou nejvíc kulturně odliš
 
 <strong>Skupiny jste vlastně pojmenovávali jak?</strong>
 
-Jsou to naše pojmenování, ale vycházejí ze sociologické tradice: třeba materialismus je zavedený pojem, definoval ho Inglehart, _materialista_ se soustředí spíš na ekonomické stránky politiky a ne na témata jako ekologie nebo ochrana lidských práv. Nemusí být ale příliš autoritářský, jen pragmatický.
+Jsou to naše pojmenování, ale vycházejí ze sociologické tradice: třeba materialismus je zavedený pojem, definoval ho Inglehart, _materialista_ se soustředí spíš na ekonomické stránky politiky, a ne na témata jako ekologie nebo ochrana lidských práv. Nemusí být ale příliš autoritářský, jen pragmatický.
 
 _Obranář_ by se asi mohl nazývat autoritář, ale ta společenská defenziva je výstižnější. Je pro něj důležitá obrana hranic a hodnot, které si spojuje s národem. Má pocit, že vývoj v posledních letech proběhl na úkor skupiny, do které patří, a chce tyto trendy zastavit.
 
@@ -228,7 +228,7 @@ Typicky má nízký příjem, manuálně pracující, je mu přes 50 let. Je to 
 
 <strong>_Obranář_ je člověk, který cítí společenskou křivdu?</strong>
 
-Asi ano – ačkoli tuto otázku v datech nemáme. Ale je kulturně uzavřený, nedůvěřuje nadnárodním institucím, zcela odmítá uprchlíky. Je také velmi nespokojený s polistopadovým vývojem, chtěl by silný stát, je autoritář a požaduje by co nejtvrdší zákony. Přitom není nějak silně konzervativní a neakcentuje křesťanské hodnoty. Taková úzkostná uzavřenost z modernity. Je taky v řadě pohledů nejvzdálenější od ostatních skupin.
+Asi ano – ačkoli tuto otázku v datech nemáme. Ale je kulturně uzavřený, nedůvěřuje nadnárodním institucím, zcela odmítá uprchlíky. Je také velmi nespokojený s polistopadovým vývojem, chtěl by silný stát, je autoritář a požaduje co nejtvrdší zákony. Přitom není nějak silně konzervativní a neakcentuje křesťanské hodnoty. Taková úzkostná uzavřenost z modernity. Je taky v řadě pohledů nejvzdálenější od ostatních skupin.
 
 Tihle lidé ve výzkumech často říkají, že globalizace a moderní trendy lidem, jako jsou oni, nepřejí. Což může mít reálný základ, protože jsou častěji z manuálních profesí a chudších regionů. Ale obecně se cítí ve společenské defenzivě. V tom mají asi paradoxně blízko k liberálům.
 
@@ -238,6 +238,6 @@ Na nedávném křtu knížky _Proč vyhrál Zeman_ jeden autor, mimochodem znám
 
 Naše segmentace je dobrá v tom, že ukazuje, že společnost nemá jen nějaké dva póly. Možná, když se o ní přestaneme takto bavit a přiznáme si velkou diverzitu postojů, tak k té polarizaci i přestane směřovat.
 
-Rozložení společnosti do několika segmentů taky napovídá, proč je pro liberály nebo autoritáře těžké vyhrát jen intenzivním prosazováním svých hodnot. Třeba Zeman tohle ví a jeho kampaň byla směřovaná na více segmentů. Obranáře si získal odsuzováním kavárny a migrantů. _Materialisty_ osloví tím, že zdůrazňuje politickou zkušenost a vládnutí. Část politicky pasivních, kteří se nezajímají o hard policy témata, mobilizoval tématy jako je kouření v hospodách či držení zbraní a jazykem bonmotů.
+Rozložení společnosti do několika segmentů taky napovídá, proč je pro liberály nebo autoritáře těžké vyhrát jen intenzivním prosazováním svých hodnot. Třeba Zeman tohle ví a jeho kampaň byla směřovaná na více segmentů. Obranáře si získal odsuzováním kavárny a migrantů. _Materialisty_ osloví tím, že zdůrazňuje politickou zkušenost a vládnutí. Část politicky pasivních, kteří se nezajímají o hard policy témata, mobilizoval tématy, jako je kouření v hospodách či držení zbraní, a jazykem bonmotů.
 
 <wide><div id="stranicke-kompozice" style="max-width: 100%; height: 600px"></div></wide>
