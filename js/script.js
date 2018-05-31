@@ -301,7 +301,7 @@ function novaOtazka() {
 
         // po poslední otázce nahoď vyhodnocení
         if (vyhodnoceni) {
-          zalogujVysledek();
+          //zalogujVysledek();
           vyhodnotTest();
         }
 
